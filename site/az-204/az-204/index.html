@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>AZ-204 - My Notes</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Notes</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Azure</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">AZ-204</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Programming</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../python/python/" class="dropdown-item">Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../Readme/" class="nav-link">setup</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../python/python/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#1-azure-compute-solutions" class="nav-link">🔑 1. Azure Compute Solutions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#2-azure-storage-solutions" class="nav-link">� 2. Azure Storage Solutions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#3azure-security" class="nav-link">🔑 3.Azure Security</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#4-monitoring-troubleshooting-and-optimization" class="nav-link">🔑 4. Monitoring, Troubleshooting, and Optimization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#5-data-solutions" class="nav-link">🔑 5. Data Solutions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#6-integrating-azure-services" class="nav-link">🔑 6. Integrating Azure Services</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#7-deploying-and-managing-resources" class="nav-link">🔑 7. Deploying and Managing Resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#8-caching-and-performance-optimization" class="nav-link">🔑 8. Caching and Performance Optimization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#9-api-and-web-app-development" class="nav-link">🔑 9. API and Web App Development</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#10-messaging-patterns" class="nav-link">🔑 10. Messaging Patterns</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="1-azure-compute-solutions">🔑 1. Azure Compute Solutions</h2>
+<h3 id="app-service">App Service</h3>
+<ul>
+<li><strong>Purpose</strong>: Platform-as-a-Service (PaaS) offering for hosting web applications, REST APIs, and mobile backends</li>
+<li><strong>Features</strong>:</li>
+<li>Automatic scaling</li>
+<li>Built-in load balancing</li>
+<li>Support for .NET, .NET Core, Java, Ruby, Node.js, PHP, Python</li>
+<li>Continuous deployment from GitHub, Azure DevOps, or any Git repo</li>
+<li><strong>Use Cases</strong>: Web applications, API backends, mobile app backends</li>
+<li><strong>Advantages</strong>: No infrastructure management, supports custom domains and SSL</li>
+</ul>
+<h3 id="functions">Functions</h3>
+<ul>
+<li><strong>Purpose</strong>: Serverless compute service for running event-triggered code</li>
+<li><strong>Key Characteristics</strong>:</li>
+<li>Pay-per-execution pricing model</li>
+<li>Automatic scaling</li>
+<li>Supports multiple languages (C#, Java, JavaScript, Python, PowerShell)</li>
+<li><strong>Trigger Types</strong>:</li>
+<li>HTTP (API endpoints)</li>
+<li>Timer (scheduled tasks)</li>
+<li>Blob Storage (file uploads)</li>
+<li>Queue Storage (message processing)</li>
+<li>Event Grid (event processing)</li>
+<li><strong>Use Cases</strong>: Microservices, event processing, lightweight APIs</li>
+</ul>
+<h3 id="aci-azure-container-instances-aks-azure-kubernetes-service">ACI (Azure Container Instances) &amp; AKS (Azure Kubernetes Service)</h3>
+<ul>
+<li><strong>ACI</strong>:</li>
+<li>Simplest way to run containers in Azure</li>
+<li>No orchestration needed</li>
+<li>Fast startup (seconds)</li>
+<li>
+<p>Ideal for: One-off tasks, dev/test scenarios, simple applications</p>
+</li>
+<li>
+<p><strong>AKS</strong>:</p>
+</li>
+<li>Managed Kubernetes service</li>
+<li>Full container orchestration</li>
+<li>Features: Auto-scaling, self-healing, load balancing</li>
+<li>Ideal for: Microservices architectures, production workloads</li>
+</ul>
+<h3 id="virtual-machines">Virtual Machines</h3>
+<ul>
+<li><strong>Purpose</strong>: Infrastructure-as-a-Service (IaaS) offering for full control over OS and environment</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Complete control over the virtualized hardware</li>
+<li>Supports Windows and Linux</li>
+<li>Various sizes optimized for different workloads</li>
+<li><strong>Use Cases</strong>:</li>
+<li>Legacy applications requiring specific OS versions</li>
+<li>Custom software stacks</li>
+<li>High-performance computing</li>
+<li>Applications requiring direct access to hardware</li>
+</ul>
+<h2 id="2-azure-storage-solutions">� 2. Azure Storage Solutions</h2>
+<h3 id="blob-storage">Blob Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Object storage for massive amounts of unstructured data</li>
+<li><strong>Access Tiers</strong>:</li>
+<li>Hot: Frequently accessed data</li>
+<li>Cool: Infrequently accessed data (lower cost)</li>
+<li>Archive: Rarely accessed data (lowest cost, retrieval latency)</li>
+<li><strong>Features</strong>:</li>
+<li>Tier lifecycle management</li>
+<li>Data encryption at rest</li>
+<li>Shared Access Signatures (SAS) for secure access</li>
+</ul>
+<h3 id="table-storage">Table Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: NoSQL key-value store for semi-structured data</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Schemaless design</li>
+<li>Fast, cost-effective for large volumes of simple data</li>
+<li>Partition key + row key structure</li>
+<li><strong>Use Cases</strong>: User data, device information, metadata storage</li>
+</ul>
+<h3 id="queue-storage">Queue Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Message queue service for asynchronous communication</li>
+<li><strong>Features</strong>:</li>
+<li>First-In-First-Out (FIFO) processing</li>
+<li>At-least-once delivery</li>
+<li>Message time-to-live (TTL) configuration</li>
+<li><strong>Use Cases</strong>: Decoupling application components, load leveling</li>
+</ul>
+<h3 id="file-storage">File Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Fully managed file shares using SMB protocol</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Accessible from cloud or on-premises</li>
+<li>Supports concurrent access</li>
+<li>Can be cached on Windows Servers with Azure File Sync</li>
+<li><strong>Use Cases</strong>: Lift-and-shift of file-based applications, shared configuration files</li>
+</ul>
+<h2 id="3azure-security">🔑 3.Azure Security</h2>
+<h3 id="azure-ad-active-directory">Azure AD (Active Directory)</h3>
+<ul>
+<li><strong>Purpose</strong>: Cloud-based identity and access management service</li>
+<li><strong>Features</strong>:</li>
+<li>Single sign-on (SSO)</li>
+<li>Multi-factor authentication (MFA)</li>
+<li>Application management</li>
+<li>Device management</li>
+<li>B2B and B2C capabilities</li>
+</ul>
+<h3 id="oauth-20openid-connect">OAuth 2.0/OpenID Connect</h3>
+<ul>
+<li><strong>OAuth 2.0</strong>: Authorization framework for delegated access</li>
+<li><strong>OpenID Connect</strong>: Authentication layer built on OAuth 2.0</li>
+<li><strong>Flow Types</strong>:</li>
+<li>Authorization Code (web apps)</li>
+<li>Implicit (SPAs)</li>
+<li>Client Credentials (service-to-service)</li>
+<li>Device Code (IoT/CLI)</li>
+</ul>
+<h3 id="managed-identity">Managed Identity</h3>
+<ul>
+<li><strong>Purpose</strong>: Automatically managed identity in Azure AD for Azure services</li>
+<li><strong>Types</strong>:</li>
+<li>System-assigned (tied to resource lifecycle)</li>
+<li>User-assigned (standalone identity)</li>
+<li><strong>Benefits</strong>: Eliminates need for credentials in code</li>
+</ul>
+<h3 id="key-vault">Key Vault</h3>
+<ul>
+<li><strong>Purpose</strong>: Centralized secrets management</li>
+<li><strong>Stores</strong>:</li>
+<li>Secrets (passwords, connection strings)</li>
+<li>Keys (encryption keys)</li>
+<li>Certificates</li>
+<li><strong>Features</strong>:</li>
+<li>Access policies and RBAC</li>
+<li>Hardware security modules (HSMs)</li>
+<li>Versioning</li>
+</ul>
+<h3 id="rbac-role-based-access-control">RBAC (Role-Based Access Control)</h3>
+<ul>
+<li><strong>Purpose</strong>: Granular access management for Azure resources</li>
+<li><strong>Components</strong>:</li>
+<li>Security principal (who)</li>
+<li>Role definition (what permissions)</li>
+<li>Scope (where)</li>
+<li><strong>Built-in Roles</strong>:</li>
+<li>Owner, Contributor, Reader</li>
+<li>Service-specific roles</li>
+</ul>
+<h2 id="4-monitoring-troubleshooting-and-optimization">🔑 4. Monitoring, Troubleshooting, and Optimization</h2>
+<h3 id="application-insights">Application Insights</h3>
+<ul>
+<li><strong>Purpose</strong>: Application performance management (APM) service</li>
+<li><strong>Monitors</strong>:</li>
+<li>Request rates, response times, failure rates</li>
+<li>Dependency tracking</li>
+<li>Exceptions and logs</li>
+<li>Custom metrics and events</li>
+</ul>
+<h3 id="azure-monitor">Azure Monitor</h3>
+<ul>
+<li><strong>Purpose</strong>: Comprehensive solution for collecting, analyzing, and acting on telemetry</li>
+<li><strong>Components</strong>:</li>
+<li>Metrics: Numerical values from resources</li>
+<li>Logs: Log data with KQL queries</li>
+<li>Alerts: Notifications based on conditions</li>
+<li>Workbooks: Interactive reports</li>
+</ul>
+<h3 id="log-analytics">Log Analytics</h3>
+<ul>
+<li><strong>Purpose</strong>: Log data repository and query engine</li>
+<li><strong>Features</strong>:</li>
+<li>Kusto Query Language (KQL) for powerful analytics</li>
+<li>Cross-resource queries</li>
+<li>Saved queries and functions</li>
+<li>Integration with Azure Monitor</li>
+</ul>
+<h3 id="alertsautoscale">Alerts/Autoscale</h3>
+<ul>
+<li><strong>Alerts</strong>:</li>
+<li>Metric alerts (threshold-based)</li>
+<li>Log alerts (query-based)</li>
+<li>
+<p>Activity log alerts (operations-based)</p>
+</li>
+<li>
+<p><strong>Autoscale</strong>:</p>
+</li>
+<li>Scale based on metrics or schedules</li>
+<li>Scale sets for VMs</li>
+<li>App Service scale-out</li>
+</ul>
+<h2 id="5-data-solutions">🔑 5. Data Solutions</h2>
+<h3 id="cosmos-db">Cosmos DB</h3>
+<ul>
+<li><strong>Purpose</strong>: Globally distributed, multi-model database service</li>
+<li><strong>Consistency Levels</strong>:</li>
+<li>Strong, Bounded Staleness, Session, Consistent Prefix, Eventual</li>
+<li><strong>APIs Supported</strong>:</li>
+<li>SQL, MongoDB, Cassandra, Gremlin, Table</li>
+<li><strong>Features</strong>:</li>
+<li>Turnkey global distribution</li>
+<li>SLA-backed latency and availability</li>
+<li>Automatic indexing</li>
+</ul>
+<h3 id="sql-database">SQL Database</h3>
+<ul>
+<li><strong>Purpose</strong>: Fully managed relational database</li>
+<li><strong>Deployment Models</strong>:</li>
+<li>Single database</li>
+<li>Elastic pool (shared resources)</li>
+<li>Managed instance (near-complete SQL Server compatibility)</li>
+<li><strong>Features</strong>:</li>
+<li>Built-in high availability</li>
+<li>Intelligent performance tuning</li>
+<li>Advanced threat protection</li>
+</ul>
+<h3 id="ef-core-entity-framework-core">EF Core (Entity Framework Core)</h3>
+<ul>
+<li><strong>Purpose</strong>: Object-Relational Mapper (ORM) for .NET</li>
+<li><strong>Features</strong>:</li>
+<li>LINQ support</li>
+<li>Change tracking</li>
+<li>Database migrations</li>
+<li>Cross-platform</li>
+<li><strong>Use with Azure</strong>: Simplifies data access to Azure SQL, Cosmos DB</li>
+</ul>
+<h2 id="6-integrating-azure-services">🔑 6. Integrating Azure Services</h2>
+<h3 id="event-grid">Event Grid</h3>
+<ul>
+<li><strong>Purpose</strong>: Event routing service using publish-subscribe model</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Fully managed event routing</li>
+<li>Supports custom and Azure service events</li>
+<li>Push-based delivery</li>
+<li><strong>Use Cases</strong>: Reacting to blob storage events, custom event processing</li>
+</ul>
+<h3 id="event-hubs">Event Hubs</h3>
+<ul>
+<li><strong>Purpose</strong>: Big data streaming platform and event ingestion service</li>
+<li><strong>Features</strong>:</li>
+<li>High throughput (millions of events/sec)</li>
+<li>Capture feature for automatic data persistence</li>
+<li>Kafka compatibility</li>
+<li><strong>Use Cases</strong>: IoT telemetry, clickstream analytics</li>
+</ul>
+<h3 id="service-bus">Service Bus</h3>
+<ul>
+<li><strong>Purpose</strong>: Enterprise messaging with queues and publish-subscribe topics</li>
+<li><strong>Features</strong>:</li>
+<li>FIFO guarantees</li>
+<li>Dead-letter queues</li>
+<li>Duplicate detection</li>
+<li>Sessions for message ordering</li>
+<li><strong>Use Cases</strong>: Order processing, financial transactions</li>
+</ul>
+<h3 id="logic-apps">Logic Apps</h3>
+<ul>
+<li><strong>Purpose</strong>: Serverless workflow automation</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Visual designer</li>
+<li>200+ connectors</li>
+<li>Enterprise Integration Pack for B2B scenarios</li>
+<li><strong>Use Cases</strong>: Business process automation, system integration</li>
+</ul>
+<h3 id="api-management-apim">API Management (APIM)</h3>
+<ul>
+<li><strong>Purpose</strong>: API gateway for publishing, securing, and analyzing APIs</li>
+<li><strong>Features</strong>:</li>
+<li>Rate limiting</li>
+<li>Request/response transformation</li>
+<li>Developer portal</li>
+<li>Multiple authentication options</li>
+</ul>
+<h2 id="7-deploying-and-managing-resources">🔑 7. Deploying and Managing Resources</h2>
+<h3 id="arm-templates">ARM Templates</h3>
+<ul>
+<li><strong>Purpose</strong>: Infrastructure as Code (IaC) for Azure</li>
+<li><strong>Characteristics</strong>:</li>
+<li>JSON format</li>
+<li>Declarative syntax</li>
+<li>Idempotent deployments</li>
+<li>Modular design with linked templates</li>
+</ul>
+<h3 id="azure-clipowershell">Azure CLI/PowerShell</h3>
+<ul>
+<li><strong>Azure CLI</strong>:</li>
+<li>Cross-platform command-line tool</li>
+<li>Bash-like syntax</li>
+<li>
+<p>Interactive mode available</p>
+</li>
+<li>
+<p><strong>Azure PowerShell</strong>:</p>
+</li>
+<li>PowerShell cmdlets for Azure</li>
+<li>More granular control than CLI</li>
+<li>Ideal for Windows environments</li>
+</ul>
+<h3 id="resource-manager-arm">Resource Manager (ARM)</h3>
+<ul>
+<li><strong>Purpose</strong>: Deployment and management service for Azure</li>
+<li><strong>Features</strong>:</li>
+<li>Group resources into resource groups</li>
+<li>Dependency handling</li>
+<li>Tagging for organization</li>
+<li>Access control</li>
+</ul>
+<h3 id="cicd-with-github-actionsazure-devops">CI/CD with GitHub Actions/Azure DevOps</h3>
+<ul>
+<li><strong>GitHub Actions</strong>:</li>
+<li>YAML-based workflows</li>
+<li>Tight GitHub integration</li>
+<li>
+<p>Marketplace for actions</p>
+</li>
+<li>
+<p><strong>Azure DevOps</strong>:</p>
+</li>
+<li>Pipelines for CI/CD</li>
+<li>Test plans</li>
+<li>Artifact feeds</li>
+<li>Full application lifecycle management</li>
+</ul>
+<h2 id="8-caching-and-performance-optimization">🔑 8. Caching and Performance Optimization</h2>
+<h3 id="azure-redis-cache">Azure Redis Cache</h3>
+<ul>
+<li><strong>Purpose</strong>: In-memory data store based on Redis</li>
+<li><strong>Tiers</strong>:</li>
+<li>Basic (single node)</li>
+<li>Standard (replicated)</li>
+<li>Premium (with persistence and clustering)</li>
+<li>
+<p><strong>Use Cases</strong>: Session store, output cache, message broker
+CDN (Content Delivery Network)</p>
+</li>
+<li>
+<p><strong>Purpose</strong>: Global content caching for improved performance</p>
+</li>
+<li><strong>Features</strong>:</li>
+<li>Edge locations worldwide</li>
+<li>Custom domains and HTTPS</li>
+<li>Rules engine for content handling</li>
+<li>Integration with Storage and Web Apps</li>
+</ul>
+<h2 id="9-api-and-web-app-development">🔑 9. API and Web App Development</h2>
+<h3 id="secure-api-development">Secure API Development</h3>
+<ul>
+<li><strong>Authentication</strong>:</li>
+<li>Azure AD integration</li>
+<li>OAuth 2.0 flows</li>
+<li>
+<p>API keys (for simpler scenarios)</p>
+</li>
+<li>
+<p><strong>Best Practices</strong>:</p>
+</li>
+<li>Proper status codes</li>
+<li>Versioning</li>
+<li>Throttling</li>
+<li>Input validation</li>
+</ul>
+<h3 id="swaggeropenapi">Swagger/OpenAPI</h3>
+<ul>
+<li><strong>Purpose</strong>: API description format</li>
+<li><strong>Features</strong>:</li>
+<li>Machine-readable API contracts</li>
+<li>Interactive documentation</li>
+<li>Client SDK generation</li>
+<li>Integration with API Management</li>
+</ul>
+<h2 id="10-messaging-patterns">🔑 10. Messaging Patterns</h2>
+<h3 id="queue-based-load-leveling">Queue-based Load Leveling</h3>
+<ul>
+<li><strong>Pattern</strong>: Use a queue as buffer between components</li>
+<li><strong>Benefits</strong>:</li>
+<li>Smooths intermittent heavy loads</li>
+<li>Prevents resource exhaustion</li>
+<li>Enables asynchronous processing</li>
+</ul>
+<h3 id="competing-consumers">Competing Consumers</h3>
+<ul>
+<li><strong>Pattern</strong>: Multiple consumers process messages from same queue</li>
+<li><strong>Benefits</strong>:</li>
+<li>Increased throughput</li>
+<li>Horizontal scaling</li>
+<li>Fault tolerance</li>
+</ul>
+<h3 id="publishersubscriber">Publisher/Subscriber</h3>
+<ul>
+<li><strong>Pattern</strong>: Events distributed to multiple subscribers</li>
+<li><strong>Azure Services</strong>:</li>
+<li>Event Grid (lightweight)</li>
+<li>Service Bus Topics (enterprise)</li>
+<li>Event Hubs (high volume)</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

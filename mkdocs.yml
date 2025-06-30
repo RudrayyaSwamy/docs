@@ -1,1 +1,8 @@
 site_name: My Notes
+nav:
+  - Home: index.md
+  - Azure:
+      - AZ-204: az-204/az-204.md
+  - Programming:
+      - Python: python/python.md
+  - setup: Readme.md
