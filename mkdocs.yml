@@ -5,4 +5,4 @@ nav:
       - AZ-204: az-204/az-204.md
   - Programming:
       - Python: python/python.md
-  - setup: Readme.md
+  - setup: readme.md
