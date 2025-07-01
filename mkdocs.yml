@@ -1,8 +1,12 @@
 site_name: My Notes
 nav:
   - Home: index.md
+  - setup: readme.md
   - Azure:
       - AZ-204: az-204/az-204.md
   - Programming:
       - Python: python/python.md
-  - setup: readme.md
+  - Devops:
+      - docker: docker/docker.md
+      - k8s: k8s/k8s.md
+  

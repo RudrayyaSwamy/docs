@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>docker - My Notes</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">My Notes</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../readme/" class="nav-link">setup</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Azure</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../az-204/az-204/" class="dropdown-item">AZ-204</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Programming</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../python/python/" class="dropdown-item">Python</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Devops</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">docker</a>
+</li>
+                                    
+<li>
+    <a href="../../k8s/k8s/" class="dropdown-item">k8s</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../python/python/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../k8s/k8s/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="2"><a href="#1-introduction-to-docker-and-containerization" class="nav-link">1. Introduction to Docker and Containerization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#2-benefits-of-using-docker" class="nav-link">2. Benefits of Using Docker</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#3-docker-vs-virtual-machines" class="nav-link">3. Docker vs Virtual Machines</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#4-docker-architecture" class="nav-link">4. Docker Architecture</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#5-key-docker-components" class="nav-link">5. Key Docker Components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#6-docker-cli-commands" class="nav-link">6. Docker CLI Commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#7-dockerfile-syntax-and-example" class="nav-link">7. Dockerfile Syntax and Example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#8-kubernetes-deployment" class="nav-link">8. Kubernetes Deployment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#9-docker-networking-types" class="nav-link">9. Docker Networking Types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#10-docker-volumes" class="nav-link">10. Docker Volumes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#11-docker-logs-and-inspection" class="nav-link">11. Docker Logs and Inspection</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#12-docker-security-best-practices" class="nav-link">12. Docker Security Best Practices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#13-docker-in-cicd" class="nav-link">13. Docker in CI/CD</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#14-dockerfile-best-practices" class="nav-link">14. Dockerfile Best Practices</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#15-cleanup-commands" class="nav-link">15. Cleanup Commands</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-bs-level="2"><a href="#16-conclusion-why-docker-is-essential" class="nav-link">16. Conclusion: Why Docker is Essential</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="1-introduction-to-docker-and-containerization">1. Introduction to Docker and Containerization</h2>
+<p>Docker is an open-source platform that enables developers to package applications and their dependencies into standardized units called containers.</p>
+<p><strong>Containerization</strong> is a lightweight alternative to full machine virtualization that:</p>
+<ul>
+<li>Packages software in isolated environments</li>
+<li>Shares the host OS kernel</li>
+<li>Runs consistently across different infrastructures</li>
+</ul>
+<p><strong>Key concepts:</strong></p>
+<ul>
+<li><strong>Images:</strong> Read-only templates for creating containers</li>
+<li><strong>Containers:</strong> Runnable instances of images</li>
+<li><strong>Docker Engine:</strong> The runtime that manages containers</li>
+</ul>
+<h2 id="2-benefits-of-using-docker">2. Benefits of Using Docker</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Benefit</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Portability</strong></td>
+<td>Runs identically on any system with Docker installed</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Containers share the OS kernel, using fewer resources than VMs</td>
+</tr>
+<tr>
+<td><strong>Isolation</strong></td>
+<td>Applications run in separate, secure environments</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Easy to scale services horizontally</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Eliminates "works on my machine" problems</td>
+</tr>
+<tr>
+<td><strong>Fast Deployment</strong></td>
+<td>Containers start in seconds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-docker-vs-virtual-machines">3. Docker vs Virtual Machines</h2>
+<p><img alt="Docker Vs Vm Architecture" src="../DockerVsVmArchitecture.webp" /></p>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Docker Containers</strong></th>
+<th><strong>Virtual Machines</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OS</strong></td>
+<td>Shares host OS</td>
+<td>Requires full guest OS</td>
+</tr>
+<tr>
+<td><strong>Startup Time</strong></td>
+<td>Seconds</td>
+<td>Minutes</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Near-native</td>
+<td>Slight overhead</td>
+</tr>
+<tr>
+<td><strong>Disk Usage</strong></td>
+<td>MBs (layered images)</td>
+<td>GBs (full OS)</td>
+</tr>
+<tr>
+<td><strong>Isolation</strong></td>
+<td>Process-level</td>
+<td>Hardware-level</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Microservices, CI/CD</td>
+<td>Legacy apps, full OS needs</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-docker-architecture">4. Docker Architecture</h2>
+<p><img alt="Docker Architecture" src="../dockerArchitecture.webp" /> </p>
+<h4 id="docker-system-components">Docker System Components</h4>
+<ul>
+<li><strong>Docker Client</strong>: CLI interface (<code>docker</code> command) to interact with the Docker daemon.</li>
+<li><strong>Docker Host</strong>: Runs the Docker daemon and manages containers.</li>
+<li><strong>Registry</strong>: Central repository to store and distribute Docker images (e.g., Docker Hub, private registries).</li>
+</ul>
+<h2 id="5-key-docker-components">5. Key Docker Components</h2>
+<h4 id="docker-core-components">Docker Core Components</h4>
+<table>
+<thead>
+<tr>
+<th><strong>Component</strong></th>
+<th><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Docker Engine</strong></td>
+<td>Core runtime (<code>dockerd</code>)</td>
+</tr>
+<tr>
+<td><strong>Images</strong></td>
+<td>Immutable templates (e.g., <code>nginx:latest</code>)</td>
+</tr>
+<tr>
+<td><strong>Containers</strong></td>
+<td>Runnable instances of images</td>
+</tr>
+<tr>
+<td><strong>Volumes</strong></td>
+<td>Persistent data storage</td>
+</tr>
+<tr>
+<td><strong>Networks</strong></td>
+<td>Isolated communication channels</td>
+</tr>
+<tr>
+<td><strong>Dockerfile</strong></td>
+<td>Blueprint for building images</td>
+</tr>
+<tr>
+<td><strong>Docker Hub</strong></td>
+<td>Public image repository</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-docker-cli-commands">6. Docker CLI Commands</h2>
+<h4 id="image-management">🐳 Image Management</h4>
+<pre><code>docker pull nginx              # Download image
+docker images                  # List images
+docker rmi nginx               # Remove image
+docker build -t myapp .        # Build from Dockerfile
+</code></pre>
+<h4 id="container-management">Container Management</h4>
+<pre><code>docker run -d -p 80:80 nginx   # Run container
+docker ps                     # List running containers
+docker stop &lt;container_id&gt;    # Stop container
+docker rm &lt;container_id&gt;      # Remove container
+docker exec -it nginx bash    # Enter running container
+</code></pre>
+<h4 id="volume-management">Volume Management</h4>
+<pre><code>docker volume create myvol    # Create volume
+docker volume ls             # List volumes
+docker volume inspect myvol  # View volume details
+</code></pre>
+<h4 id="network-management">Network Management</h4>
+<pre><code>docker network create mynet   # Create network
+docker network ls            # List networks
+docker network inspect mynet # View network details
+</code></pre>
+<h2 id="7-dockerfile-syntax-and-example">7. Dockerfile Syntax and Example</h2>
+<h4 id="common-instructions">Common Instructions</h4>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td>Base image</td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td>Working directory</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>Add files</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>Execute commands</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td>Document ports</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>Default command</td>
+</tr>
+</tbody>
+</table>
+<h4 id="example-dockerfile">Example Dockerfile</h4>
+<pre><code class="language-dockerfile"># Multi-stage build for Java app
+FROM maven:3.8-jdk-11 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src/ ./src/
+RUN mvn package
+
+FROM openjdk:11-jre
+WORKDIR /app
+COPY --from=build /app/target/myapp.jar .
+EXPOSE 8080
+CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;myapp.jar&quot;]
+</code></pre>
+<h2 id="8-kubernetes-deployment">8. Kubernetes Deployment</h2>
+<h4 id="definition">Definition</h4>
+<p>Kubernetes is a container orchestration system that automates deployment, scaling, and management of containerized applications.</p>
+<h4 id="full-stack-example">Full-Stack Example</h4>
+<p><strong>Backend Dockerfile (Spring Boot):</strong></p>
+<pre><code class="language-dockerfile">FROM maven:3.8-jdk-11 AS build
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src/ ./src/
+RUN mvn package -DskipTests
+
+FROM openjdk:11-jre
+WORKDIR /app
+COPY --from=build /app/target/backend.jar .
+EXPOSE 8080
+CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;backend.jar&quot;]
+</code></pre>
+<p><strong>Frontend Dockerfile (Angular):</strong></p>
+<pre><code class="language-dockerfile">FROM node:16 AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/dist/frontend /usr/share/nginx/html
+EXPOSE 80
+</code></pre>
+<p><strong>Kubernetes Deployment (k8s-deployment.yml):</strong></p>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: myrepo/backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: &quot;mysql-service&quot;
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: myrepo/frontend:latest
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: &quot;password&quot;
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+</code></pre>
+<h4 id="service-interaction">Service Interaction</h4>
+<ul>
+<li>Frontend (Angular) makes API calls to <code>backend-service</code></li>
+<li>Backend (Spring Boot) connects to <code>mysql-service</code></li>
+<li>Kubernetes DNS resolves service names automatically</li>
+</ul>
+<h2 id="9-docker-networking-types">9. Docker Networking Types</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Network Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Use Case</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bridge</td>
+<td>Default network (NAT)</td>
+<td>Single-host communication</td>
+</tr>
+<tr>
+<td>Host</td>
+<td>Shares host's network</td>
+<td>High-performance needs</td>
+</tr>
+<tr>
+<td>Overlay</td>
+<td>Multi-host network</td>
+<td>Swarm/Kubernetes clusters</td>
+</tr>
+<tr>
+<td>Macvlan</td>
+<td>Assigns MAC addresses</td>
+<td>Legacy apps needing MAC access</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-docker-volumes">10. Docker Volumes</h2>
+<table>
+<thead>
+<tr>
+<th><strong>Volume Type</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Use Case</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Named</td>
+<td>Managed by Docker</td>
+<td>Persistent data</td>
+</tr>
+<tr>
+<td>Anonymous</td>
+<td>Auto-removed</td>
+<td>Temporary data</td>
+</tr>
+<tr>
+<td>Bind Mount</td>
+<td>Host directory</td>
+<td>Development mounts</td>
+</tr>
+<tr>
+<td>tmpfs</td>
+<td>Memory-only</td>
+<td>Sensitive temp data</td>
+</tr>
+<tr>
+<td>------------------</td>
+<td>------------------------</td>
+<td>--------------------------</td>
+</tr>
+</tbody>
+</table>
+<h2 id="11-docker-logs-and-inspection">11. Docker Logs and Inspection</h2>
+<pre><code class="language-bash">docker logs &lt;container&gt;        # View logs
+docker logs -f &lt;container&gt;     # Follow logs in real-time
+docker exec -it &lt;container&gt; bash  # Enter container's shell
+docker inspect &lt;container&gt;     # Detailed container info
+docker stats                   # Show live resource usage
+</code></pre>
+<h2 id="12-docker-security-best-practices">12. Docker Security Best Practices</h2>
+<ul>
+<li>Use official images from trusted sources</li>
+<li>Run containers as non-root user:</li>
+</ul>
+<pre><code class="language-dockerfile">USER appuser
+</code></pre>
+<ul>
+<li>Scan images for vulnerabilities</li>
+<li>Limit container capabilities:</li>
+</ul>
+<pre><code class="language-bash">docker run --cap-drop=ALL --cap-add=NET_BIND_SERVICE
+</code></pre>
+<ul>
+<li>Use secrets for sensitive data</li>
+<li>Keep Docker Engine and images updated</li>
+</ul>
+<h2 id="13-docker-in-cicd">13. Docker in CI/CD</h2>
+<p>Typical CI/CD Pipeline:</p>
+<ol>
+<li>Code commit triggers build</li>
+<li>Docker image is built and tested</li>
+<li>Image pushed to registry</li>
+<li>Kubernetes deploys new version</li>
+<li>Automated rollback if tests fail</li>
+</ol>
+<p><strong>GitHub Actions snippet:</strong></p>
+<pre><code class="language-yaml">- name: Build and push
+  uses: docker/build-push-action@v2
+  with:
+    push: true
+    tags: user/app:latest
+</code></pre>
+<h2 id="14-dockerfile-best-practices">14. Dockerfile Best Practices</h2>
+<ul>
+<li>Use <code>.dockerignore</code> to exclude unnecessary files</li>
+<li>Order instructions from least to most frequently changed</li>
+<li>Use multi-stage builds to reduce image size</li>
+<li>Pin versions for base images and dependencies</li>
+<li>Minimize layers by combining <code>RUN</code> commands</li>
+<li>Use smallest suitable base image (e.g., Alpine Linux)</li>
+</ul>
+<h2 id="15-cleanup-commands">15. Cleanup Commands</h2>
+<pre><code class="language-bash">docker system prune           # Remove unused objects
+docker system prune -a       # Remove all unused images
+docker volume prune          # Remove unused volumes
+docker network prune         # Remove unused networks
+docker rm $(docker ps -aq)   # Remove all stopped containers
+</code></pre>
+<h2 id="16-conclusion-why-docker-is-essential">16. Conclusion: Why Docker is Essential</h2>
+<p>Docker has become fundamental to modern DevOps because it:</p>
+<ul>
+<li>Standardizes application packaging and deployment</li>
+<li>Enables microservices architecture</li>
+<li>Facilitates CI/CD pipelines</li>
+<li>Improves development/production parity</li>
+<li>Optimizes resource utilization</li>
+<li>Simplifies scaling and orchestration (with Kubernetes)</li>
+</ul>
+<p>When combined with Kubernetes, Docker provides a complete solution for building, shipping, and running distributed applications at scale.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
