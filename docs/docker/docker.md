@@ -1,4 +1,4 @@
-##1. Introduction to Docker and Containerization
+## 1. Introduction to Docker and Containerization
 Docker is an open-source platform that enables developers to package applications and their dependencies into standardized units called containers.
 
   **Containerization** is a lightweight alternative to full machine virtualization that:
@@ -13,7 +13,7 @@ Docker is an open-source platform that enables developers to package application
 - **Containers:** Runnable instances of images
 - **Docker Engine:** The runtime that manages containers
 
-##2. Benefits of Using Docker
+## 2. Benefits of Using Docker
 
 
 | **Benefit**                  | **Description**                                                   |
@@ -41,7 +41,7 @@ Docker is an open-source platform that enables developers to package application
 
 
 
-##4. Docker Architecture
+## 4. Docker Architecture
 
 ![Docker Architecture](dockerArchitecture.webp) 
 
@@ -53,7 +53,7 @@ Docker is an open-source platform that enables developers to package application
 - **Registry**: Central repository to store and distribute Docker images (e.g., Docker Hub, private registries).
 
 
-##5. Key Docker Components
+## 5. Key Docker Components
 
 ####  Docker Core Components
 
