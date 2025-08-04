@@ -1,0 +1,2818 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../JavaOOps/">
+      
+      
+        <link rel="next" href="../expertJava/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Advanced Java - Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-java-collections-framework-with-detailed-examples-method-definitions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Code Chronicle" class="md-header__button md-logo" aria-label="Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Code Chronicle" class="md-nav__button md-logo" aria-label="Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../az-204/az-204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaOOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java OOP's
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Advanced Java
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced Java
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12-collections-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 12. Collections Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 12. Collections Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-list-set-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Interfaces: List, Set, Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 List Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 List Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arraylist-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ArrayList Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkedlist-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ LinkedList Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Set Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Set Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ HashSet Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treeset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ TreeSet Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Map Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Map Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ HashMap Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treemap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ TreeMap Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkedhashmap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ LinkedHashMap Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterator-and-listiterator" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Iterator and ListIterator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Iterator and ListIterator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Iterator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listiterator-bidirectional" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ListIterator (Bidirectional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparator-vs-comparable" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Comparator vs Comparable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Comparator vs Comparable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparable-natural-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Comparable (Natural Order)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparator-custom-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Comparator (Custom Order)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Summary Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-multithreading-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 13. Multithreading &amp; Concurrency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 13. Multithreading &amp; Concurrency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thread-creation-extends-thread-vs-implements-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Thread Creation (extends Thread vs implements Runnable)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Thread Creation (extends Thread vs implements Runnable)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-extends-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Using extends Thread
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-implements-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Using implements Runnable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Thread Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-wait-notify-notifyall" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 synchronized, wait(), notify(), notifyAll()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executorservice-callable-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 ExecutorService, Callable, Future
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatile-reentrantlock-threadlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 volatile, ReentrantLock, ThreadLocal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 volatile, ReentrantLock, ThreadLocal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ volatile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ReentrantLock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threadlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ThreadLocal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-file-io-and-serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 14. File I/O and Serialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 14. File I/O and Serialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readingwriting-files-filereader-bufferedreader-filewriter-bufferedwriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Reading/Writing Files (FileReader, BufferedReader, FileWriter, BufferedWriter)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streams-and-byte-streams-fileinputstream-fileoutputstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Streams and Byte Streams (FileInputStream, FileOutputStream)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-transient" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Serialization and transient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nio-path-files-channel-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 NIO (Path, Files, Channel, Buffer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-java-memory-model-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 15. Java Memory Model &amp; JVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 15. Java Memory Model &amp; JVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jvm-architecture-heap-stack-metaspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 JVM Architecture (Heap, Stack, Metaspace)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classloader" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 ClassLoader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#garbage-collection-gc-types-serial-g1-zgc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Garbage Collection (GC Types: Serial, G1, ZGC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalize-and-object-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 finalize() and Object Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-inner-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 16. Inner Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 16. Inner Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#member-inner-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Member Inner Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-nested-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Static Nested Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-inner-class-inside-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Local Inner Class (inside method)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-inner-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Anonymous Inner Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-expressions-and-functional-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Lambda Expressions and Functional Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-java-8-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 17. Java 8+ Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 17. Java 8+ Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streams-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Streams API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Optional Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach-map-filter-reduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 forEach, map, filter, reduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-and-time-api-javatime" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Date and Time API (java.time)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-references-and-lambda-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Method References and Lambda Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-and-static-methods-in-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 default and static methods in interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12-collections-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 12. Collections Framework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 12. Collections Framework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-list-set-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Interfaces: List, Set, Map
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 List Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 List Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arraylist-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ArrayList Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkedlist-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ LinkedList Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Set Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Set Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ HashSet Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treeset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ TreeSet Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#map-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Map Interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Map Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hashmap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ HashMap Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#treemap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ TreeMap Example
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkedhashmap-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ LinkedHashMap Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterator-and-listiterator" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Iterator and ListIterator
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Iterator and ListIterator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#iterator" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Iterator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listiterator-bidirectional" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ListIterator (Bidirectional)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparator-vs-comparable" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Comparator vs Comparable
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Comparator vs Comparable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comparable-natural-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Comparable (Natural Order)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparator-custom-order" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Comparator (Custom Order)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Summary Table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-multithreading-concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 13. Multithreading &amp; Concurrency
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 13. Multithreading &amp; Concurrency">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#thread-creation-extends-thread-vs-implements-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Thread Creation (extends Thread vs implements Runnable)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 Thread Creation (extends Thread vs implements Runnable)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-extends-thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Using extends Thread
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-implements-runnable" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ Using implements Runnable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#thread-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Thread Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synchronized-wait-notify-notifyall" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 synchronized, wait(), notify(), notifyAll()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executorservice-callable-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 ExecutorService, Callable, Future
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volatile-reentrantlock-threadlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 volatile, ReentrantLock, ThreadLocal
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔸 volatile, ReentrantLock, ThreadLocal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volatile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ volatile
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reentrantlock" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ReentrantLock
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#threadlocal" class="md-nav__link">
+    <span class="md-ellipsis">
+      ➤ ThreadLocal
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-file-io-and-serialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 14. File I/O and Serialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 14. File I/O and Serialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#readingwriting-files-filereader-bufferedreader-filewriter-bufferedwriter" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Reading/Writing Files (FileReader, BufferedReader, FileWriter, BufferedWriter)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streams-and-byte-streams-fileinputstream-fileoutputstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Streams and Byte Streams (FileInputStream, FileOutputStream)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serialization-and-transient" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Serialization and transient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nio-path-files-channel-buffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 NIO (Path, Files, Channel, Buffer)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-java-memory-model-jvm" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 15. Java Memory Model &amp; JVM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 15. Java Memory Model &amp; JVM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jvm-architecture-heap-stack-metaspace" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 JVM Architecture (Heap, Stack, Metaspace)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#classloader" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 ClassLoader
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#garbage-collection-gc-types-serial-g1-zgc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Garbage Collection (GC Types: Serial, G1, ZGC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finalize-and-object-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 finalize() and Object Lifecycle
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-inner-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 16. Inner Classes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 16. Inner Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#member-inner-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Member Inner Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-nested-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Static Nested Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-inner-class-inside-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Local Inner Class (inside method)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anonymous-inner-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Anonymous Inner Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-expressions-and-functional-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Lambda Expressions and Functional Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17-java-8-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 17. Java 8+ Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 17. Java 8+ Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#streams-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Streams API
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Optional Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foreach-map-filter-reduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 forEach, map, filter, reduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-and-time-api-javatime" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Date and Time API (java.time)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-references-and-lambda-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Method References and Lambda Expressions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-and-static-methods-in-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 default and static methods in interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="advanced-java-collections-framework-with-detailed-examples-method-definitions">🔵 Advanced Java - Collections Framework (With Detailed Examples &amp; Method Definitions)</h1>
+<p>The Java Collections Framework provides a well-structured set of interfaces and classes to manage groups of objects. It includes data structures such as lists, sets, maps, and associated algorithms.</p>
+<hr />
+<h2 id="12-collections-framework">✅ 12. Collections Framework</h2>
+<h3 id="interfaces-list-set-map">🔹 Interfaces: List, Set, Map</h3>
+<ul>
+<li><strong>List</strong>: An ordered collection that allows duplicate elements.</li>
+<li><strong>Set</strong>: A collection that does not allow duplicate elements.</li>
+<li><strong>Map</strong>: A collection of key-value pairs, where keys are unique.</li>
+</ul>
+<hr />
+<h3 id="list-interface">🔸 List Interface</h3>
+<h4 id="arraylist-example">➤ ArrayList Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        List&lt;String&gt; list = new ArrayList&lt;&gt;();
+        list.add(&quot;Java&quot;);
+        list.add(&quot;Python&quot;);
+        list.add(&quot;Java&quot;); // duplicate allowed
+
+        list.remove(&quot;Python&quot;); // Removes &quot;Python&quot;
+        System.out.println(list); // Output: [Java, Java]
+    }
+}
+</code></pre>
+<p><strong>Important Methods of ArrayList:</strong></p>
+<ul>
+<li><code>add(E e)</code>: Adds element to the list</li>
+<li><code>remove(Object o)</code>: Removes first occurrence of the specified element</li>
+<li><code>get(int index)</code>: Returns the element at the specified position</li>
+<li><code>set(int index, E element)</code>: Replaces element at the specified position</li>
+<li><code>size()</code>: Returns number of elements</li>
+<li><code>clear()</code>: Removes all elements</li>
+</ul>
+<hr />
+<h4 id="linkedlist-example">➤ LinkedList Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList&lt;Integer&gt; list = new LinkedList&lt;&gt;();
+        list.add(10);
+        list.addFirst(5);
+        list.addLast(20);
+
+        System.out.println(list); // Output: [5, 10, 20]
+    }
+}
+</code></pre>
+<p><strong>Important Methods of LinkedList:</strong></p>
+<ul>
+<li><code>addFirst(E e)</code>: Inserts at the beginning</li>
+<li><code>addLast(E e)</code>: Appends at the end</li>
+<li><code>removeFirst()</code>: Removes the first element</li>
+<li><code>removeLast()</code>: Removes the last element</li>
+<li><code>getFirst()</code>, <code>getLast()</code>: Fetches first/last elements</li>
+</ul>
+<hr />
+<h3 id="set-interface">🔸 Set Interface</h3>
+<h4 id="hashset-example">➤ HashSet Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class HashSetDemo {
+    public static void main(String[] args) {
+        Set&lt;String&gt; set = new HashSet&lt;&gt;();
+        set.add(&quot;Apple&quot;);
+        set.add(&quot;Banana&quot;);
+        set.add(&quot;Apple&quot;); // duplicate ignored
+
+        System.out.println(set); // Output: [Apple, Banana] (unordered)
+    }
+}
+</code></pre>
+<p><strong>Methods:</strong></p>
+<ul>
+<li><code>add(E e)</code>: Adds element</li>
+<li><code>remove(Object o)</code>: Removes specified element</li>
+<li><code>contains(Object o)</code>: Returns true if element exists</li>
+<li><code>clear()</code>: Clears set</li>
+<li><code>size()</code>: Returns size</li>
+</ul>
+<hr />
+<h4 id="treeset-example">➤ TreeSet Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class TreeSetDemo {
+    public static void main(String[] args) {
+        Set&lt;Integer&gt; tree = new TreeSet&lt;&gt;();
+        tree.add(30);
+        tree.add(10);
+        tree.add(20);
+
+        System.out.println(tree); // Output: [10, 20, 30] (sorted)
+    }
+}
+</code></pre>
+<p><strong>TreeSet</strong> maintains elements in <strong>sorted order</strong>.</p>
+<hr />
+<h3 id="map-interface">🔸 Map Interface</h3>
+<h4 id="hashmap-example">➤ HashMap Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        Map&lt;Integer, String&gt; map = new HashMap&lt;&gt;();
+        map.put(1, &quot;A&quot;);
+        map.put(2, &quot;B&quot;);
+        map.put(1, &quot;C&quot;); // Overwrites key 1
+
+        System.out.println(map); // Output: {1=C, 2=B}
+    }
+}
+</code></pre>
+<p><strong>Important Methods:</strong></p>
+<ul>
+<li><code>put(K key, V value)</code>: Adds entry</li>
+<li><code>get(Object key)</code>: Retrieves value</li>
+<li><code>remove(Object key)</code>: Removes key-value pair</li>
+<li><code>containsKey(Object key)</code>, <code>containsValue(Object value)</code></li>
+<li><code>keySet()</code>, <code>values()</code>, <code>entrySet()</code></li>
+</ul>
+<hr />
+<h4 id="treemap-example">➤ TreeMap Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class TreeMapDemo {
+    public static void main(String[] args) {
+        TreeMap&lt;String, Integer&gt; map = new TreeMap&lt;&gt;();
+        map.put(&quot;C&quot;, 3);
+        map.put(&quot;A&quot;, 1);
+        map.put(&quot;B&quot;, 2);
+
+        System.out.println(map); // Output: {A=1, B=2, C=3} (sorted by key)
+    }
+}
+</code></pre>
+<h4 id="linkedhashmap-example">➤ LinkedHashMap Example</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class LinkedHashMapDemo {
+    public static void main(String[] args) {
+        Map&lt;String, String&gt; map = new LinkedHashMap&lt;&gt;();
+        map.put(&quot;one&quot;, &quot;A&quot;);
+        map.put(&quot;two&quot;, &quot;B&quot;);
+
+        System.out.println(map); // Output: {one=A, two=B} (insertion order)
+    }
+}
+</code></pre>
+<hr />
+<h3 id="iterator-and-listiterator">🔸 Iterator and ListIterator</h3>
+<h4 id="iterator">➤ Iterator</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class IteratorDemo {
+    public static void main(String[] args) {
+        List&lt;String&gt; list = Arrays.asList(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;);
+        Iterator&lt;String&gt; it = list.iterator();
+
+        while(it.hasNext()) {
+            System.out.print(it.next() + &quot; &quot;);
+        }
+        // Output: A B C
+    }
+}
+</code></pre>
+<h4 id="listiterator-bidirectional">➤ ListIterator (Bidirectional)</h4>
+<pre><code class="language-java">import java.util.*;
+
+public class ListIteratorDemo {
+    public static void main(String[] args) {
+        List&lt;String&gt; list = new ArrayList&lt;&gt;(List.of(&quot;X&quot;, &quot;Y&quot;, &quot;Z&quot;));
+        ListIterator&lt;String&gt; it = list.listIterator();
+
+        while (it.hasNext()) System.out.print(it.next() + &quot; &quot;);
+        // Output: X Y Z
+
+        while (it.hasPrevious()) System.out.print(it.previous() + &quot; &quot;);
+        // Output: Z Y X
+    }
+}
+</code></pre>
+<hr />
+<h3 id="comparator-vs-comparable">🔸 Comparator vs Comparable</h3>
+<h4 id="comparable-natural-order">➤ Comparable (Natural Order)</h4>
+<pre><code class="language-java">class Student implements Comparable&lt;Student&gt; {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int compareTo(Student s) {
+        return this.id - s.id;
+    }
+
+    public String toString() {
+        return id + &quot;-&quot; + name;
+    }
+}
+
+public class ComparableDemo {
+    public static void main(String[] args) {
+        List&lt;Student&gt; students = new ArrayList&lt;&gt;();
+        students.add(new Student(3, &quot;Ram&quot;));
+        students.add(new Student(1, &quot;Amit&quot;));
+        students.add(new Student(2, &quot;Zara&quot;));
+
+        Collections.sort(students);
+        System.out.println(students); // Output: [1-Amit, 2-Zara, 3-Ram]
+    }
+}
+</code></pre>
+<h4 id="comparator-custom-order">➤ Comparator (Custom Order)</h4>
+<pre><code class="language-java">class Product {
+    String name;
+    int price;
+
+    Product(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String toString() {
+        return name + &quot;:&quot; + price;
+    }
+}
+
+public class ComparatorDemo {
+    public static void main(String[] args) {
+        List&lt;Product&gt; products = new ArrayList&lt;&gt;();
+        products.add(new Product(&quot;Laptop&quot;, 800));
+        products.add(new Product(&quot;Mouse&quot;, 50));
+        products.add(new Product(&quot;Keyboard&quot;, 70));
+
+        products.sort((p1, p2) -&gt; p1.price - p2.price);
+        System.out.println(products); // Output: [Mouse:50, Keyboard:70, Laptop:800]
+    }
+}
+</code></pre>
+<hr />
+<h3 id="summary-table">🔹 Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Implementation</th>
+<th>Ordered</th>
+<th>Duplicates</th>
+<th>Sorted</th>
+<th>Thread-Safe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>List</td>
+<td>ArrayList, LinkedList</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Set</td>
+<td>HashSet, TreeSet</td>
+<td>No</td>
+<td>No</td>
+<td>TreeSet: Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>HashMap, TreeMap, LinkedHashMap</td>
+<td>No</td>
+<td>Keys: No</td>
+<td>TreeMap: Yes</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Use <strong>Collections Framework</strong> to write clean, reusable, and efficient Java code for managing data.</p>
+<hr />
+<h2 id="13-multithreading-concurrency">✅ 13. Multithreading &amp; Concurrency</h2>
+<h3 id="thread-creation-extends-thread-vs-implements-runnable">🔸 Thread Creation (extends Thread vs implements Runnable)</h3>
+<h4 id="using-extends-thread">➤ Using <code>extends Thread</code></h4>
+<pre><code class="language-java">class MyThread extends Thread {
+    public void run() {
+        System.out.println(&quot;Thread running using Thread class&quot;);
+    }
+
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start(); // starts the thread
+    }
+}
+</code></pre>
+<h4 id="using-implements-runnable">➤ Using <code>implements Runnable</code></h4>
+<pre><code class="language-java">class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println(&quot;Thread running using Runnable&quot;);
+    }
+
+    public static void main(String[] args) {
+        Thread t = new Thread(new MyRunnable());
+        t.start();
+    }
+}
+</code></pre>
+<h3 id="thread-lifecycle">🔸 Thread Lifecycle</h3>
+<p>States:</p>
+<ul>
+<li><strong>New</strong> → <strong>Runnable</strong> → <strong>Running</strong> → <strong>Waiting/Blocked</strong> → <strong>Dead</strong></li>
+</ul>
+<h3 id="synchronized-wait-notify-notifyall">🔸 synchronized, wait(), notify(), notifyAll()</h3>
+<pre><code class="language-java">class Shared {
+    synchronized void printTable(int n) {
+        for (int i = 1; i &lt;= 5; i++) {
+            System.out.println(n * i);
+        }
+    }
+}
+
+class MyThread1 extends Thread {
+    Shared s;
+    MyThread1(Shared s) { this.s = s; }
+    public void run() { s.printTable(5); }
+}
+
+class MyThread2 extends Thread {
+    Shared s;
+    MyThread2(Shared s) { this.s = s; }
+    public void run() { s.printTable(10); }
+}
+</code></pre>
+<p><strong>wait/notify Example:</strong></p>
+<pre><code class="language-java">class Data {
+    private String packet;
+    private boolean transfer = true;
+
+    public synchronized void send(String packet) {
+        while (!transfer) {
+            try { wait(); } catch (InterruptedException e) {}
+        }
+        transfer = false;
+        this.packet = packet;
+        notifyAll();
+    }
+
+    public synchronized String receive() {
+        while (transfer) {
+            try { wait(); } catch (InterruptedException e) {}
+        }
+        transfer = true;
+        notifyAll();
+        return packet;
+    }
+}
+</code></pre>
+<h3 id="executorservice-callable-future">🔸 ExecutorService, Callable, Future</h3>
+<pre><code class="language-java">import java.util.concurrent.*;
+
+class Task implements Callable&lt;Integer&gt; {
+    public Integer call() throws Exception {
+        return 123;
+    }
+
+    public static void main(String[] args) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Future&lt;Integer&gt; future = executor.submit(new Task());
+
+        System.out.println(future.get()); // Output: 123
+        executor.shutdown();
+    }
+}
+</code></pre>
+<h3 id="volatile-reentrantlock-threadlocal">🔸 volatile, ReentrantLock, ThreadLocal</h3>
+<h4 id="volatile">➤ volatile</h4>
+<pre><code class="language-java">class VolatileDemo extends Thread {
+    volatile boolean running = true;
+
+    public void run() {
+        while (running) {
+            System.out.println(&quot;Running&quot;);
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        VolatileDemo v = new VolatileDemo();
+        v.start();
+        Thread.sleep(1000);
+        v.running = false; // Safe visibility due to volatile
+    }
+}
+</code></pre>
+<h4 id="reentrantlock">➤ ReentrantLock</h4>
+<pre><code class="language-java">import java.util.concurrent.locks.ReentrantLock;
+
+class LockDemo {
+    public static void main(String[] args) {
+        ReentrantLock lock = new ReentrantLock();
+        lock.lock();
+        try {
+            System.out.println(&quot;Critical section&quot;);
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+</code></pre>
+<h4 id="threadlocal">➤ ThreadLocal</h4>
+<pre><code class="language-java">public class ThreadLocalDemo {
+    static ThreadLocal&lt;Integer&gt; threadLocal = ThreadLocal.withInitial(() -&gt; 1);
+
+    public static void main(String[] args) {
+        Runnable task = () -&gt; {
+            threadLocal.set((int) (Math.random() * 100));
+            System.out.println(Thread.currentThread().getName() + &quot; : &quot; + threadLocal.get());
+        };
+
+        new Thread(task).start();
+        new Thread(task).start();
+    }
+}
+</code></pre>
+<hr />
+<h2 id="14-file-io-and-serialization">✅ 14. File I/O and Serialization</h2>
+<h3 id="readingwriting-files-filereader-bufferedreader-filewriter-bufferedwriter">🔸 Reading/Writing Files (FileReader, BufferedReader, FileWriter, BufferedWriter)</h3>
+<pre><code class="language-java">import java.io.*;
+
+public class FileIODemo {
+    public static void main(String[] args) throws IOException {
+        // Writing to file
+        FileWriter writer = new FileWriter(&quot;example.txt&quot;);
+        writer.write(&quot;Hello World&quot;);
+        writer.close();
+
+        // Reading from file
+        FileReader reader = new FileReader(&quot;example.txt&quot;);
+        BufferedReader br = new BufferedReader(reader);
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+        }
+        br.close();
+    }
+}
+</code></pre>
+<p><strong>Key Methods:</strong></p>
+<ul>
+<li><code>write(String)</code>, <code>close()</code> – FileWriter</li>
+<li><code>readLine()</code>, <code>close()</code> – BufferedReader</li>
+</ul>
+<hr />
+<h3 id="streams-and-byte-streams-fileinputstream-fileoutputstream">🔸 Streams and Byte Streams (FileInputStream, FileOutputStream)</h3>
+<pre><code class="language-java">import java.io.*;
+
+public class ByteStreamDemo {
+    public static void main(String[] args) throws IOException {
+        String data = &quot;Byte stream example&quot;;
+
+        FileOutputStream fos = new FileOutputStream(&quot;data.txt&quot;);
+        fos.write(data.getBytes());
+        fos.close();
+
+        FileInputStream fis = new FileInputStream(&quot;data.txt&quot;);
+        int ch;
+        while ((ch = fis.read()) != -1) {
+            System.out.print((char) ch);
+        }
+        fis.close();
+        // Output: Byte stream example
+    }
+}
+</code></pre>
+<p><strong>Key Methods:</strong></p>
+<ul>
+<li><code>write(byte[])</code>, <code>read()</code>, <code>close()</code></li>
+</ul>
+<hr />
+<h3 id="serialization-and-transient">🔸 Serialization and <code>transient</code></h3>
+<pre><code class="language-java">import java.io.*;
+
+class Student implements Serializable {
+    int id;
+    String name;
+    transient int age; // won't be serialized
+
+    Student(int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+}
+
+public class SerializationDemo {
+    public static void main(String[] args) throws Exception {
+        Student s = new Student(1, &quot;John&quot;, 25);
+
+        // Serialize
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;student.ser&quot;));
+        oos.writeObject(s);
+        oos.close();
+
+        // Deserialize
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;student.ser&quot;));
+        Student deserialized = (Student) ois.readObject();
+        ois.close();
+
+        System.out.println(deserialized.id + &quot; &quot; + deserialized.name + &quot; &quot; + deserialized.age);
+        // Output: 1 John 0 (age is transient)
+    }
+}
+</code></pre>
+<p><strong>Key Concepts:</strong></p>
+<ul>
+<li><code>Serializable</code> interface</li>
+<li><code>transient</code> keyword: prevents field from being serialized</li>
+</ul>
+<hr />
+<h3 id="nio-path-files-channel-buffer">🔸 NIO (<code>Path</code>, <code>Files</code>, <code>Channel</code>, <code>Buffer</code>)</h3>
+<pre><code class="language-java">import java.nio.file.*;
+import java.io.IOException;
+
+public class NioDemo {
+    public static void main(String[] args) throws IOException {
+        Path path = Paths.get(&quot;nio-example.txt&quot;);
+
+        // Write to file
+        Files.write(path, &quot;NIO File Content&quot;.getBytes());
+
+        // Read from file
+        String content = Files.readString(path);
+        System.out.println(content);
+        // Output: NIO File Content
+    }
+}
+</code></pre>
+<p><strong>NIO Classes and Methods:</strong></p>
+<ul>
+<li><code>Paths.get(String)</code> – to create a Path</li>
+<li><code>Files.readString(Path)</code> – read content</li>
+<li><code>Files.write(Path, byte[])</code> – write content</li>
+</ul>
+<hr />
+<h2 id="15-java-memory-model-jvm">✅ 15. Java Memory Model &amp; JVM</h2>
+<h3 id="jvm-architecture-heap-stack-metaspace">🔸 JVM Architecture (Heap, Stack, Metaspace)</h3>
+<ul>
+<li><strong>Heap</strong>: Stores objects and class instances (shared).</li>
+<li><strong>Stack</strong>: Stores method calls, local variables (per thread).</li>
+<li><strong>Metaspace</strong>: Replaces PermGen; stores class metadata (shared).</li>
+</ul>
+<pre><code class="language-java">// No direct code demo, but behavior is reflected in memory usage of objects and methods.
+class Sample {
+    public static void main(String[] args) {
+        int x = 10; // Stored in stack
+        String str = new String(&quot;Hello&quot;); // Object in heap
+        System.out.println(str);
+    }
+}
+</code></pre>
+<hr />
+<h3 id="classloader">🔸 ClassLoader</h3>
+<p>Responsible for loading classes into memory. Follows 3 main steps:</p>
+<ul>
+<li><strong>Bootstrap ClassLoader</strong> – loads core Java classes</li>
+<li><strong>Extension ClassLoader</strong> – loads JDK extension libraries</li>
+<li><strong>Application ClassLoader</strong> – loads classes from classpath</li>
+</ul>
+<pre><code class="language-java">public class ClassLoaderDemo {
+    public static void main(String[] args) {
+        System.out.println(String.class.getClassLoader()); // null (bootstrap)
+        System.out.println(ClassLoaderDemo.class.getClassLoader()); // Application classloader
+    }
+}
+</code></pre>
+<hr />
+<h3 id="garbage-collection-gc-types-serial-g1-zgc">🔸 Garbage Collection (GC Types: Serial, G1, ZGC)</h3>
+<p>Garbage Collector automatically removes unused objects from memory:</p>
+<ul>
+<li><strong>Serial GC</strong> – single-threaded; best for small apps</li>
+<li><strong>Parallel GC</strong> – multi-threaded; good throughput</li>
+<li><strong>G1 GC</strong> – low pause time, regionalized heap</li>
+<li><strong>ZGC / Shenandoah</strong> – very low pause time, scalable</li>
+</ul>
+<p>Trigger GC manually:</p>
+<pre><code class="language-java">public class GCDemo {
+    public static void main(String[] args) {
+        GCDemo obj = new GCDemo();
+        obj = null;
+        System.gc();
+        // Calls finalize before GC (not guaranteed)
+    }
+
+    protected void finalize() {
+        System.out.println(&quot;Object is being garbage collected&quot;);
+    }
+}
+</code></pre>
+<hr />
+<h3 id="finalize-and-object-lifecycle">🔸 finalize() and Object Lifecycle</h3>
+<ul>
+<li><code>finalize()</code> is called by GC before object is removed.</li>
+<li>Not recommended anymore; replaced by <strong>Cleaner/PhantomReference</strong> in modern Java.</li>
+</ul>
+<pre><code class="language-java">class FinalizeDemo {
+    protected void finalize() {
+        System.out.println(&quot;finalize() called&quot;);
+    }
+
+    public static void main(String[] args) {
+        FinalizeDemo f = new FinalizeDemo();
+        f = null;
+        System.gc();
+        // Output: finalize() called (maybe)
+    }
+}
+</code></pre>
+<hr />
+<h2 id="16-inner-classes">✅ 16. Inner Classes</h2>
+<p>Java allows you to define classes within classes. These are called <strong>inner classes</strong>, and they help logically group classes that are only used in one place.</p>
+<h3 id="member-inner-class">🔸 Member Inner Class</h3>
+<pre><code class="language-java">class Outer {
+    class Inner {
+        void display() {
+            System.out.println(&quot;Member inner class&quot;);
+        }
+    }
+
+    public static void main(String[] args) {
+        Outer.Inner obj = new Outer().new Inner();
+        obj.display(); // Output: Member inner class
+    }
+}
+</code></pre>
+<h3 id="static-nested-class">🔸 Static Nested Class</h3>
+<pre><code class="language-java">class Outer {
+    static class StaticInner {
+        void display() {
+            System.out.println(&quot;Static nested class&quot;);
+        }
+    }
+
+    public static void main(String[] args) {
+        Outer.StaticInner obj = new Outer.StaticInner();
+        obj.display(); // Output: Static nested class
+    }
+}
+</code></pre>
+<h3 id="local-inner-class-inside-method">🔸 Local Inner Class (inside method)</h3>
+<pre><code class="language-java">class Outer {
+    void outerMethod() {
+        class LocalInner {
+            void display() {
+                System.out.println(&quot;Local inner class&quot;);
+            }
+        }
+        LocalInner inner = new LocalInner();
+        inner.display();
+    }
+
+    public static void main(String[] args) {
+        new Outer().outerMethod();
+        // Output: Local inner class
+    }
+}
+</code></pre>
+<h3 id="anonymous-inner-class">🔸 Anonymous Inner Class</h3>
+<pre><code class="language-java">abstract class Animal {
+    abstract void sound();
+}
+
+public class AnonymousInnerDemo {
+    public static void main(String[] args) {
+        Animal a = new Animal() {
+            void sound() {
+                System.out.println(&quot;Roar&quot;);
+            }
+        };
+        a.sound(); // Output: Roar
+    }
+}
+</code></pre>
+<hr />
+<h3 id="lambda-expressions-and-functional-interfaces">🔸 Lambda Expressions and Functional Interfaces</h3>
+<p>A <strong>functional interface</strong> has exactly one abstract method. Lambdas provide a concise way to represent that method.</p>
+<pre><code class="language-java">@FunctionalInterface
+interface MyFunctional {
+    void show();
+}
+
+public class LambdaDemo {
+    public static void main(String[] args) {
+        MyFunctional f = () -&gt; System.out.println(&quot;Lambda Expression&quot;);
+        f.show(); // Output: Lambda Expression
+    }
+}
+</code></pre>
+<p><strong>Common Functional Interfaces (java.util.function):</strong></p>
+<ul>
+<li><code>Consumer&lt;T&gt;</code> – takes input, returns nothing</li>
+<li><code>Supplier&lt;T&gt;</code> – takes nothing, returns output</li>
+<li><code>Predicate&lt;T&gt;</code> – boolean test</li>
+<li><code>Function&lt;T, R&gt;</code> – takes input, returns output</li>
+</ul>
+<pre><code class="language-java">import java.util.function.*;
+
+public class BuiltInFunctionalInterfaces {
+    public static void main(String[] args) {
+        Predicate&lt;Integer&gt; isEven = x -&gt; x % 2 == 0;
+        System.out.println(isEven.test(4)); // true
+
+        Consumer&lt;String&gt; printer = s -&gt; System.out.println(s);
+        printer.accept(&quot;Hello from Consumer&quot;); // Hello from Consumer
+
+        Supplier&lt;Double&gt; random = () -&gt; Math.random();
+        System.out.println(random.get());
+
+        Function&lt;String, Integer&gt; length = str -&gt; str.length();
+        System.out.println(length.apply(&quot;Java&quot;)); // 4
+    }
+}
+</code></pre>
+<h2 id="17-java-8-features">✅ 17. Java 8+ Features</h2>
+<h3 id="streams-api">🔸 Streams API</h3>
+<pre><code class="language-java">import java.util.*;
+import java.util.stream.*;
+
+public class StreamDemo {
+    public static void main(String[] args) {
+        List&lt;Integer&gt; list = Arrays.asList(1, 2, 3, 4, 5);
+
+        list.stream().filter(i -&gt; i % 2 == 0).forEach(System.out::println);
+        // Output: 2 4
+    }
+}
+</code></pre>
+<p><strong>Key Methods:</strong></p>
+<ul>
+<li><code>stream()</code>, <code>filter()</code>, <code>map()</code>, <code>collect()</code>, <code>forEach()</code></li>
+</ul>
+<hr />
+<h3 id="optional-class">🔸 Optional Class</h3>
+<pre><code class="language-java">import java.util.Optional;
+
+public class OptionalDemo {
+    public static void main(String[] args) {
+        Optional&lt;String&gt; name = Optional.ofNullable(null);
+        System.out.println(name.orElse(&quot;No Name&quot;)); // Output: No Name
+    }
+}
+</code></pre>
+<p><strong>Key Methods:</strong></p>
+<ul>
+<li><code>of()</code>, <code>ofNullable()</code>, <code>isPresent()</code>, <code>orElse()</code>, <code>ifPresent()</code></li>
+</ul>
+<hr />
+<h3 id="foreach-map-filter-reduce">🔸 forEach, map, filter, reduce</h3>
+<pre><code class="language-java">import java.util.*;
+import java.util.stream.*;
+
+public class StreamOps {
+    public static void main(String[] args) {
+        List&lt;Integer&gt; nums = Arrays.asList(1, 2, 3, 4);
+
+        nums.forEach(System.out::println); // forEach
+
+        List&lt;Integer&gt; doubled = nums.stream().map(n -&gt; n * 2).collect(Collectors.toList());
+        System.out.println(doubled); // [2, 4, 6, 8]
+
+        int sum = nums.stream().reduce(0, Integer::sum);
+        System.out.println(sum); // 10
+    }
+}
+</code></pre>
+<hr />
+<h3 id="date-and-time-api-javatime">🔸 Date and Time API (<code>java.time</code>)</h3>
+<pre><code class="language-java">import java.time.*;
+
+public class DateTimeDemo {
+    public static void main(String[] args) {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
+
+        System.out.println(date);
+        System.out.println(time);
+        System.out.println(dateTime);
+    }
+}
+</code></pre>
+<p><strong>Key Classes:</strong></p>
+<ul>
+<li><code>LocalDate</code>, <code>LocalTime</code>, <code>LocalDateTime</code>, <code>Period</code>, <code>Duration</code></li>
+</ul>
+<hr />
+<h3 id="method-references-and-lambda-expressions">🔸 Method References and Lambda Expressions</h3>
+<pre><code class="language-java">import java.util.*;
+
+public class MethodRefDemo {
+    public static void print(String s) {
+        System.out.println(s);
+    }
+
+    public static void main(String[] args) {
+        List&lt;String&gt; list = Arrays.asList(&quot;Java&quot;, &quot;Python&quot;, &quot;C++&quot;);
+        list.forEach(MethodRefDemo::print); // Method Reference
+
+        list.forEach(s -&gt; System.out.println(s)); // Lambda Expression
+    }
+}
+</code></pre>
+<hr />
+<h3 id="default-and-static-methods-in-interfaces">🔸 default and static methods in interfaces</h3>
+<pre><code class="language-java">interface MyInterface {
+    default void show() {
+        System.out.println(&quot;Default method&quot;);
+    }
+
+    static void display() {
+        System.out.println(&quot;Static method in interface&quot;);
+    }
+}
+
+public class InterfaceDemo implements MyInterface {
+    public static void main(String[] args) {
+        new InterfaceDemo().show(); // Output: Default method
+        MyInterface.display(); // Output: Static method in interface
+    }
+}
+</code></pre>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../JavaOOps/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Java OOP&#39;s">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Java OOP's
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../expertJava/" class="md-footer__link md-footer__link--next" aria-label="Next: Java8+">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Java8+
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -7,7 +7,7 @@
 Java is a **programming language** used to build applications (websites, mobile apps, games, etc.).  
 It's also a **platform** because it runs on the **Java Virtual Machine (JVM)**.
 
-**Key Features:**
+#### **Key Features:**
 - 🧠 **Simple** – Easy to learn and use.
 - 🔄 **Object-Oriented** – Uses objects and classes to organize code.
 - 💻 **Platform Independent** – Runs on any device with a JVM (`Write Once, Run Anywhere`).

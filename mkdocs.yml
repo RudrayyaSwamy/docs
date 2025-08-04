@@ -3,11 +3,15 @@ site_name: Code Chronicle
 nav:
   - 🏠 Home: index.md
   - ⚙️ Setup: setup/readme.md
-  - ☁️ Azure:
-      - AZ-204 Guide: az-204/az-204.md
+  - ☁️ Cloud :
+      - Azure :
+        - AZ-204 Guide: az-204/az-204.md
   - 💻 Programming:
-      - Java Basics: java/javaBasics.md
-      - Java OOP's: java/javaOOps.md
+      - java : 
+        - Java Basics: java/JavaBasics.md
+        - Java OOP's: java/JavaOOps.md
+        - Advanced Java: java/AdvancedJava.md
+        - Java8+: java/expertJava.md
        # - Advanced Java: java/javaBasics.md
       - Python Basics: python/python.md
   - ⚙️ DevOps:
