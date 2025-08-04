@@ -1,27 +1,36 @@
-site_name: Code Chronicle
+site_name: "🚀 Code Chronicle"
 
 nav:
   - 🏠 Home: index.md
-  - ⚙️ Setup: setup/readme.md
-  - ☁️ Cloud :
-      - Azure :
-        - AZ-204 Guide: az-204/az-204.md
-  - 💻 Programming:
-      - java : 
-        - Java Basics: java/JavaBasics.md
-        - Java OOP's: java/JavaOOps.md
-        - Advanced Java: java/AdvancedJava.md
-        - Java8+: java/expertJava.md
-       # - Advanced Java: java/javaBasics.md
-      - Python Basics: python/python.md
-  - ⚙️ DevOps:
-      # - 1. Introduction: docker/dummy/docker-1-intro.md
-      # - 2. Benefits of Docker: docker/dummy/docker-2-benefits.md
-      # - 3. Docker vs VMs: docker/dummy/docker-3-vm-vs-containers.md
-      # - 4. Docker Architecture: docker/dummy/docker-4-architecture.md
-      - Docker Notes: docker/docker.md
-      - Kubernetes Notes: k8s/k8s.md
 
+  - 🛢️ Database:
+      - 🐘 PostgreSQL: database/postgreSQL.md
+      - 💧 Liquibase: database/Liquidbase.md
+
+  - 🧪 Testing:
+      - 🧬 JUnit: java/junit.md
+
+  - ☁️ Cloud:
+      - 🔷 Azure:
+          - 📘 AZ-204 Guide: az-204/az-204.md
+
+  - 💻 Programming:
+      - ☕ Java:
+          - 🧩 Java Basics: java/JavaBasics.md
+          - 🧱 Java OOP's: java/JavaOOps.md
+          - 🧠 Advanced Java: java/AdvancedJava.md
+          - 🔍 Java8+: java/expertJava.md
+      - 🐍 Python Basics: python/python.md
+
+  - ⚙️ DevOps:
+      - 🐳 Docker Notes: docker/docker.md
+      - ☸️ Kubernetes Notes: k8s/k8s.md
+
+  - 🧵 Queues:
+      - 📦 RMQ: queues/rmq.md
+      - 📨 Kafka: queues/kafka.md
+
+  - 🛠️ Setup: setup/readme.md
 
 theme:
   name: material
@@ -43,6 +52,3 @@ theme:
     - navigation.top
     - navigation.instant
     - navigation.instant.progress
-  
-  
-  

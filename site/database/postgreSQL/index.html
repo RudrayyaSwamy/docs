@@ -1,0 +1,3128 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../Liquidbase/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>🐘 PostgreSQL - 🚀 Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#why-postgresql" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="🚀 Code Chronicle" class="md-header__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🚀 Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🐘 PostgreSQL
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🚀 Code Chronicle" class="md-nav__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🚀 Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛢️ Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🛢️ Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ Why PostgreSQL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏱️ When to Use PostgreSQL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-it-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ What Makes It Different?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ What Makes It Different?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-data-types-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 PostgreSQL Data Types Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 PostgreSQL Data Types Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-numeric-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Numeric Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-character-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Character Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-datetime-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Date/Time Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-boolean-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Boolean Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-geometric-types-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Geometric Types (Advanced)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-network-address-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ Network Address Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-json-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ JSON Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      8️⃣ UUID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-with-different-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Example Table with Different Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-constraints-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ PostgreSQL Constraints Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ PostgreSQL Constraints Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ NOT NULL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ UNIQUE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-primary-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ PRIMARY KEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ FOREIGN KEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ CHECK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ DEFAULT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-exclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ EXCLUSION
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-with-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Example Table with Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud-operation-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 CRUD Operation Breakdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joins-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Joins (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Joins (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ INNER JOIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-or-left-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ LEFT JOIN (or LEFT OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-join-or-right-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ RIGHT JOIN (or RIGHT OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-join-or-full-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ FULL JOIN (or FULL OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ CROSS JOIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ SELF JOIN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-summary-join-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Visual Summary (Join Types)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Views (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📌 Views (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Views
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a View?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Updating Views
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Functions (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Functions (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ SQL Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-a-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Calling a Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Triggers (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Triggers (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a Trigger?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexes-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Indexes (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Indexes (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Indexes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is an Index?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Unique Index
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioning-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Partitioning (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Partitioning (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Partitioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is Partitioning?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 JSONB (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 JSONB (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-jsonb" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use JSONB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-jsonb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is JSONB?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ JSONB Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctes-window-functions-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 CTEs &amp; 🪟 Window Functions (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 CTEs &amp; 🪟 Window Functions (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use CTEs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-cte" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a CTE?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪟 Window Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🪟 Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-window-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a Window Function?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧑‍🏫 Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tooling-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Tooling &amp; Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Liquidbase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧪 Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧬 JUnit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🔷 Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            🔷 Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../az-204/az-204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☕ Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ☕ Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaBasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaOOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/AdvancedJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧠 Advanced Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔍 Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐍 Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐳 Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧵 Queues
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🧵 Queues
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/rmq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📦 RMQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📨 Kafka
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛠️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ❓ Why PostgreSQL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-postgresql" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⏱️ When to Use PostgreSQL?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-makes-it-different" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ What Makes It Different?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ What Makes It Different?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-data-types-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 PostgreSQL Data Types Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 PostgreSQL Data Types Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-numeric-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ Numeric Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-character-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ Character Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-datetime-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ Date/Time Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-boolean-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ Boolean Type
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-geometric-types-advanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ Geometric Types (Advanced)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-network-address-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ Network Address Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-json-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ JSON Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      8️⃣ UUID
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-with-different-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Example Table with Different Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-constraints-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ PostgreSQL Constraints Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏷️ PostgreSQL Constraints Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      1️⃣ NOT NULL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      2️⃣ UNIQUE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-primary-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      3️⃣ PRIMARY KEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-foreign-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      4️⃣ FOREIGN KEY
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      5️⃣ CHECK
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      6️⃣ DEFAULT
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-exclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      7️⃣ EXCLUSION
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-table-with-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Example Table with Constraints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crud-operation-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 CRUD Operation Breakdown
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joins-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔗 Joins (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔗 Joins (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inner-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ INNER JOIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#left-join-or-left-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ LEFT JOIN (or LEFT OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#right-join-or-right-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ RIGHT JOIN (or RIGHT OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-join-or-full-outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ FULL JOIN (or FULL OUTER JOIN)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cross-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ CROSS JOIN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#self-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ SELF JOIN
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visual-summary-join-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Visual Summary (Join Types)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#views-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Views (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📌 Views (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Views
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a View?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Updating Views
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Functions (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Functions (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ SQL Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#calling-a-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Calling a Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#triggers-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Triggers (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Triggers (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a Trigger?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#indexes-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Indexes (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚡ Indexes (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-indexes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Indexes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-an-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is an Index?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unique-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Unique Index
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partitioning-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Partitioning (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Partitioning (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Partitioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-partitioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is Partitioning?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 JSONB (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧾 JSONB (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-jsonb" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use JSONB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-jsonb" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is JSONB?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jsonb-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ JSONB Queries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctes-window-functions-detailed" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 CTEs &amp; 🪟 Window Functions (Detailed)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 CTEs &amp; 🪟 Window Functions (Detailed)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-ctes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use CTEs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-why-to-use-window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      📘 Where &amp; Why to Use Window Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-cte" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a CTE?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🪟 Window Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🪟 Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-window-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is a Window Function?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧑‍🏫 Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tooling-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Tooling &amp; Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>🐘 PostgreSQL</h1>
+
+<h2 id="why-postgresql">❓ Why PostgreSQL?</h2>
+<ul>
+<li>💡 Open-source, powerful and enterprise-grade</li>
+<li>💾 ACID-compliant for safe transactions</li>
+<li>🧩 Extensible (custom data types, operators, functions)</li>
+<li>📊 Full support for relational + NoSQL (JSONB)</li>
+<li>🔄 MVCC (Multiversion Concurrency Control) for performance</li>
+<li>🔒 Advanced security, partitioning, indexing, constraints</li>
+</ul>
+<h2 id="when-to-use-postgresql">⏱️ When to Use PostgreSQL?</h2>
+<ul>
+<li>Enterprise systems needing complex queries &amp; high reliability</li>
+<li>Web apps (especially with ORMs like Hibernate, Sequelize)</li>
+<li>Geospatial applications (PostGIS)</li>
+<li>Systems with both structured and unstructured data (JSONB)</li>
+</ul>
+<h2 id="what-makes-it-different">⚙️ What Makes It Different?</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>PostgreSQL</th>
+<th>MySQL</th>
+<th>Oracle DB</th>
+<th>MongoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Relational + Object</td>
+<td>Relational</td>
+<td>Relational</td>
+<td>NoSQL Document</td>
+</tr>
+<tr>
+<td>JSONB Support</td>
+<td>✅ Yes</td>
+<td>⚠️ Basic JSON</td>
+<td>❌</td>
+<td>✅ Native</td>
+</tr>
+<tr>
+<td>ACID Compliance</td>
+<td>✅ Full</td>
+<td>✅ Partial</td>
+<td>✅ Full</td>
+<td>⚠️ Not strict</td>
+</tr>
+<tr>
+<td>Partitioning</td>
+<td>✅ Declarative &amp; Flexible</td>
+<td>✅ Manual setup</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Full-Text Search</td>
+<td>✅ Built-in</td>
+<td>⚠️ Limited</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Procedural Language (PL)</td>
+<td>✅ PL/pgSQL, PL/Python, etc.</td>
+<td>❌ Stored Proc</td>
+<td>✅ PL/SQL</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Licensing</td>
+<td>PostgreSQL License (Permissive)</td>
+<td>GPL</td>
+<td>Commercial</td>
+<td>SSPL</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="postgresql-data-types-explained">🧾 PostgreSQL Data Types Explained</h3>
+<h4 id="1-numeric-types">1️⃣ Numeric Types</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SMALLINT</code></td>
+<td>2 bytes integer (-32,768 to +32,767)</td>
+<td>100</td>
+</tr>
+<tr>
+<td><code>INTEGER</code> or <code>INT</code></td>
+<td>4 bytes integer (-2B to +2B)</td>
+<td>100000</td>
+</tr>
+<tr>
+<td><code>BIGINT</code></td>
+<td>8 bytes integer</td>
+<td>9223372036854775807</td>
+</tr>
+<tr>
+<td><code>DECIMAL(p, s)</code></td>
+<td>Exact numeric with precision and scale</td>
+<td>1234.56</td>
+</tr>
+<tr>
+<td><code>NUMERIC(p, s)</code></td>
+<td>Same as DECIMAL</td>
+<td>99.99</td>
+</tr>
+<tr>
+<td><code>REAL</code></td>
+<td>4 bytes floating point</td>
+<td>3.14</td>
+</tr>
+<tr>
+<td><code>DOUBLE PRECISION</code></td>
+<td>8 bytes floating point</td>
+<td>3.1415926535</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-character-types">2️⃣ Character Types</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CHAR(n)</code></td>
+<td>Fixed-length string</td>
+<td>'ABC   '</td>
+</tr>
+<tr>
+<td><code>VARCHAR(n)</code></td>
+<td>Variable-length string</td>
+<td>'Hello World'</td>
+</tr>
+<tr>
+<td><code>TEXT</code></td>
+<td>Unlimited length text</td>
+<td>'This is a large text'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-datetime-types">3️⃣ Date/Time Types</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATE</code></td>
+<td>Calendar date (YYYY-MM-DD)</td>
+<td>'2025-08-04'</td>
+</tr>
+<tr>
+<td><code>TIME</code></td>
+<td>Time of day (HH\:MM\:SS)</td>
+<td>'14:30:00'</td>
+</tr>
+<tr>
+<td><code>TIMESTAMP</code></td>
+<td>Date and time</td>
+<td>'2025-08-04 14:30:00'</td>
+</tr>
+<tr>
+<td><code>INTERVAL</code></td>
+<td>Time span</td>
+<td>'1 day 2 hours'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-boolean-type">4️⃣ Boolean Type</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BOOLEAN</code></td>
+<td>True or False</td>
+<td>TRUE</td>
+</tr>
+</tbody>
+</table>
+<h4 id="5-geometric-types-advanced">5️⃣ Geometric Types (Advanced)</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POINT</code></td>
+<td>A point in 2D space</td>
+<td>'(1,2)'</td>
+</tr>
+<tr>
+<td><code>LINE</code></td>
+<td>Infinite line</td>
+<td>'{1,2,3}'</td>
+</tr>
+<tr>
+<td><code>CIRCLE</code></td>
+<td>Circle</td>
+<td>'&lt;(3,4),5&gt;'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="6-network-address-types">6️⃣ Network Address Types</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CIDR</code></td>
+<td>IPv4/IPv6 networks</td>
+<td>'192.168.0.0/24'</td>
+</tr>
+<tr>
+<td><code>INET</code></td>
+<td>IPv4/IPv6 host address</td>
+<td>'192.168.0.1'</td>
+</tr>
+<tr>
+<td><code>MACADDR</code></td>
+<td>MAC address</td>
+<td>'08:00:2b:01:02:03'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="7-json-types">7️⃣ JSON Types</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JSON</code></td>
+<td>Text-based JSON</td>
+<td>'{"name":"John"}'</td>
+</tr>
+<tr>
+<td><code>JSONB</code></td>
+<td>Binary JSON (faster)</td>
+<td>'{"name":"John"}'</td>
+</tr>
+</tbody>
+</table>
+<h4 id="8-uuid">8️⃣ UUID</h4>
+<table>
+<thead>
+<tr>
+<th>Data Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>UUID</code></td>
+<td>Universally Unique Identifier</td>
+<td>'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'</td>
+</tr>
+</tbody>
+</table>
+<h3 id="example-table-with-different-data-types">🛠️ Example Table with Different Data Types</h3>
+<pre><code class="language-sql">CREATE TABLE employee (
+  emp_id UUID PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  salary NUMERIC(10,2),
+  joining_date DATE,
+  is_active BOOLEAN,
+  profile JSONB
+);
+</code></pre>
+<hr />
+<h3 id="postgresql-constraints-explained">🏷️ PostgreSQL Constraints Explained</h3>
+<h4 id="1-not-null">1️⃣ NOT NULL</h4>
+<p>Ensures a column cannot have NULL value.</p>
+<pre><code class="language-sql">name VARCHAR(100) NOT NULL
+</code></pre>
+<h4 id="2-unique">2️⃣ UNIQUE</h4>
+<p>Ensures all values in a column are unique.</p>
+<pre><code class="language-sql">email VARCHAR(100) UNIQUE
+</code></pre>
+<h4 id="3-primary-key">3️⃣ PRIMARY KEY</h4>
+<p>Combination of NOT NULL + UNIQUE.</p>
+<pre><code class="language-sql">emp_id UUID PRIMARY KEY
+</code></pre>
+<h4 id="4-foreign-key">4️⃣ FOREIGN KEY</h4>
+<p>Ensures value exists in another table.</p>
+<pre><code class="language-sql">FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+</code></pre>
+<h4 id="5-check">5️⃣ CHECK</h4>
+<p>Validates data based on condition.</p>
+<pre><code class="language-sql">age INT CHECK (age &gt;= 18)
+</code></pre>
+<h4 id="6-default">6️⃣ DEFAULT</h4>
+<p>Sets default value if none provided.</p>
+<pre><code class="language-sql">is_active BOOLEAN DEFAULT TRUE
+</code></pre>
+<h4 id="7-exclusion">7️⃣ EXCLUSION</h4>
+<p>Ensures rows do not overlap in some way (used with geometric types, ranges).</p>
+<pre><code class="language-sql">EXCLUDE USING gist (period WITH &amp;&amp;)
+</code></pre>
+<h3 id="example-table-with-constraints">🛠️ Example Table with Constraints</h3>
+<pre><code class="language-sql">CREATE TABLE department (
+  dept_id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE employee (
+  emp_id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE,
+  age INT CHECK (age &gt;= 18),
+  dept_id INT REFERENCES department(dept_id),
+  is_active BOOLEAN DEFAULT TRUE
+);
+</code></pre>
+<hr />
+<h2 id="summary">✅ Summary</h2>
+<ul>
+<li><strong>Data types</strong> define the kind of data stored in columns.</li>
+<li><strong>Constraints</strong> enforce rules on the data to maintain data integrity.</li>
+<li>Combining both ensures powerful and reliable database schema design.</li>
+</ul>
+<hr />
+<h3 id="crud-operation-breakdown">🧾 CRUD Operation Breakdown</h3>
+<pre><code class="language-sql">-- Insert data into table
+INSERT INTO students (name, age) VALUES ('Alice', 20);
+-- Adds a new student named Alice with age 20
+
+-- Read data from table
+SELECT * FROM students;
+-- Retrieves all columns and rows from 'students'
+
+-- Update data in table
+UPDATE students SET age = 21 WHERE name = 'Alice';
+-- Changes Alice's age to 21
+
+-- Delete data from table
+DELETE FROM students WHERE name = 'Alice';
+-- Removes Alice's record from the table
+</code></pre>
+<hr />
+<h3 id="joins-detailed">🔗 Joins (Detailed)</h3>
+<h4 id="inner-join">✅ INNER JOIN</h4>
+<p>Returns only the matching rows from both tables.</p>
+<pre><code class="language-sql">SELECT s.name, e.course_id
+FROM students s
+INNER JOIN enrollments e ON s.id = e.student_id;
+</code></pre>
+<ul>
+<li>Fetches only students who are enrolled in a course.</li>
+</ul>
+<h4 id="left-join-or-left-outer-join">✅ LEFT JOIN (or LEFT OUTER JOIN)</h4>
+<p>Returns all rows from the left table, even if there's no match in the right table.</p>
+<pre><code class="language-sql">SELECT s.name, e.course_id
+FROM students s
+LEFT JOIN enrollments e ON s.id = e.student_id;
+</code></pre>
+<ul>
+<li>Returns all students. If a student isn't enrolled, <code>course_id</code> will be NULL.</li>
+</ul>
+<h4 id="right-join-or-right-outer-join">✅ RIGHT JOIN (or RIGHT OUTER JOIN)</h4>
+<p>Returns all rows from the right table, even if there's no match in the left table.</p>
+<pre><code class="language-sql">SELECT s.name, e.course_id
+FROM students s
+RIGHT JOIN enrollments e ON s.id = e.student_id;
+</code></pre>
+<ul>
+<li>Returns all enrollments. If no matching student, <code>name</code> will be NULL.</li>
+</ul>
+<h4 id="full-join-or-full-outer-join">✅ FULL JOIN (or FULL OUTER JOIN)</h4>
+<p>Returns rows when there is a match in either left or right table.</p>
+<pre><code class="language-sql">SELECT s.name, e.course_id
+FROM students s
+FULL JOIN enrollments e ON s.id = e.student_id;
+</code></pre>
+<ul>
+<li>Returns all students and all enrollments, with NULLs where there's no match.</li>
+</ul>
+<h4 id="cross-join">✅ CROSS JOIN</h4>
+<p>Returns a Cartesian product — every row from the first table is paired with every row from the second.</p>
+<pre><code class="language-sql">SELECT s.name, c.name
+FROM students s
+CROSS JOIN courses c;
+</code></pre>
+<ul>
+<li>Each student is paired with every course.</li>
+</ul>
+<h4 id="self-join">✅ SELF JOIN</h4>
+<p>Join a table to itself using aliases.</p>
+<pre><code class="language-sql">SELECT a.name AS student1, b.name AS student2
+FROM students a, students b
+WHERE a.age = b.age AND a.id &lt;&gt; b.id;
+</code></pre>
+<ul>
+<li>Finds pairs of students who have the same age.</li>
+</ul>
+<hr />
+<h3 id="visual-summary-join-types">📊 Visual Summary (Join Types)</h3>
+<table>
+<thead>
+<tr>
+<th>Join Type</th>
+<th>Includes Unmatched Left</th>
+<th>Includes Unmatched Right</th>
+<th>Only Matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INNER JOIN</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>LEFT JOIN</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>RIGHT JOIN</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>FULL JOIN</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>CROSS JOIN</td>
+<td>✅ All combinations</td>
+<td>✅ All combinations</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📘 Use <code>JOIN</code> wisely based on how much data you need and whether missing matches matter.</p>
+</blockquote>
+<hr />
+<h3 id="views-detailed">📌 Views (Detailed)</h3>
+<h4 id="where-why-to-use-views">📘 Where &amp; Why to Use Views</h4>
+<ul>
+<li><strong>Purpose:</strong> To encapsulate complex queries into reusable, secure, and simplified structures.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>Hiding complexity from end users</p>
+</li>
+<li>Restricting access to specific columns (security)</li>
+<li>Abstracting data for reporting</li>
+<li><strong>Why:</strong> Views act like read-only tables but reduce redundancy and improve maintainability.</li>
+</ul>
+<h4 id="what-is-a-view">✅ What is a View?</h4>
+<p>A <strong>view</strong> is a virtual table based on the result of a SQL query.</p>
+<pre><code class="language-sql">CREATE VIEW student_course_view AS
+SELECT s.name, e.course_id
+FROM students s
+JOIN enrollments e ON s.id = e.student_id;
+</code></pre>
+<ul>
+<li>Acts like a table but does not store data itself.</li>
+<li>Useful for abstraction, security, and simplifying complex queries.</li>
+</ul>
+<pre><code class="language-sql">SELECT * FROM student_course_view;
+</code></pre>
+<h4 id="updating-views">✅ Updating Views</h4>
+<p>Some views are updatable:</p>
+<pre><code class="language-sql">UPDATE student_course_view SET course_id = 2 WHERE name = 'Alice';
+</code></pre>
+<blockquote>
+<p>⚠️ Works only if the view has a direct 1:1 mapping to the base table without aggregates or joins.</p>
+</blockquote>
+<hr />
+<h3 id="functions-detailed">🛠️ Functions (Detailed)</h3>
+<h4 id="where-why-to-use-functions">📘 Where &amp; Why to Use Functions</h4>
+<ul>
+<li><strong>Purpose:</strong> Encapsulate logic for reuse, consistency, and encapsulation.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>When logic is repeated in multiple queries</p>
+</li>
+<li>For custom calculations or transformations</li>
+<li><strong>Why:</strong> They reduce code duplication, and can be called inside SQL queries or triggers.</li>
+</ul>
+<h4 id="sql-function">✅ SQL Function</h4>
+<pre><code class="language-sql">CREATE FUNCTION get_year(age INT) RETURNS INT AS $$
+BEGIN
+  RETURN EXTRACT(YEAR FROM CURRENT_DATE) - age;
+END;
+$$ LANGUAGE plpgsql;
+</code></pre>
+<ul>
+<li>Accepts input and returns calculated output.</li>
+<li><code>EXTRACT(YEAR FROM CURRENT_DATE)</code> gets current year.</li>
+</ul>
+<h4 id="calling-a-function">✅ Calling a Function</h4>
+<pre><code class="language-sql">SELECT get_year(30); -- Output: e.g., 1993
+</code></pre>
+<hr />
+<h3 id="triggers-detailed">⚙️ Triggers (Detailed)</h3>
+<h4 id="where-why-to-use-triggers">📘 Where &amp; Why to Use Triggers</h4>
+<ul>
+<li><strong>Purpose:</strong> Automatically execute logic when a database event (INSERT, UPDATE, DELETE) occurs.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>Logging changes automatically</p>
+</li>
+<li>Enforcing business rules at DB level</li>
+<li>Preventing invalid transactions</li>
+<li><strong>Why:</strong> Helps enforce data integrity and system behavior without relying on app logic.</li>
+</ul>
+<h4 id="what-is-a-trigger">✅ What is a Trigger?</h4>
+<ul>
+<li>A <strong>trigger</strong> automatically executes a function in response to events on a table (INSERT, UPDATE, DELETE).</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE logs (
+  id SERIAL PRIMARY KEY,
+  message TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE FUNCTION log_student_insert() RETURNS trigger AS $$
+BEGIN
+  INSERT INTO logs(message) VALUES ('New student added');
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_student_add
+AFTER INSERT ON students
+FOR EACH ROW EXECUTE FUNCTION log_student_insert();
+</code></pre>
+<ul>
+<li>Automatically logs each student insert.</li>
+</ul>
+<hr />
+<h3 id="indexes-detailed">⚡ Indexes (Detailed)</h3>
+<h4 id="where-why-to-use-indexes">📘 Where &amp; Why to Use Indexes</h4>
+<ul>
+<li><strong>Purpose:</strong> Speed up data retrieval operations.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>Columns used in WHERE, JOIN, or ORDER BY clauses</p>
+</li>
+<li>Large datasets with frequent read operations</li>
+<li><strong>Why:</strong> Without indexes, PostgreSQL must scan entire tables (slow for big data). Indexes improve performance at the cost of slower writes.</li>
+</ul>
+<h4 id="what-is-an-index">✅ What is an Index?</h4>
+<ul>
+<li>Improves the speed of data retrieval.</li>
+</ul>
+<pre><code class="language-sql">CREATE INDEX idx_students_name ON students(name);
+</code></pre>
+<h4 id="unique-index">✅ Unique Index</h4>
+<pre><code class="language-sql">CREATE UNIQUE INDEX idx_unique_email ON students(email);
+</code></pre>
+<blockquote>
+<p>📌 Use <code>EXPLAIN ANALYZE</code> to see index effectiveness.</p>
+</blockquote>
+<hr />
+<h3 id="partitioning-detailed">📦 Partitioning (Detailed)</h3>
+<h4 id="where-why-to-use-partitioning">📘 Where &amp; Why to Use Partitioning</h4>
+<ul>
+<li><strong>Purpose:</strong> Split large tables into smaller, manageable chunks based on key fields (e.g., date, ID).</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>When working with very large tables (millions+ rows)</p>
+</li>
+<li>When older data is queried less frequently</li>
+<li><strong>Why:</strong> Improves query performance and management. PostgreSQL can scan only relevant partitions instead of whole tables.</li>
+</ul>
+<h4 id="what-is-partitioning">✅ What is Partitioning?</h4>
+<ul>
+<li>Splitting a large table into smaller pieces for performance.</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE measurements (
+  id SERIAL,
+  log_date DATE NOT NULL,
+  temperature NUMERIC
+) PARTITION BY RANGE (log_date);
+
+CREATE TABLE measurements_2024 PARTITION OF measurements
+  FOR VALUES FROM ('2024-01-01') TO ('2025-01-01');
+</code></pre>
+<ul>
+<li>Queries on 2024 data hit only <code>measurements_2024</code>.</li>
+</ul>
+<hr />
+<h3 id="jsonb-detailed">🧾 JSONB (Detailed)</h3>
+<h4 id="where-why-to-use-jsonb">📘 Where &amp; Why to Use JSONB</h4>
+<ul>
+<li><strong>Purpose:</strong> Store semi-structured data (like JSON documents) inside relational tables.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>When you need flexible schema (e.g., metadata, logs)</p>
+</li>
+<li>When values vary between rows</li>
+<li><strong>Why:</strong> JSONB offers better performance and indexing than plain JSON and supports powerful querying via operators.</li>
+</ul>
+<h4 id="what-is-jsonb">✅ What is JSONB?</h4>
+<ul>
+<li>A binary-encoded JSON format (faster than JSON).</li>
+</ul>
+<pre><code class="language-sql">CREATE TABLE products (
+  id SERIAL,
+  details JSONB
+);
+
+INSERT INTO products(details)
+VALUES ('{&quot;name&quot;: &quot;Laptop&quot;, &quot;price&quot;: 1500}');
+</code></pre>
+<h4 id="jsonb-queries">✅ JSONB Queries</h4>
+<pre><code class="language-sql">SELECT * FROM products WHERE details -&gt;&gt; 'name' = 'Laptop';
+</code></pre>
+<ul>
+<li><code>-&gt;&gt;</code> gets JSON field as text.</li>
+</ul>
+<hr />
+<h3 id="ctes-window-functions-detailed">🔄 CTEs &amp; 🪟 Window Functions (Detailed)</h3>
+<h4 id="where-why-to-use-ctes">📘 Where &amp; Why to Use CTEs</h4>
+<ul>
+<li><strong>Purpose:</strong> Break down complex queries into readable, modular parts.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>With recursive queries</p>
+</li>
+<li>For debugging and better readability</li>
+<li><strong>Why:</strong> CTEs simplify maintenance of complex SQL and support recursion.</li>
+</ul>
+<h4 id="where-why-to-use-window-functions">📘 Where &amp; Why to Use Window Functions</h4>
+<ul>
+<li><strong>Purpose:</strong> Perform calculations across a window (subset) of rows related to the current row.</li>
+<li>
+<p><strong>When to Use:</strong></p>
+</li>
+<li>
+<p>Ranking, percentiles, moving averages</p>
+</li>
+<li>When you need row-wise operations without collapsing rows</li>
+<li><strong>Why:</strong> Enables powerful analytics directly within SQL, no need for separate aggregation.</li>
+</ul>
+<h4 id="what-is-a-cte">✅ What is a CTE?</h4>
+<ul>
+<li>A temporary result set referenced in a query.</li>
+</ul>
+<pre><code class="language-sql">WITH underage AS (
+  SELECT * FROM students WHERE age &lt; 18
+)
+SELECT * FROM underage;
+</code></pre>
+<hr />
+<h3 id="window-functions">🪟 Window Functions</h3>
+<h4 id="what-is-a-window-function">✅ What is a Window Function?</h4>
+<ul>
+<li>Performs calculation across a set of rows related to the current row.</li>
+</ul>
+<pre><code class="language-sql">SELECT name, age,
+  RANK() OVER (ORDER BY age DESC) AS age_rank
+FROM students;
+</code></pre>
+<ul>
+<li><code>RANK()</code> assigns ranking without collapsing rows.</li>
+</ul>
+<hr />
+<h2 id="summary_1">🧑‍🏫 Summary</h2>
+<ul>
+<li>Views simplify queries</li>
+<li>Functions allow reusable business logic</li>
+<li>Triggers automate behavior</li>
+<li>Indexes boost speed</li>
+<li>Partitioning scales big data</li>
+<li>JSONB supports dynamic schemas</li>
+<li>CTEs improve query clarity</li>
+<li>Window functions power advanced analytics</li>
+</ul>
+<hr />
+<h2 id="tooling-monitoring">🧪 Tooling &amp; Monitoring</h2>
+<ul>
+<li><code>pgAdmin</code>: Web GUI for managing PostgreSQL.</li>
+<li><code>DBeaver</code>: Universal SQL client.</li>
+<li><code>EXPLAIN ANALYZE</code>: View query plan and performance.</li>
+<li><code>pg_stat_statements</code>: Built-in extension for query analysis.</li>
+<li><code>pg_dump</code> / <code>pg_restore</code>: Tools for backups and recovery.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: 🏠 Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🏠 Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Liquidbase/" class="md-footer__link md-footer__link--next" aria-label="Next: 💧 Liquibase">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                💧 Liquibase
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

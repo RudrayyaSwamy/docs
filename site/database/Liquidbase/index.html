@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../../python/python/">
+        <link rel="prev" href="../postgreSQL/">
       
       
-        <link rel="next" href="../../k8s/k8s/">
+        <link rel="next" href="../../java/junit/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>🐳 Docker Notes - 🚀 Code Chronicle</title>
+        <title>💧 Liquibase - 🚀 Code Chronicle</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-introduction-to-docker-and-containerization" class="md-skip">
+        <a href="#liquibase-postgresql-partman-integration-guide" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              🐳 Docker Notes
+              💧 Liquibase
             
           </span>
         </div>
@@ -249,18 +249,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
@@ -276,7 +278,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             🛢️ Database
@@ -290,7 +292,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../database/postgreSQL/" class="md-nav__link">
+      <a href="../postgreSQL/" class="md-nav__link">
         
   
   
@@ -310,10 +312,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../database/Liquidbase/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -324,6 +348,257 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-liquibase" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is Liquibase?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-liquibase" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Why Use Liquibase?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Key Terms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-yaml-changeset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Basic YAML ChangeSet
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Rollback Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Preconditions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Tags &amp; Snapshots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexts-environment-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Contexts (Environment Specific)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-changelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modular ChangeLogs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ CI/CD Integration (GitHub Actions)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liquibase-spring-boot-setup-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      ☕ Liquibase + Spring Boot Setup (Maven)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="☕ Liquibase + Spring Boot Setup (Maven)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-add-dependency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Add Dependency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-dbchangelog-masteryaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: db.changelog-master.yaml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-changeset-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create ChangeSet File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-applicationyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: application.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Run
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#postgresql-partman-liquibase-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 PostgreSQL Partman + Liquibase Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-pg_partman" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ What is pg_partman?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-extension-optional-via-liquibase" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 1: Create Extension (Optional via Liquibase)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-parent-table-with-partman" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 2: Create Parent Table with Partman
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-register-table-in-pg_partman" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 3: Register Table in pg_partman
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-insert-sample-data-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 4: Insert Sample Data (Optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-run-partman-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Step 5: Run Partman Maintenance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#automate-maintenance-via-cron-or-k8s-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Automate Maintenance via Cron or K8s Job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -728,20 +1003,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -757,7 +1030,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             ⚙️ DevOps
@@ -768,30 +1041,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    🐳 Docker Notes
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
         
   
   
@@ -802,297 +1055,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-introduction-to-docker-and-containerization" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Introduction to Docker and Containerization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-benefits-of-using-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Benefits of Using Docker
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-docker-vs-virtual-machines" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Docker vs Virtual Machines
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-docker-architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Docker Architecture
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Docker Architecture">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-system-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker System Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-key-docker-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Key Docker Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Key Docker Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Core Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-docker-cli-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Docker CLI Commands
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Docker CLI Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#image-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐳 Image Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#container-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Container Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#volume-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Volume Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Management
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-dockerfile-syntax-and-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Dockerfile Syntax and Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Dockerfile Syntax and Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Instructions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-dockerfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example Dockerfile
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-kubernetes-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Kubernetes Deployment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Kubernetes Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#full-stack-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full-Stack Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service-interaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service Interaction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-docker-networking-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Docker Networking Types
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-docker-volumes" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Docker Volumes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-docker-logs-and-inspection" class="md-nav__link">
-    <span class="md-ellipsis">
-      11. Docker Logs and Inspection
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-docker-security-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      12. Docker Security Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-docker-in-cicd" class="md-nav__link">
-    <span class="md-ellipsis">
-      13. Docker in CI/CD
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#14-dockerfile-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      14. Dockerfile Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#15-cleanup-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      15. Cleanup Commands
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#16-conclusion-why-docker-is-essential" class="md-nav__link">
-    <span class="md-ellipsis">
-      16. Conclusion: Why Docker is Essential
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1258,6 +1220,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1266,46 +1230,145 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-introduction-to-docker-and-containerization" class="md-nav__link">
+  <a href="#what-is-liquibase" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Introduction to Docker and Containerization
+      ✅ What is Liquibase?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-benefits-of-using-docker" class="md-nav__link">
+  <a href="#why-use-liquibase" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Benefits of Using Docker
+      ✅ Why Use Liquibase?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-docker-vs-virtual-machines" class="md-nav__link">
+  <a href="#key-terms" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Docker vs Virtual Machines
+      ✅ Key Terms
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-docker-architecture" class="md-nav__link">
+  <a href="#basic-yaml-changeset" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Docker Architecture
+      ✅ Basic YAML ChangeSet
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Docker Architecture">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rollback-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Rollback Support
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preconditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Preconditions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags-snapshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Tags &amp; Snapshots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contexts-environment-specific" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Contexts (Environment Specific)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modular-changelogs" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Modular ChangeLogs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cicd-integration-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ CI/CD Integration (GitHub Actions)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liquibase-spring-boot-setup-maven" class="md-nav__link">
+    <span class="md-ellipsis">
+      ☕ Liquibase + Spring Boot Setup (Maven)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="☕ Liquibase + Spring Boot Setup (Maven)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#docker-system-components" class="md-nav__link">
+  <a href="#step-1-add-dependency" class="md-nav__link">
     <span class="md-ellipsis">
-      Docker System Components
+      Step 1: Add Dependency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-dbchangelog-masteryaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: db.changelog-master.yaml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-create-changeset-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Create ChangeSet File
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-applicationyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: application.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5: Run
     </span>
   </a>
   
@@ -1317,222 +1380,81 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-key-docker-components" class="md-nav__link">
+  <a href="#postgresql-partman-liquibase-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Key Docker Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. Key Docker Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      Docker Core Components
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-docker-cli-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Docker CLI Commands
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="6. Docker CLI Commands">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#image-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐳 Image Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#container-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Container Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#volume-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Volume Management
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Management
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-dockerfile-syntax-and-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Dockerfile Syntax and Example
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Dockerfile Syntax and Example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Common Instructions
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#example-dockerfile" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example Dockerfile
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-kubernetes-deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Kubernetes Deployment
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. Kubernetes Deployment">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
-    <span class="md-ellipsis">
-      Definition
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#full-stack-example" class="md-nav__link">
-    <span class="md-ellipsis">
-      Full-Stack Example
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service-interaction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Service Interaction
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-docker-networking-types" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Docker Networking Types
+      📦 PostgreSQL Partman + Liquibase Integration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#10-docker-volumes" class="md-nav__link">
+  <a href="#what-is-pg_partman" class="md-nav__link">
     <span class="md-ellipsis">
-      10. Docker Volumes
+      ✅ What is pg_partman?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-docker-logs-and-inspection" class="md-nav__link">
+  <a href="#step-1-create-extension-optional-via-liquibase" class="md-nav__link">
     <span class="md-ellipsis">
-      11. Docker Logs and Inspection
+      ✅ Step 1: Create Extension (Optional via Liquibase)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#12-docker-security-best-practices" class="md-nav__link">
+  <a href="#step-2-create-parent-table-with-partman" class="md-nav__link">
     <span class="md-ellipsis">
-      12. Docker Security Best Practices
+      ✅ Step 2: Create Parent Table with Partman
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#13-docker-in-cicd" class="md-nav__link">
+  <a href="#step-3-register-table-in-pg_partman" class="md-nav__link">
     <span class="md-ellipsis">
-      13. Docker in CI/CD
+      ✅ Step 3: Register Table in pg_partman
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#14-dockerfile-best-practices" class="md-nav__link">
+  <a href="#step-4-insert-sample-data-optional" class="md-nav__link">
     <span class="md-ellipsis">
-      14. Dockerfile Best Practices
+      ✅ Step 4: Insert Sample Data (Optional)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#15-cleanup-commands" class="md-nav__link">
+  <a href="#step-5-run-partman-maintenance" class="md-nav__link">
     <span class="md-ellipsis">
-      15. Cleanup Commands
+      ✅ Step 5: Run Partman Maintenance
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#16-conclusion-why-docker-is-essential" class="md-nav__link">
+  <a href="#automate-maintenance-via-cron-or-k8s-job" class="md-nav__link">
     <span class="md-ellipsis">
-      16. Conclusion: Why Docker is Essential
+      ✅ Automate Maintenance via Cron or K8s Job
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Summary
     </span>
   </a>
   
@@ -1554,510 +1476,319 @@
 
 
 
-  <h1>🐳 Docker Notes</h1>
-
-<h2 id="1-introduction-to-docker-and-containerization">1. Introduction to Docker and Containerization</h2>
-<p>Docker is an open-source platform that enables developers to package applications and their dependencies into standardized units called containers.</p>
-<p><strong>Containerization</strong> is a lightweight alternative to full machine virtualization that:</p>
+<h1 id="liquibase-postgresql-partman-integration-guide">📦 Liquibase + PostgreSQL + Partman Integration Guide</h1>
+<hr />
+<h2 id="what-is-liquibase">✅ What is Liquibase?</h2>
+<p>Liquibase is an open-source <strong>database schema change management tool</strong>.<br />
+It tracks, manages, and applies database changes across environments safely and automatically.</p>
+<hr />
+<h2 id="why-use-liquibase">✅ Why Use Liquibase?</h2>
 <ul>
-<li>Packages software in isolated environments</li>
-<li>Shares the host OS kernel</li>
-<li>Runs consistently across different infrastructures</li>
+<li>Version control for your DB schema  </li>
+<li>Keep dev/test/prod databases in sync  </li>
+<li>Works well with CI/CD pipelines  </li>
+<li>Supports YAML, XML, JSON, SQL formats  </li>
 </ul>
-<p><strong>Key concepts:</strong></p>
+<hr />
+<h2 id="key-terms">✅ Key Terms</h2>
 <ul>
-<li><strong>Images:</strong> Read-only templates for creating containers</li>
-<li><strong>Containers:</strong> Runnable instances of images</li>
-<li><strong>Docker Engine:</strong> The runtime that manages containers</li>
+<li><strong>ChangeSet</strong>: Single unit of change (e.g., create table)  </li>
+<li><strong>ChangeLog</strong>: File containing a list of ChangeSets  </li>
+<li><strong>liquibase.properties</strong>: Configuration (DB URL, credentials, changelog file)  </li>
 </ul>
-<h2 id="2-benefits-of-using-docker">2. Benefits of Using Docker</h2>
-<table>
-<thead>
-<tr>
-<th><strong>Benefit</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Portability</strong></td>
-<td>Runs identically on any system with Docker installed</td>
-</tr>
-<tr>
-<td><strong>Efficiency</strong></td>
-<td>Containers share the OS kernel, using fewer resources than VMs</td>
-</tr>
-<tr>
-<td><strong>Isolation</strong></td>
-<td>Applications run in separate, secure environments</td>
-</tr>
-<tr>
-<td><strong>Scalability</strong></td>
-<td>Easy to scale services horizontally</td>
-</tr>
-<tr>
-<td><strong>Consistency</strong></td>
-<td>Eliminates "works on my machine" problems</td>
-</tr>
-<tr>
-<td><strong>Fast Deployment</strong></td>
-<td>Containers start in seconds</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-docker-vs-virtual-machines">3. Docker vs Virtual Machines</h2>
-<p><img alt="Docker Vs Vm Architecture" src="../DockerVsVmArchitecture.webp" /></p>
-<table>
-<thead>
-<tr>
-<th><strong>Feature</strong></th>
-<th><strong>Docker Containers</strong></th>
-<th><strong>Virtual Machines</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>OS</strong></td>
-<td>Shares host OS</td>
-<td>Requires full guest OS</td>
-</tr>
-<tr>
-<td><strong>Startup Time</strong></td>
-<td>Seconds</td>
-<td>Minutes</td>
-</tr>
-<tr>
-<td><strong>Performance</strong></td>
-<td>Near-native</td>
-<td>Slight overhead</td>
-</tr>
-<tr>
-<td><strong>Disk Usage</strong></td>
-<td>MBs (layered images)</td>
-<td>GBs (full OS)</td>
-</tr>
-<tr>
-<td><strong>Isolation</strong></td>
-<td>Process-level</td>
-<td>Hardware-level</td>
-</tr>
-<tr>
-<td><strong>Use Case</strong></td>
-<td>Microservices, CI/CD</td>
-<td>Legacy apps, full OS needs</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4-docker-architecture">4. Docker Architecture</h2>
-<p><img alt="Docker Architecture" src="../dockerArchitecture.webp" /> </p>
-<h4 id="docker-system-components">Docker System Components</h4>
-<ul>
-<li><strong>Docker Client</strong>: CLI interface (<code>docker</code> command) to interact with the Docker daemon.</li>
-<li><strong>Docker Host</strong>: Runs the Docker daemon and manages containers.</li>
-<li><strong>Registry</strong>: Central repository to store and distribute Docker images (e.g., Docker Hub, private registries).</li>
-</ul>
-<h2 id="5-key-docker-components">5. Key Docker Components</h2>
-<h4 id="docker-core-components">Docker Core Components</h4>
-<table>
-<thead>
-<tr>
-<th><strong>Component</strong></th>
-<th><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Docker Engine</strong></td>
-<td>Core runtime (<code>dockerd</code>)</td>
-</tr>
-<tr>
-<td><strong>Images</strong></td>
-<td>Immutable templates (e.g., <code>nginx:latest</code>)</td>
-</tr>
-<tr>
-<td><strong>Containers</strong></td>
-<td>Runnable instances of images</td>
-</tr>
-<tr>
-<td><strong>Volumes</strong></td>
-<td>Persistent data storage</td>
-</tr>
-<tr>
-<td><strong>Networks</strong></td>
-<td>Isolated communication channels</td>
-</tr>
-<tr>
-<td><strong>Dockerfile</strong></td>
-<td>Blueprint for building images</td>
-</tr>
-<tr>
-<td><strong>Docker Hub</strong></td>
-<td>Public image repository</td>
-</tr>
-</tbody>
-</table>
-<h2 id="6-docker-cli-commands">6. Docker CLI Commands</h2>
-<h4 id="image-management">🐳 Image Management</h4>
-<pre><code>docker pull nginx              # Download image
-docker images                  # List images
-docker rmi nginx               # Remove image
-docker build -t myapp .        # Build from Dockerfile
+<hr />
+<h2 id="basic-yaml-changeset">✅ Basic YAML ChangeSet</h2>
+<pre><code class="language-yaml">- changeSet:
+    id: 1
+    author: darshan
+    changes:
+      - createTable:
+          tableName: student
+          columns:
+            - column:
+                name: id
+                type: SERIAL
+                constraints:
+                  primaryKey: true
+            - column:
+                name: name
+                type: VARCHAR(100)
 </code></pre>
-<h4 id="container-management">Container Management</h4>
-<pre><code>docker run -d -p 80:80 nginx   # Run container
-docker ps                     # List running containers
-docker stop &lt;container_id&gt;    # Stop container
-docker rm &lt;container_id&gt;      # Remove container
-docker exec -it nginx bash    # Enter running container
+<p>Run:</p>
+<pre><code class="language-bash">liquibase update
 </code></pre>
-<h4 id="volume-management">Volume Management</h4>
-<pre><code>docker volume create myvol    # Create volume
-docker volume ls             # List volumes
-docker volume inspect myvol  # View volume details
+<hr />
+<h2 id="rollback-support">✅ Rollback Support</h2>
+<pre><code class="language-yaml">- changeSet:
+    id: 2
+    author: darshan
+    changes:
+      - addColumn:
+          tableName: student
+          columns:
+            - column:
+                name: age
+                type: INT
+    rollback:
+      - dropColumn:
+          columnName: age
+          tableName: student
 </code></pre>
-<h4 id="network-management">Network Management</h4>
-<pre><code>docker network create mynet   # Create network
-docker network ls            # List networks
-docker network inspect mynet # View network details
+<pre><code class="language-bash">liquibase rollbackCount 1
 </code></pre>
-<h2 id="7-dockerfile-syntax-and-example">7. Dockerfile Syntax and Example</h2>
-<h4 id="common-instructions">Common Instructions</h4>
-<table>
-<thead>
-<tr>
-<th>Instruction</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>FROM</td>
-<td>Base image</td>
-</tr>
-<tr>
-<td>WORKDIR</td>
-<td>Working directory</td>
-</tr>
-<tr>
-<td>COPY</td>
-<td>Add files</td>
-</tr>
-<tr>
-<td>RUN</td>
-<td>Execute commands</td>
-</tr>
-<tr>
-<td>EXPOSE</td>
-<td>Document ports</td>
-</tr>
-<tr>
-<td>CMD</td>
-<td>Default command</td>
-</tr>
-</tbody>
-</table>
-<h4 id="example-dockerfile">Example Dockerfile</h4>
-<pre><code class="language-dockerfile"># Multi-stage build for Java app
-FROM maven:3.8-jdk-11 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY src/ ./src/
-RUN mvn package
-
-FROM openjdk:11-jre
-WORKDIR /app
-COPY --from=build /app/target/myapp.jar .
-EXPOSE 8080
-CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;myapp.jar&quot;]
+<hr />
+<h2 id="preconditions">✅ Preconditions</h2>
+<pre><code class="language-yaml">preConditions:
+  - not:
+      - tableExists:
+          tableName: student
 </code></pre>
-<h2 id="8-kubernetes-deployment">8. Kubernetes Deployment</h2>
-<h4 id="definition">Definition</h4>
-<p>Kubernetes is a container orchestration system that automates deployment, scaling, and management of containerized applications.</p>
-<h4 id="full-stack-example">Full-Stack Example</h4>
-<p><strong>Backend Dockerfile (Spring Boot):</strong></p>
-<pre><code class="language-dockerfile">FROM maven:3.8-jdk-11 AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY src/ ./src/
-RUN mvn package -DskipTests
-
-FROM openjdk:11-jre
-WORKDIR /app
-COPY --from=build /app/target/backend.jar .
-EXPOSE 8080
-CMD [&quot;java&quot;, &quot;-jar&quot;, &quot;backend.jar&quot;]
+<hr />
+<h2 id="tags-snapshots">✅ Tags &amp; Snapshots</h2>
+<pre><code class="language-bash">liquibase tag v1.0
+liquibase snapshot
 </code></pre>
-<p><strong>Frontend Dockerfile (Angular):</strong></p>
-<pre><code class="language-dockerfile">FROM node:16 AS build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=build /app/dist/frontend /usr/share/nginx/html
-EXPOSE 80
+<hr />
+<h2 id="contexts-environment-specific">✅ Contexts (Environment Specific)</h2>
+<pre><code class="language-yaml">- changeSet:
+    id: 3
+    author: darshan
+    context: dev,test
+    changes:
+      - insert:
+          tableName: student
+          columns:
+            - column: { name: name, value: 'test user' }
 </code></pre>
-<p><strong>Kubernetes Deployment (k8s-deployment.yml):</strong></p>
-<pre><code class="language-yaml">apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: backend
-  template:
-    metadata:
-      labels:
-        app: backend
-    spec:
-      containers:
-      - name: backend
-        image: myrepo/backend:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: DB_HOST
-          value: &quot;mysql-service&quot;
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-service
-spec:
-  selector:
-    app: backend
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
-  type: LoadBalancer
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: frontend
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: frontend
-  template:
-    metadata:
-      labels:
-        app: frontend
-    spec:
-      containers:
-      - name: frontend
-        image: myrepo/frontend:latest
-        ports:
-        - containerPort: 80
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-spec:
-  selector:
-    app: frontend
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
-
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysql
-spec:
-  selector:
-    matchLabels:
-      app: mysql
-  template:
-    metadata:
-      labels:
-        app: mysql
-    spec:
-      containers:
-      - name: mysql
-        image: mysql:5.7
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: &quot;password&quot;
-        ports:
-        - containerPort: 3306
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
-
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: mysql-pv-claim
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
+<p>Run:</p>
+<pre><code class="language-bash">liquibase update --contexts=dev
 </code></pre>
-<h4 id="service-interaction">Service Interaction</h4>
-<ul>
-<li>Frontend (Angular) makes API calls to <code>backend-service</code></li>
-<li>Backend (Spring Boot) connects to <code>mysql-service</code></li>
-<li>Kubernetes DNS resolves service names automatically</li>
-</ul>
-<h2 id="9-docker-networking-types">9. Docker Networking Types</h2>
-<table>
-<thead>
-<tr>
-<th><strong>Network Type</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Use Case</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bridge</td>
-<td>Default network (NAT)</td>
-<td>Single-host communication</td>
-</tr>
-<tr>
-<td>Host</td>
-<td>Shares host's network</td>
-<td>High-performance needs</td>
-</tr>
-<tr>
-<td>Overlay</td>
-<td>Multi-host network</td>
-<td>Swarm/Kubernetes clusters</td>
-</tr>
-<tr>
-<td>Macvlan</td>
-<td>Assigns MAC addresses</td>
-<td>Legacy apps needing MAC access</td>
-</tr>
-</tbody>
-</table>
-<h2 id="10-docker-volumes">10. Docker Volumes</h2>
-<table>
-<thead>
-<tr>
-<th><strong>Volume Type</strong></th>
-<th><strong>Description</strong></th>
-<th><strong>Use Case</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Named</td>
-<td>Managed by Docker</td>
-<td>Persistent data</td>
-</tr>
-<tr>
-<td>Anonymous</td>
-<td>Auto-removed</td>
-<td>Temporary data</td>
-</tr>
-<tr>
-<td>Bind Mount</td>
-<td>Host directory</td>
-<td>Development mounts</td>
-</tr>
-<tr>
-<td>tmpfs</td>
-<td>Memory-only</td>
-<td>Sensitive temp data</td>
-</tr>
-<tr>
-<td>------------------</td>
-<td>------------------------</td>
-<td>--------------------------</td>
-</tr>
-</tbody>
-</table>
-<h2 id="11-docker-logs-and-inspection">11. Docker Logs and Inspection</h2>
-<pre><code class="language-bash">docker logs &lt;container&gt;        # View logs
-docker logs -f &lt;container&gt;     # Follow logs in real-time
-docker exec -it &lt;container&gt; bash  # Enter container's shell
-docker inspect &lt;container&gt;     # Detailed container info
-docker stats                   # Show live resource usage
+<hr />
+<h2 id="modular-changelogs">✅ Modular ChangeLogs</h2>
+<pre><code class="language-yaml">databaseChangeLog:
+  - include:
+      file: tables/student.yaml
+  - include:
+      file: data/init_data.yaml
 </code></pre>
-<h2 id="12-docker-security-best-practices">12. Docker Security Best Practices</h2>
-<ul>
-<li>Use official images from trusted sources</li>
-<li>Run containers as non-root user:</li>
-</ul>
-<pre><code class="language-dockerfile">USER appuser
-</code></pre>
-<ul>
-<li>Scan images for vulnerabilities</li>
-<li>Limit container capabilities:</li>
-</ul>
-<pre><code class="language-bash">docker run --cap-drop=ALL --cap-add=NET_BIND_SERVICE
-</code></pre>
-<ul>
-<li>Use secrets for sensitive data</li>
-<li>Keep Docker Engine and images updated</li>
-</ul>
-<h2 id="13-docker-in-cicd">13. Docker in CI/CD</h2>
-<p>Typical CI/CD Pipeline:</p>
-<ol>
-<li>Code commit triggers build</li>
-<li>Docker image is built and tested</li>
-<li>Image pushed to registry</li>
-<li>Kubernetes deploys new version</li>
-<li>Automated rollback if tests fail</li>
-</ol>
-<p><strong>GitHub Actions snippet:</strong></p>
-<pre><code class="language-yaml">- name: Build and push
-  uses: docker/build-push-action@v2
+<hr />
+<h2 id="cicd-integration-github-actions">✅ CI/CD Integration (GitHub Actions)</h2>
+<pre><code class="language-yaml">- uses: liquibase/liquibase-github-action@v4.23.0
   with:
-    push: true
-    tags: user/app:latest
+    operation: update
+    changelogFile: changelog.yaml
 </code></pre>
-<h2 id="14-dockerfile-best-practices">14. Dockerfile Best Practices</h2>
-<ul>
-<li>Use <code>.dockerignore</code> to exclude unnecessary files</li>
-<li>Order instructions from least to most frequently changed</li>
-<li>Use multi-stage builds to reduce image size</li>
-<li>Pin versions for base images and dependencies</li>
-<li>Minimize layers by combining <code>RUN</code> commands</li>
-<li>Use smallest suitable base image (e.g., Alpine Linux)</li>
-</ul>
-<h2 id="15-cleanup-commands">15. Cleanup Commands</h2>
-<pre><code class="language-bash">docker system prune           # Remove unused objects
-docker system prune -a       # Remove all unused images
-docker volume prune          # Remove unused volumes
-docker network prune         # Remove unused networks
-docker rm $(docker ps -aq)   # Remove all stopped containers
+<hr />
+<h2 id="liquibase-spring-boot-setup-maven">☕ Liquibase + Spring Boot Setup (Maven)</h2>
+<h3 id="step-1-add-dependency">Step 1: Add Dependency</h3>
+<pre><code class="language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.liquibase&lt;/groupId&gt;
+  &lt;artifactId&gt;liquibase-core&lt;/artifactId&gt;
+&lt;/dependency&gt;
 </code></pre>
-<h2 id="16-conclusion-why-docker-is-essential">16. Conclusion: Why Docker is Essential</h2>
-<p>Docker has become fundamental to modern DevOps because it:</p>
-<ul>
-<li>Standardizes application packaging and deployment</li>
-<li>Enables microservices architecture</li>
-<li>Facilitates CI/CD pipelines</li>
-<li>Improves development/production parity</li>
-<li>Optimizes resource utilization</li>
-<li>Simplifies scaling and orchestration (with Kubernetes)</li>
-</ul>
-<p>When combined with Kubernetes, Docker provides a complete solution for building, shipping, and running distributed applications at scale.</p>
+<hr />
+<h3 id="step-2-dbchangelog-masteryaml">Step 2: <code>db.changelog-master.yaml</code></h3>
+<pre><code class="language-yaml">databaseChangeLog:
+  - include:
+      file: db/changelog/001-create-student.yaml
+</code></pre>
+<hr />
+<h3 id="step-3-create-changeset-file">Step 3: Create ChangeSet File</h3>
+<p><code>db/changelog/001-create-student.yaml</code></p>
+<pre><code class="language-yaml">- changeSet:
+    id: 001
+    author: darshan
+    changes:
+      - createTable:
+          tableName: student
+          columns:
+            - column:
+                name: id
+                type: BIGINT
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+            - column:
+                name: name
+                type: VARCHAR(100)
+</code></pre>
+<hr />
+<h3 id="step-4-applicationyml">Step 4: application.yml</h3>
+<pre><code class="language-yaml">spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/yourdb
+    username: youruser
+    password: yourpass
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+</code></pre>
+<hr />
+<h3 id="step-5-run">Step 5: Run</h3>
+<p>Liquibase auto-executes on Spring Boot start.<br />
+For CLI:</p>
+<pre><code class="language-bash">mvn liquibase:update
+</code></pre>
+<p>Rollback:</p>
+<pre><code class="language-bash">mvn liquibase:rollback -Dliquibase.rollbackCount=1
+</code></pre>
+<hr />
+<h2 id="postgresql-partman-liquibase-integration">📦 PostgreSQL Partman + Liquibase Integration</h2>
+<hr />
+<h2 id="what-is-pg_partman">✅ What is pg_partman?</h2>
+<p>pg_partman is a PostgreSQL extension for <strong>automated time-based or ID-based partitioning</strong>.</p>
+<hr />
+<h2 id="step-1-create-extension-optional-via-liquibase">✅ Step 1: Create Extension (Optional via Liquibase)</h2>
+<pre><code class="language-yaml">- changeSet:
+    id: 000
+    author: darshan
+    changes:
+      - sql:
+          sql: CREATE EXTENSION IF NOT EXISTS pg_partman;
+</code></pre>
+<p>Or manually:</p>
+<pre><code class="language-sql">CREATE EXTENSION IF NOT EXISTS pg_partman;
+</code></pre>
+<hr />
+<h2 id="step-2-create-parent-table-with-partman">✅ Step 2: Create Parent Table with Partman</h2>
+<p><code>001-create-events-parent.yaml</code></p>
+<pre><code class="language-yaml">- changeSet:
+    id: 001
+    author: darshan
+    changes:
+      - sql:
+          splitStatements: false
+          sql: |
+            CREATE TABLE IF NOT EXISTS public.events (
+              id BIGSERIAL PRIMARY KEY,
+              user_id INT NOT NULL,
+              created_at TIMESTAMP NOT NULL,
+              event_type TEXT NOT NULL
+            ) PARTITION BY RANGE (created_at);
+</code></pre>
+<hr />
+<h2 id="step-3-register-table-in-pg_partman">✅ Step 3: Register Table in pg_partman</h2>
+<p><code>002-register-with-partman.yaml</code></p>
+<pre><code class="language-yaml">- changeSet:
+    id: 002
+    author: darshan
+    changes:
+      - sql:
+          splitStatements: false
+          sql: |
+            SELECT partman.create_parent(
+              p_parent_table := 'public.events',
+              p_control := 'created_at',
+              p_type := 'native',
+              p_interval := 'monthly',
+              p_premake := 4
+            );
+</code></pre>
+<hr />
+<h2 id="step-4-insert-sample-data-optional">✅ Step 4: Insert Sample Data (Optional)</h2>
+<pre><code class="language-yaml">- changeSet:
+    id: 003
+    author: darshan
+    context: dev
+    changes:
+      - insert:
+          tableName: events
+          columns:
+            - column: { name: user_id, value: 101 }
+            - column: { name: created_at, valueDate: &quot;2025-08-01T00:00:00&quot; }
+            - column: { name: event_type, value: &quot;login&quot; }
+</code></pre>
+<hr />
+<h2 id="step-5-run-partman-maintenance">✅ Step 5: Run Partman Maintenance</h2>
+<p>Required to pre-create partitions.</p>
+<pre><code class="language-sql">SELECT partman.run_maintenance();
+</code></pre>
+<p>Or via Liquibase:</p>
+<pre><code class="language-yaml">- changeSet:
+    id: 004
+    author: darshan
+    changes:
+      - sql:
+          sql: SELECT partman.run_maintenance();
+</code></pre>
+<hr />
+<h2 id="automate-maintenance-via-cron-or-k8s-job">✅ Automate Maintenance via Cron or K8s Job</h2>
+<pre><code class="language-bash">psql -U user -d yourdb -c &quot;SELECT partman.run_maintenance();&quot;
+</code></pre>
+<p>Or use a Kubernetes CronJob to automate this.</p>
+<hr />
+<h2 id="summary">✅ Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB Change Tool</td>
+<td>Liquibase</td>
+</tr>
+<tr>
+<td>Partition Engine</td>
+<td>pg_partman</td>
+</tr>
+<tr>
+<td>Partition Type</td>
+<td>RANGE (time-based: monthly)</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td><code>partman.run_maintenance()</code></td>
+</tr>
+<tr>
+<td>DevOps Integration</td>
+<td>GitHub Actions / Jenkins / CI/CD pipelines</td>
+</tr>
+<tr>
+<td>Spring Boot</td>
+<td>Auto Liquibase changelog execution</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>✅ <strong>You're now ready to use Liquibase with PostgreSQL Partman in microservices or monolithic apps!</strong></p>
+<h1 id="what-youll-get">✅ What You’ll Get</h1>
+<p>This package provides everything you need to build and deploy a partitioned PostgreSQL-integrated Spring Boot microservice using <strong>Liquibase</strong>, <strong>pg_partman</strong>, <strong>Docker</strong>, and <strong>Kubernetes</strong>.</p>
+<hr />
+<h2 id="1-spring-boot-microservice">1. 💡 Spring Boot Microservice</h2>
+<h3 id="step-by-step">🔹 Step-by-Step</h3>
+<ol>
+<li>
+<p><strong>Initialize Spring Boot Project</strong></p>
+</li>
+<li>
+<p>Use <a href="https://start.spring.io/">Spring Initializr</a></p>
+</li>
+<li>
+<p>Dependencies: Spring Web, Spring Data JPA, PostgreSQL Driver, Liquibase</p>
+</li>
+<li>
+<p><strong>Configure PostgreSQL Connection</strong></p>
+</li>
+<li>
+<p>Add DB connection properties in <code>application.yml</code>:</p>
+<p><code>yaml
+ spring:
+   datasource:
+     url: jdbc:postgresql://localhost:5432/partition_db
+     username: postgres
+     password: postgres
+   jpa:
+     hibernate:
+       ddl-auto: none
+   liquibase:
+     enabled: true
+     change-log: classpath:/db/changelog/db.changelog-master.yml</code></p>
+</li>
+</ol>
+<hr />
 
 
 
@@ -2093,7 +1824,7 @@ docker rm $(docker ps -aq)   # Remove all stopped containers
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../python/python/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🐍 Python Basics">
+          <a href="../postgreSQL/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🐘 PostgreSQL">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2103,20 +1834,20 @@ docker rm $(docker ps -aq)   # Remove all stopped containers
                 Previous
               </span>
               <div class="md-ellipsis">
-                🐍 Python Basics
+                🐘 PostgreSQL
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../k8s/k8s/" class="md-footer__link md-footer__link--next" aria-label="Next: ☸️ Kubernetes Notes">
+          <a href="../../java/junit/" class="md-footer__link md-footer__link--next" aria-label="Next: 🧬 JUnit">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                ☸️ Kubernetes Notes
+                🧬 JUnit
               </div>
             </div>
             <div class="md-footer__button md-icon">
