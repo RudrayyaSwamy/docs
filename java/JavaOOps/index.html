@@ -1,0 +1,3141 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../JavaBasics/">
+      
+      
+        <link rel="next" href="../AdvancedJava/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>🧱 Java OOP's - 🚀 Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#intermediate-java-concepts-full-detailed-notes-with-examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="🚀 Code Chronicle" class="md-header__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🚀 Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🧱 Java OOP's
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🚀 Code Chronicle" class="md-nav__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🚀 Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛢️ Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🛢️ Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/postgreSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/Liquidbase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧪 Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧬 JUnit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🔷 Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            🔷 Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../az-204/az-204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☕ Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ☕ Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaBasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#7-object-oriented-programming-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 7. Object-Oriented Programming (OOP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 7. Object-Oriented Programming (OOP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Classes and Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Why use Classes and Objects?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Example in Java:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructors-default-parameterized" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Constructors (default, parameterized)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Types of Constructors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-object-oriented-programming-oop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 7. Object-Oriented Programming (OOP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 7. Object-Oriented Programming (OOP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 this Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Why use this?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation-getterssetters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Encapsulation (getters/setters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritance-extends-super" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Inheritance (extends, super)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Inheritance (extends, super)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keywords:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polymorphism-overloading-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Polymorphism (Overloading &amp; Overriding)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-abstract-class-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Abstraction (abstract class, interfaces)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-modifiers-public-vs-private-vs-protected-vs-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Access Modifiers: public vs private vs protected vs default
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-super-vs-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 2. super vs this
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-overloading-vs-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 3. Overloading vs Overriding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-abstract-class-vs-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 4. Abstract Class vs Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-static-vs-non-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 5. Static vs Non-static
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-access-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 8. Access Modifiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 8. Access Modifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-access-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Types of Access Modifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 1. private
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-default-no-modifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 2. default (no modifier)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3protected" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.protected
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 4. public
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-string-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 9. String Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 9. String Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-class-and-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 String Class and Common Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringbuilder-vs-stringbuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 StringBuilder vs StringBuffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Immutability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Interning:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary Notes:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-exception-handling-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 10. Exception Handling in Java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-catch-finally-throw-throws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 try, catch, finally, throw, throws
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 try, catch, finally, throw, throws">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-catch-finally-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ try-catch-finally Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ throw Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throws-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ throws Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checked-vs-unchecked-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Checked vs Unchecked Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-notes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-packages-imports-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 11. Packages &amp; Imports in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 11. Packages &amp; Imports in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 What is a Package?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Types of Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-and-using-user-defined-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Creating and Using User-defined Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Creating and Using User-defined Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-with-built-in-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example with built in packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AdvancedJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧠 Advanced Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔍 Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐍 Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐳 Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧵 Queues
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🧵 Queues
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/rmq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📦 RMQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📨 Kafka
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛠️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#7-object-oriented-programming-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 7. Object-Oriented Programming (OOP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 7. Object-Oriented Programming (OOP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Classes and Objects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-classes-and-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Why use Classes and Objects?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧾 Example in Java:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructors-default-parameterized" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Constructors (default, parameterized)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-constructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Types of Constructors
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-object-oriented-programming-oop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 7. Object-Oriented Programming (OOP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 7. Object-Oriented Programming (OOP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 this Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-use-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧩 Why use this?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation-getterssetters" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Encapsulation (getters/setters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inheritance-extends-super" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Inheritance (extends, super)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Inheritance (extends, super)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Keywords:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#polymorphism-overloading-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Polymorphism (Overloading &amp; Overriding)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstraction-abstract-class-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Abstraction (abstract class, interfaces)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-modifiers-public-vs-private-vs-protected-vs-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Access Modifiers: public vs private vs protected vs default
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-super-vs-this" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 2. super vs this
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-overloading-vs-overriding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 3. Overloading vs Overriding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-abstract-class-vs-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 4. Abstract Class vs Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-static-vs-non-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 5. Static vs Non-static
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-access-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 8. Access Modifiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 8. Access Modifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-access-modifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Types of Access Modifiers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-private" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 1. private
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-default-no-modifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 2. default (no modifier)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3protected" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.protected
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 4. public
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-string-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 9. String Handling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 9. String Handling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#string-class-and-common-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 String Class and Common Methods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringbuilder-vs-stringbuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 StringBuilder vs StringBuffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#immutability" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Immutability
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Interning:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary Notes:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-exception-handling-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 10. Exception Handling in Java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-catch-finally-throw-throws" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 try, catch, finally, throw, throws
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 try, catch, finally, throw, throws">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#try-catch-finally-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ try-catch-finally Block
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throw-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ throw Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#throws-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ throws Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#checked-vs-unchecked-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Checked vs Unchecked Exceptions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-notes_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary Notes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-packages-imports-in-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 11. Packages &amp; Imports in Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 11. Packages &amp; Imports in Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-a-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 What is a Package?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Types of Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-and-using-user-defined-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔹 Creating and Using User-defined Packages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔹 Creating and Using User-defined Packages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-with-built-in-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example with built in packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Summary
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="intermediate-java-concepts-full-detailed-notes-with-examples">🟡 Intermediate Java Concepts – Full Detailed Notes with Examples</h1>
+<hr />
+<h3 id="7-object-oriented-programming-oop">✅ 7. Object-Oriented Programming (OOP)</h3>
+<h4 id="classes-and-objects">🔹 Classes and Objects</h4>
+<p><strong>Class:</strong>
+- A class is a blueprint or template that defines the structure and behavior (fields and methods) of objects.
+- It does not hold any real data itself until instantiated.</p>
+<p><strong>Object:</strong>
+- An object is a real instance of a class.
+- It has its own memory space and contains real values for the properties defined in the class.</p>
+<hr />
+<h4 id="why-use-classes-and-objects">🧠 Why use Classes and Objects?</h4>
+<ul>
+<li>To model real-world entities in code.</li>
+<li>Promote reusability and scalability by defining a structure that can be reused to create multiple objects.</li>
+</ul>
+<hr />
+<h4 id="example-in-java">🧾 Example in Java:</h4>
+<pre><code class="language-java">// Defining a class
+class Car {
+    String brand;
+    int speed;
+
+    void drive() {
+        System.out.println(&quot;Driving...&quot;);
+    }
+}
+
+// Using the class to create objects
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();     // Creating an object of Car
+        myCar.brand = &quot;Toyota&quot;;    // Assigning values
+        myCar.speed = 120;
+
+        myCar.drive();             // Calling a method
+        System.out.println(&quot;Brand: &quot; + myCar.brand);
+        System.out.println(&quot;Speed: &quot; + myCar.speed + &quot; km/h&quot;);
+    }
+}
+</code></pre>
+<hr />
+<h4 id="constructors-default-parameterized">🔹 Constructors (default, parameterized)</h4>
+<p><strong>What is a Constructor?</strong>
+- A <strong>constructor</strong> is a special method used to initialize objects.
+- It is called <strong>automatically</strong> when an object is created.
+- Constructor name must match the class name.
+- It <strong>does not have a return type</strong> (not even <code>void</code>).</p>
+<hr />
+<h4 id="types-of-constructors">🧩 Types of Constructors</h4>
+<ol>
+<li><strong>Default Constructor</strong></li>
+<li>Takes no parameters.</li>
+<li>If you don’t write any constructor, Java automatically provides one.</li>
+</ol>
+<pre><code class="language-java">class Student {
+    String name;
+
+    // Default constructor
+    Student() {
+        name = &quot;Unknown&quot;;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();      // Calls default constructor
+        System.out.println(s.name);     // Output: Unknown
+    }
+}
+</code></pre>
+<ol>
+<li><strong>Parameterized  Constructor</strong></li>
+<li>Accepts parameters to initialize object with specific values.</li>
+</ol>
+<pre><code class="language-java">class Student {
+    String name;
+
+    // Parameterized constructor
+    Student(String name) {
+        this.name = name;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student(&quot;Alice&quot;);
+        System.out.println(s.name);     // Output: Alice
+    }
+}
+</code></pre>
+<p>#### Key Points:
+- A class can have multiple constructors (overloaded constructors).
+- If any constructor is defined explicitly, Java does not provide a default one automatically.
+- You can use constructor overloading to initialize objects in different ways.</p>
+<pre><code class="language-java">class Student {
+    String name;
+    int age;
+
+    // Overloaded constructors
+    Student() {
+        name = &quot;Unknown&quot;;
+        age = 0;
+    }
+
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+</code></pre>
+<h3 id="7-object-oriented-programming-oop_1">✅ 7. Object-Oriented Programming (OOP)</h3>
+<h4 id="this-keyword">🔹 <code>this</code> Keyword</h4>
+<p><strong>What is <code>this</code>?</strong>
+- <code>this</code> is a <strong>reference variable</strong> in Java that refers to the <strong>current object</strong>.
+- It is used inside instance methods or constructors to refer to the current object's fields or methods.</p>
+<hr />
+<h4 id="why-use-this">🧩 Why use <code>this</code>?</h4>
+<ol>
+<li><strong>To differentiate between instance variables and parameters with the same name</strong></li>
+</ol>
+<pre><code class="language-java">class Student {
+    String name;
+
+    // Constructor with parameter same as instance variable
+    Student(String name) {
+        this.name = name;  // 'this.name' refers to instance variable
+    }
+}
+</code></pre>
+<ol>
+<li><strong>To call one constructor from another (constructor chaining)</strong></li>
+</ol>
+<pre><code class="language-java">class Student {
+    String name;
+    int age;
+
+    // Constructor 1
+    Student(String name) {
+        this(name, 18);  // calls Constructor 2
+    }
+
+    // Constructor 2
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+</code></pre>
+<ol>
+<li><strong>To pass the current object as an argument</strong></li>
+</ol>
+<pre><code class="language-java">class Student {
+    void display(Student s) {
+        System.out.println(&quot;Method received object: &quot; + s);
+    }
+
+    void callDisplay() {
+        display(this);  // passing current object
+    }
+}
+</code></pre>
+<ol>
+<li><strong>To return the current object</strong></li>
+</ol>
+<pre><code class="language-java">class Student {
+    String name;
+
+    Student setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    void print() {
+        System.out.println(&quot;Name: &quot; + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.setName(&quot;Rahul&quot;).print();  // method chaining
+    }
+}
+</code></pre>
+<p>#### Key Points:
+- this is only used within non-static context (inside instance methods or constructors).
+- It improves readability, prevents confusion, and enables constructor chaining.
+- You cannot use this in a static method since static methods belong to the class, not the object.</p>
+<hr />
+<h4 id="encapsulation-getterssetters">🔹 Encapsulation (getters/setters)</h4>
+<p><strong>Definition:</strong><br />
+Encapsulation is the process of <strong>binding data (fields)</strong> and <strong>code (methods)</strong> together and restricting access to some components. This is achieved using <strong>access modifiers</strong> like <code>private</code>, <code>public</code>, and <strong>getter/setter</strong> methods.</p>
+<p><strong>Purpose:</strong><br />
+- Protect data from unauthorized access.
+- Control how data is accessed/modified.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">class Person {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}
+</code></pre>
+<h4 id="inheritance-extends-super">🔹 Inheritance (extends, super)</h4>
+<p><strong>Definition:</strong>
+Inheritance allows a class (subclass) to inherit fields and methods from another class (superclass).</p>
+<h5 id="keywords">Keywords:</h5>
+<p><strong>extends</strong>: Inherits from a class.</p>
+<p><strong>super</strong>: Refers to parent class.</p>
+<pre><code class="language-java">class Animal {
+    void sound() {
+        System.out.println(&quot;Animal sound&quot;);
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        super.sound();
+        System.out.println(&quot;Dog barks&quot;);
+    }
+}
+</code></pre>
+<h4 id="polymorphism-overloading-overriding">🔹 Polymorphism (Overloading &amp; Overriding)</h4>
+<p><strong>Definition:</strong>
+Polymorphism means many forms. It allows the same method name to behave differently based on context.</p>
+<ol>
+<li><strong>Method Overloading (Compile-time)</strong></li>
+</ol>
+<pre><code class="language-java">class Calculator {
+    int add(int a, int b) { return a + b; }
+    double add(double a, double b) { return a + b; }
+}
+</code></pre>
+<ol>
+<li><strong>Method Overriding (Runtime)</strong></li>
+</ol>
+<pre><code class="language-java">class Animal {
+    void makeSound() {
+        System.out.println(&quot;Generic sound&quot;);
+    }
+}
+
+class Cat extends Animal {
+    void makeSound() {
+        System.out.println(&quot;Meow&quot;);
+    }
+}
+</code></pre>
+<h4 id="abstraction-abstract-class-interfaces">🔹 Abstraction (abstract class, interfaces)</h4>
+<p><strong>Definition:</strong>
+Abstraction means hiding internal implementation and showing only essential details.</p>
+<ol>
+<li><strong>Abstract Class:</strong></li>
+</ol>
+<pre><code class="language-java">abstract class Shape {
+    abstract void draw();
+    void display() {
+        System.out.println(&quot;Shape displayed&quot;);
+    }
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println(&quot;Drawing circle&quot;);
+    }
+}
+</code></pre>
+<ol>
+<li><strong>interface</strong></li>
+</ol>
+<pre><code class="language-java">interface Vehicle {
+    void start();
+}
+
+class Bike implements Vehicle {
+    public void start() {
+        System.out.println(&quot;Bike started&quot;);
+    }
+}
+</code></pre>
+<h4 id="access-modifiers-public-vs-private-vs-protected-vs-default">🔹 Access Modifiers: public vs private vs protected vs default</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Class</th>
+<th>Package</th>
+<th>Subclass</th>
+<th>World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>(default)</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>✅ = Accessible</td>
+<td>❌ = Not Accessible</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>private:</strong> Accessible only within the same class.</p>
+<p><strong>default (no modifier)</strong>: Accessible within the same package.</p>
+<p><strong>protected</strong>: Accessible in same package and in subclasses.</p>
+<p><strong>public</strong>: Accessible from anywhere.</p>
+<h4 id="2-super-vs-this">🔹 2. super vs this</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>this</code></th>
+<th><code>super</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Refers to</td>
+<td>Current object</td>
+<td>Immediate parent class</td>
+</tr>
+<tr>
+<td>Used in</td>
+<td>Instance methods &amp; constructors</td>
+<td>Subclass constructors &amp; overridden methods</td>
+</tr>
+<tr>
+<td>Constructor</td>
+<td>Calls current class constructor</td>
+<td>Calls parent class constructor</td>
+</tr>
+<tr>
+<td>Field access</td>
+<td>Access current class fields</td>
+<td>Access parent class fields</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">this.name = name;         // Refers to current class field
+super.name = name;        // Refers to parent class field
+</code></pre>
+<h4 id="3-overloading-vs-overriding">🔹 3. Overloading vs Overriding</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Overloading</th>
+<th>Overriding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>Same method name, different parameters</td>
+<td>Subclass provides specific implementation of parent method</td>
+</tr>
+<tr>
+<td>Compile-time/Runtime</td>
+<td>Compile-time</td>
+<td>Runtime</td>
+</tr>
+<tr>
+<td>Inheritance</td>
+<td>Not required</td>
+<td>Required</td>
+</tr>
+<tr>
+<td>Access Modifier</td>
+<td>Can be anything</td>
+<td>Cannot be more restrictive than parent</td>
+</tr>
+<tr>
+<td>Static Methods</td>
+<td>Can be overloaded</td>
+<td>Cannot be overridden (only hidden)</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example Overloading:</p>
+<pre><code class="language-java">void display() {}
+void display(int a) {}
+</code></pre>
+<p>Example Overriding:</p>
+<pre><code class="language-java">class A { void display() {} }
+class B extends A { void display() {} }
+</code></pre>
+<h4 id="4-abstract-class-vs-interface">🔹 4. Abstract Class vs Interface</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Abstract Class</th>
+<th>Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Partial abstraction</td>
+<td>Full abstraction (Java 7)</td>
+</tr>
+<tr>
+<td>Keywords</td>
+<td><code>abstract class</code></td>
+<td><code>interface</code></td>
+</tr>
+<tr>
+<td>Constructors</td>
+<td>Allowed</td>
+<td>Not allowed</td>
+</tr>
+<tr>
+<td>Variables</td>
+<td>Can be final, static, non-static</td>
+<td><code>public static final</code> only</td>
+</tr>
+<tr>
+<td>Methods</td>
+<td>Can have method body</td>
+<td>Cannot (Java 7), default/static allowed in Java 8+</td>
+</tr>
+<tr>
+<td>Multiple Inheritance</td>
+<td>Not supported</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Use-case</td>
+<td>Common base class with shared code</td>
+<td>Common contract for unrelated classes</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Abstract Class Example:</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">abstract class Shape {
+    abstract void draw();
+    void info() { System.out.println(&quot;Shape&quot;); }
+}
+</code></pre>
+<p>Interface Example:</p>
+<pre><code class="language-java">interface Drawable {
+    void draw();
+}
+</code></pre>
+<h4 id="5-static-vs-non-static">🔹 5. Static vs Non-static</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>static</code></th>
+<th>Non-static (instance)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Belongs to</td>
+<td>Class</td>
+<td>Object</td>
+</tr>
+<tr>
+<td>Accessed by</td>
+<td>ClassName or object</td>
+<td>Only by object</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Allocated once in class area</td>
+<td>Allocated with each object</td>
+</tr>
+<tr>
+<td>Can access</td>
+<td>Only static members</td>
+<td>Static + instance members</td>
+</tr>
+<tr>
+<td>Used for</td>
+<td>Utilities, constants, shared logic</td>
+<td>Object-specific logic</td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">class Example {
+    static int count = 0;           // Shared among all instances
+    int id;                         // Separate for each object
+
+    static void printCount() {
+        System.out.println(count);
+    }
+
+    void printId() {
+        System.out.println(id);
+    }
+}
+</code></pre>
+<hr />
+<h3 id="8-access-modifiers">✅ 8. Access Modifiers</h3>
+<p>Java provides four types of access modifiers to set the visibility or accessibility of classes, methods, and variables.</p>
+<hr />
+<h4 id="types-of-access-modifiers">🔹 Types of Access Modifiers</h4>
+<table>
+<thead>
+<tr>
+<th>Modifier</th>
+<th>Class</th>
+<th>Package</th>
+<th>Subclass (different package)</th>
+<th>World</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>private</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><em>default</em></td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>protected</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>✅ = Accessible | ❌ = Not Accessible</p>
+<hr />
+<h4 id="1-private">🔹 1. <code>private</code></h4>
+<ul>
+<li>Accessible only within the <strong>same class</strong>.</li>
+<li>Not accessible from outside the class, even in the same package.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">class A {
+    private int data = 40;
+
+    private void msg() {
+        System.out.println(&quot;Hello private&quot;);
+    }
+}
+</code></pre>
+<h4 id="2-default-no-modifier">🔹 2. <code>default</code> (no modifier)</h4>
+<ul>
+<li>Accessible only within the same package.</li>
+<li>Not accessible from outside the package.
+<strong>Example:</strong></li>
+</ul>
+<pre><code class="language-java">class A {  // default class
+    int data = 50;  // default field
+
+    void msg() {    // default method
+        System.out.println(&quot;Default access&quot;);
+    }
+}
+</code></pre>
+<h4 id="3protected">3.<code>protected</code></h4>
+<ul>
+<li>Accessible within the same package.</li>
+<li>Accessible outside the package only via inheritance.
+<strong>Example:</strong></li>
+</ul>
+<pre><code class="language-java">package package1;
+public class A {
+    protected void msg() {
+        System.out.println(&quot;Hello protected&quot;);
+    }
+}
+
+package package2;
+import package1.A;
+
+class B extends A {
+    public static void main(String args[]) {
+        B obj = new B();
+        obj.msg();  // Accessible because B extends A
+    }
+}
+</code></pre>
+<h4 id="4-public">🔹 4. <code>public</code></h4>
+<ul>
+<li>Accessible from anywhere in the program.</li>
+<li>No restriction on access.
+<strong>Example:</strong></li>
+</ul>
+<pre><code class="language-java">public class A {
+    public int data = 100;
+
+    public void msg() {
+        System.out.println(&quot;Hello public&quot;);
+    }
+}
+</code></pre>
+<h4 id="key-notes">Key Notes</h4>
+<ul>
+<li>Use <code>private</code> for data hiding (encapsulation).</li>
+<li>Use <code>public</code> for APIs or global access.</li>
+<li>Use <code>protected</code> for access in child classes across packages.</li>
+<li><code>default</code> is package-private and should be used for package-level scope.</li>
+</ul>
+<h3 id="9-string-handling">✅ 9. String Handling</h3>
+<p>String handling is a crucial part of Java. Java provides various classes like <code>String</code>, <code>StringBuilder</code>, and <code>StringBuffer</code> to work with strings efficiently.</p>
+<hr />
+<h4 id="string-class-and-common-methods">🔹 String Class and Common Methods</h4>
+<p><strong>String</strong> in Java is an object that represents a sequence of characters. It is immutable, meaning once created, its value cannot be changed.</p>
+<p><strong>Common Methods:</strong></p>
+<pre><code class="language-java">String s = &quot;Hello, World!&quot;;
+
+s.length();              // Returns length of string
+s.charAt(0);             // Returns character at index 0 =&gt; 'H'
+s.substring(0, 5);       // Returns &quot;Hello&quot;
+s.toUpperCase();         // Converts to &quot;HELLO, WORLD!&quot;
+s.toLowerCase();         // Converts to &quot;hello, world!&quot;
+s.replace(&quot;World&quot;, &quot;Java&quot;); // &quot;Hello, Java!&quot;
+s.contains(&quot;Hello&quot;);     // true
+s.equals(&quot;hello&quot;);       // false (case-sensitive)
+s.equalsIgnoreCase(&quot;hello, world!&quot;); // true
+</code></pre>
+<p><strong>*Example:</strong></p>
+<pre><code class="language-java">public class StringExample {
+    public static void main(String[] args) {
+        String name = &quot;Java&quot;;
+        System.out.println(name.toUpperCase()); // JAVA
+        System.out.println(name.substring(1));  // ava
+    }
+}
+</code></pre>
+<h4 id="stringbuilder-vs-stringbuffer">🔹 StringBuilder vs StringBuffer</h4>
+<p>Both are mutable classes used to manipulate strings, but they differ in synchronization.</p>
+<hr />
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th><code>StringBuilder</code></th>
+<th><code>StringBuffer</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mutability</td>
+<td>Mutable</td>
+<td>Mutable</td>
+</tr>
+<tr>
+<td>Thread-safe</td>
+<td>❌ Not thread-safe</td>
+<td>✅ Thread-safe</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Faster (single-threaded)</td>
+<td>Slower (due to synchronization)</td>
+</tr>
+<tr>
+<td>Introduced in</td>
+<td>Java 5</td>
+<td>Java 1.0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Example (StringBuilder):</strong></p>
+<pre><code class="language-java">public class BuilderExample {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder(&quot;Hello&quot;);
+        sb.append(&quot; World&quot;);
+        System.out.println(sb);  // Hello World
+    }
+}
+</code></pre>
+<p><strong>Example (StringBuffer):</strong></p>
+<pre><code class="language-java">public class BufferExample {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer(&quot;Hello&quot;);
+        sb.append(&quot; Java&quot;);
+        System.out.println(sb);  // Hello Java
+    }
+}
+</code></pre>
+<h4 id="immutability">🔹 Immutability</h4>
+<ul>
+<li>String objects are <code>immutable</code> — you cannot change the value after creation.</li>
+<li>Any modification results in a new object being created.</li>
+<li>Use s = s.concat(" World"); to modify.</li>
+</ul>
+<pre><code class="language-java">String s = &quot;Hello&quot;;
+s.concat(&quot; World&quot;); 
+System.out.println(s); // Output: Hello (unchanged)
+</code></pre>
+<hr />
+<h4 id="interning">🔹  Interning:</h4>
+<ul>
+<li>Java uses a String pool to store string literals.</li>
+<li>When you create a string literal, Java checks if it already exists in the pool.</li>
+<li>Use intern() to get pooled reference:</li>
+</ul>
+<p><strong>Example :</strong></p>
+<pre><code class="language-java">String a = &quot;Java&quot;;
+String b = &quot;Java&quot;;
+System.out.println(a == b);  // true (same reference)
+
+String c = new String(&quot;Java&quot;);
+System.out.println(a == c);  // false (different object)
+
+// Use intern() to get pooled reference:
+System.out.println(a == c.intern()); // true
+</code></pre>
+<h4 id="summary-notes">📝 Summary Notes:</h4>
+<ul>
+<li>String is immutable; use StringBuilder or StringBuffer for mutable strings.</li>
+<li>Use StringBuilder for better performance when not working with threads.</li>
+<li>StringBuffer is safer for multi-threaded environments.</li>
+<li>Interning helps Java optimize memory for repeated string literals.</li>
+</ul>
+<p>✅ StringExample.java</p>
+<pre><code class="language-java">public class StringExample {
+    public static void main(String[] args) {
+        String s = &quot;  Hello World  &quot;;
+
+        System.out.println(&quot;Original: '&quot; + s + &quot;'&quot;);                  // '  Hello World  '
+        System.out.println(&quot;Trimmed: '&quot; + s.trim() + &quot;'&quot;);           // 'Hello World'
+        System.out.println(&quot;Length: &quot; + s.length());                 // 15
+        System.out.println(&quot;Uppercase: &quot; + s.toUpperCase());         // '  HELLO WORLD  '
+        System.out.println(&quot;Lowercase: &quot; + s.toLowerCase());         // '  hello world  '
+        System.out.println(&quot;Char at 1: &quot; + s.charAt(1));             // ' '
+        System.out.println(&quot;Substring(2, 7): &quot; + s.substring(2, 7)); // 'Hello'
+        System.out.println(&quot;Replace 'World' with 'Java': &quot; + s.replace(&quot;World&quot;, &quot;Java&quot;)); // '  Hello Java  '
+        System.out.println(&quot;Contains 'Hello': &quot; + s.contains(&quot;Hello&quot;)); // true
+        System.out.println(&quot;Starts with 'He': &quot; + s.startsWith(&quot;He&quot;));   // false (starts with space)
+        System.out.println(&quot;Ends with 'ld': &quot; + s.endsWith(&quot;ld&quot;));       // false (ends with space)
+        System.out.println(&quot;Equals 'hello world': &quot; + s.equals(&quot;hello world&quot;)); // false
+        System.out.println(&quot;Equals Ignore Case: &quot; + s.equalsIgnoreCase(&quot;  hello world  &quot;)); // true
+        System.out.println(&quot;Index of 'o': &quot; + s.indexOf('o'));         // 6
+        System.out.println(&quot;Last Index of 'l': &quot; + s.lastIndexOf('l')); // 9
+
+        String[] parts = s.trim().split(&quot; &quot;); // Splits &quot;Hello World&quot;
+        System.out.println(&quot;Split by space:&quot;);
+        for (String part : parts) {
+            System.out.println(part); // Hello \n World
+        }
+
+        System.out.println(&quot;Join: &quot; + String.join(&quot;-&quot;, &quot;Java&quot;, &quot;Python&quot;, &quot;C++&quot;)); // Java-Python-C++
+        System.out.println(&quot;To Char Array:&quot;);
+        for (char ch : s.toCharArray()) {
+            System.out.print(ch + &quot; &quot;); // prints characters with space
+        }
+
+        String s2 = new String(&quot;Hello&quot;);
+        String s3 = &quot;Hello&quot;;
+        System.out.println(&quot;\nInterned equals: &quot; + (s2.intern() == s3)); // true
+    }
+}
+</code></pre>
+<p>✅ StringBuilderExample.java</p>
+<pre><code class="language-java">public class StringBuilderExample {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder(&quot;Java&quot;);
+
+        sb.append(&quot; Programming&quot;); // &quot;Java Programming&quot;
+        System.out.println(&quot;Append: &quot; + sb);
+
+        sb.insert(5, &quot;Language &quot;); // &quot;Java Language Programming&quot;
+        System.out.println(&quot;Insert: &quot; + sb);
+
+        sb.replace(5, 13, &quot;Core &quot;); // &quot;Java Core Programming&quot;
+        System.out.println(&quot;Replace: &quot; + sb);
+
+        sb.delete(5, 10); // &quot;JavaProgramming&quot;
+        System.out.println(&quot;Delete: &quot; + sb);
+
+        sb.setCharAt(0, 'j'); // &quot;javaProgramming&quot;
+        System.out.println(&quot;Set Char At: &quot; + sb);
+
+        System.out.println(&quot;Reverse: &quot; + sb.reverse()); // &quot;gnimmargorPavaj&quot;
+        sb.reverse(); // restore to &quot;javaProgramming&quot;
+
+        System.out.println(&quot;Length: &quot; + sb.length()); // 16
+        System.out.println(&quot;Capacity: &quot; + sb.capacity()); // default 16 + initial string length
+
+        sb.ensureCapacity(100); // no visible output
+        System.out.println(&quot;Capacity after ensure: &quot; + sb.capacity()); // &gt;= 100
+
+        System.out.println(&quot;To String: &quot; + sb.toString()); // &quot;javaProgramming&quot;
+    }
+}
+</code></pre>
+<p>✅ StringBufferExample.java</p>
+<pre><code class="language-java">public class StringBufferExample {
+    public static void main(String[] args) {
+        StringBuffer sb = new StringBuffer(&quot;Thread&quot;);
+
+        sb.append(&quot; Safe&quot;); // &quot;Thread Safe&quot;
+        System.out.println(&quot;Append: &quot; + sb);
+
+        sb.insert(7, &quot;Java &quot;); // &quot;Thread Java Safe&quot;
+        System.out.println(&quot;Insert: &quot; + sb);
+
+        sb.replace(7, 12, &quot;Multi-Threaded &quot;); // &quot;Thread Multi-Threaded Safe&quot;
+        System.out.println(&quot;Replace: &quot; + sb);
+
+        sb.delete(7, 22); // &quot;Thread Safe&quot;
+        System.out.println(&quot;Delete: &quot; + sb);
+
+        sb.setCharAt(0, 't'); // &quot;thread Safe&quot;
+        System.out.println(&quot;Set Char At: &quot; + sb);
+
+        System.out.println(&quot;Reverse: &quot; + sb.reverse()); // &quot;efaS daerht&quot;
+        sb.reverse(); // restore
+
+        System.out.println(&quot;Length: &quot; + sb.length()); // 11
+        System.out.println(&quot;Capacity: &quot; + sb.capacity()); // default 16 + initial string length
+
+        System.out.println(&quot;To String: &quot; + sb.toString()); // &quot;thread Safe&quot;
+    }
+}
+
+</code></pre>
+<hr />
+<h3 id="10-exception-handling-in-java">✅ 10. Exception Handling in Java</h3>
+<p>Java provides a powerful exception-handling mechanism to gracefully manage runtime errors and maintain the normal flow of the application.</p>
+<hr />
+<h3 id="try-catch-finally-throw-throws">🔹 <code>try</code>, <code>catch</code>, <code>finally</code>, <code>throw</code>, <code>throws</code></h3>
+<h4 id="try-catch-finally-block">✅ <code>try-catch-finally</code> Block</h4>
+<p>The <code>try</code> block contains code that might throw exceptions. The <code>catch</code> block handles the exception. The <code>finally</code> block is always executed regardless of exception occurrence.</p>
+<pre><code class="language-java">public class TryCatchFinallyExample {
+    public static void main(String[] args) {
+        try {
+            int a = 5 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println(&quot;Caught exception: &quot; + e.getMessage());
+        } finally {
+            System.out.println(&quot;Finally block always executes.&quot;);
+        }
+    }
+}
+// Output:
+// Caught exception: / by zero
+// Finally block always executes.
+</code></pre>
+<h4 id="throw-keyword">✅ <code>throw</code> Keyword</h4>
+<ul>
+<li>Used to explicitly throw an exception from a method or block.</li>
+</ul>
+<pre><code class="language-java">public class ThrowExample {
+    public static void main(String[] args) {
+        int age = 16;
+        if (age &lt; 18) {
+            throw new ArithmeticException(&quot;Age must be at least 18.&quot;);
+        }
+        System.out.println(&quot;Eligible for voting.&quot;);
+    }
+}
+// Output: Exception in thread &quot;main&quot; java.lang.ArithmeticException: Age must be at least 18.
+</code></pre>
+<h4 id="throws-keyword">✅ <code>throws</code> Keyword</h4>
+<p>Used in method signature to declare checked exceptions that the method might throw.</p>
+<pre><code class="language-java">public class ThrowsExample {
+    static void checkFile() throws java.io.IOException {
+        throw new java.io.IOException(&quot;File error occurred.&quot;);
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkFile();
+        } catch (java.io.IOException e) {
+            System.out.println(&quot;Handled Exception: &quot; + e.getMessage());
+        }
+    }
+}
+// Output: Handled Exception: File error occurred.
+</code></pre>
+<h4 id="checked-vs-unchecked-exceptions">🔹 Checked vs Unchecked Exceptions</h4>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Example Classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Checked Exception</td>
+<td>Must be handled or declared using <code>throws</code></td>
+<td>IOException, SQLException</td>
+</tr>
+<tr>
+<td>Unchecked Exception</td>
+<td>Runtime exceptions, not required to handle</td>
+<td>NullPointerException, ArithmeticException</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Checked Exception</strong></p>
+<pre><code class="language-java">import java.io.FileReader;
+import java.io.FileNotFoundException;
+
+public class CheckedExample {
+    public static void main(String[] args) {
+        try {
+            FileReader fr = new FileReader(&quot;file.txt&quot;);
+        } catch (FileNotFoundException e) {
+            System.out.println(&quot;File not found: &quot; + e.getMessage());
+        }
+    }
+}
+</code></pre>
+<p><strong>Unchecked Exception</strong></p>
+<pre><code class="language-java">public class UncheckedExample {
+    public static void main(String[] args) {
+        int[] arr = new int[3];
+        System.out.println(arr[5]); // ArrayIndexOutOfBoundsException
+    }
+}
+</code></pre>
+<p><strong>Custem Exception</strong>
+- You can create your own exception class by extending Exception or RuntimeException.</p>
+<pre><code class="language-java">class InvalidAgeException extends Exception {
+    public InvalidAgeException(String message) {
+        super(message);
+    }
+}
+
+public class CustomExceptionDemo {
+    static void validate(int age) throws InvalidAgeException {
+        if (age &lt; 18)
+            throw new InvalidAgeException(&quot;Not eligible for vote&quot;);
+    }
+
+    public static void main(String[] args) {
+        try {
+            validate(16);
+        } catch (InvalidAgeException e) {
+            System.out.println(&quot;Caught: &quot; + e.getMessage());
+        }
+    }
+}
+// Output: Caught: Not eligible for vote
+</code></pre>
+<h4 id="summary-notes_1">📝 Summary Notes</h4>
+<ul>
+<li>Always handle checked exceptions using <code>try-catch</code> or <code>throws</code>.</li>
+<li>Unchecked exceptions are optional to handle.</li>
+<li>Use <code>finally</code> for cleanup (e.g., closing resources).</li>
+<li>Create <code>custom exceptions</code> for domain-specific validations.</li>
+</ul>
+<hr />
+<h2 id="11-packages-imports-in-java">✅ 11. Packages &amp; Imports in Java</h2>
+<hr />
+<h3 id="what-is-a-package">🔹 What is a Package?</h3>
+<p>A <strong>package</strong> is a namespace that organizes classes and interfaces. Think of it as a folder in your system where related Java files are grouped.</p>
+<ul>
+<li>Helps avoid class name conflicts</li>
+<li>Makes code easier to maintain</li>
+</ul>
+<hr />
+<h3 id="types-of-packages">🔹 Types of Packages</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Built-in</td>
+<td><code>java.lang</code>, <code>java.util</code>, <code>java.io</code></td>
+</tr>
+<tr>
+<td>User-defined</td>
+<td><code>com.myapp.utils</code>, <code>tech.vismo.service</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="creating-and-using-user-defined-packages">🔹 Creating and Using User-defined Packages</h3>
+<p><strong>Step 1:</strong> Create a class inside a package
+📁 File: <code>mypack/MessagePrinter.java</code></p>
+<pre><code class="language-java">package mypack;
+
+public class MessagePrinter {
+    public void print() {
+        System.out.println(&quot;Hello from mypack!&quot;);
+    }
+}
+</code></pre>
+<p><strong>Step 2:</strong> Use it in another class
+📁 File: TestPackage.java</p>
+<pre><code class="language-java">import mypack.MessagePrinter;
+
+public class TestPackage {
+    public static void main(String[] args) {
+        MessagePrinter mp = new MessagePrinter();
+        mp.print(); // Output: Hello from mypack!
+    }
+}
+</code></pre>
+<ul>
+<li>🧠 Make sure to place the mypack folder correctly in your source directory.</li>
+</ul>
+<p><strong>🔹 <code>import</code> Keyword</strong>
+- Used to access classes from other packages.
+- Makes code cleaner by avoiding fully qualified names.</p>
+<pre><code class="language-java">import java.util.Scanner; // import specific class
+import java.util.*; // import entire util package
+</code></pre>
+<pre><code class="language-java">java.util.Scanner sc = new java.util.Scanner(System.in);
+// Without import, you'd have to write:
+</code></pre>
+<p><strong>🔹 <code>Default</code> Package</strong>
+If no package is defined, the class is in the default package (not recommended for real projects).
+| Package     | Description                           | Example Classes                      |
+| ----------- | ------------------------------------- | ------------------------------------ |
+| <code>java.lang</code> | Default basic classes (auto-imported) | <code>String</code>, <code>Math</code>, <code>System</code>, <code>Object</code> |
+| <code>java.util</code> | Utility classes                       | <code>ArrayList</code>, <code>HashMap</code>, <code>Scanner</code>    |
+| <code>java.io</code>   | Input/Output classes                  | <code>File</code>, <code>BufferedReader</code>             |
+| <code>java.net</code>  | Networking                            | <code>Socket</code>, <code>URL</code>                      |
+| <code>java.sql</code>  | Database connectivity                 | <code>Connection</code>, <code>DriverManager</code>        |</p>
+<h4 id="example-with-built-in-packages">Example with built in packages</h4>
+<pre><code class="language-java">import java.util.Scanner;
+
+public class ScannerExample {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print(&quot;Enter name: &quot;);
+        String name = sc.nextLine();
+        System.out.println(&quot;Hello, &quot; + name); // Output depends on input
+        sc.close();
+    }
+}
+</code></pre>
+<h4 id="summary">📝 Summary</h4>
+<ul>
+<li>Packages help organize and reuse code.</li>
+<li>Use <code>package</code> to declare a package.</li>
+<li>Use <code>import</code>to access classes from other packages.</li>
+<li><code>java.lang</code> is automatically imported.</li>
+<li>Always close resources like Scanner or FileReader.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../JavaBasics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🧩 Java Basics">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🧩 Java Basics
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../AdvancedJava/" class="md-footer__link md-footer__link--next" aria-label="Next: 🧠 Advanced Java">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🧠 Advanced Java
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

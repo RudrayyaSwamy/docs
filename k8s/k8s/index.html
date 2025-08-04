@@ -1,0 +1,5413 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../docker/docker/">
+      
+      
+        <link rel="next" href="../../queues/rmq/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>☸️ Kubernetes Notes - 🚀 Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-what-is-kubernetes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="🚀 Code Chronicle" class="md-header__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🚀 Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ☸️ Kubernetes Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🚀 Code Chronicle" class="md-nav__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🚀 Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛢️ Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🛢️ Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/postgreSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/Liquidbase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧪 Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧬 JUnit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🔷 Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            🔷 Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../az-204/az-204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☕ Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ☕ Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaBasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaOOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/AdvancedJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧠 Advanced Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔍 Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐍 Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐳 Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is Kubernetes?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. What is Kubernetes?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose-of-container-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose of Container Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-docker-vs-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison: Docker vs Kubernetes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison: Docker vs Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Analogy:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-kubernetes-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Kubernetes Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Kubernetes Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master-node-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Node Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Master Node Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kube-apiserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-apiserver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      etcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-scheduler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-controller-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-controller-manager
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-node-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Node Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worker Node Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubelet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubelet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-kubernetes-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Kubernetes Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Kubernetes Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristics:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Services:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Namespaces:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configmap-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigMap &amp; Secret
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfigMap &amp; Secret">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigMap:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secret:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-persistentvolumeclaim-pvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume &amp; PersistentVolumeClaim (PVC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume &amp; PersistentVolumeClaim (PVC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-volume-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Volume Types:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume-pv" class="md-nav__link">
+    <span class="md-ellipsis">
+      PersistentVolume (PV):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolumeclaim-pvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      PersistentVolumeClaim (PVC):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-workload-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Workload Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Workload Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    <span class="md-ellipsis">
+      DaemonSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      StatefulSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cronjob" class="md-nav__link">
+    <span class="md-ellipsis">
+      CronJob
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-kubernetes-objects-and-yaml-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kubernetes Objects and YAML Syntax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Kubernetes Objects and YAML Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-kubernetes-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anatomy of a Kubernetes Manifest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-apiversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. apiVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. kind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. spec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-basic-yaml-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Basic YAML Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-yaml-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example YAML Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example YAML Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧱 Pod Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-kubernetes-cli-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kubernetes CLI (kubectl)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Kubernetes CLI (kubectl)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔌 Cluster Interaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-kubectl-commands-grouped-by-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Common kubectl Commands (Grouped by Function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Creation &amp; Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Getting Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      List resources:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-a-resource-detailed-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describe a resource (detailed information):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-logs-from-a-container-in-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      View logs from a container in a Pod:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-a-command-in-a-running-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execute a command in a running container:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-files-tofrom-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy files to/from a container:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-resource-usage-requires-metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      View resource usage (requires Metrics Server):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-cluster-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check cluster events:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check cluster events:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-and-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Updates:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling and Updates:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-for-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      📛 Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ Labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-for-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Describe for Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs-for-application-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Logs for Application Insights
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-kubernetes-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Kubernetes Networking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Kubernetes Networking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Principles:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-to-pod-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pod-to-Pod Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-to-service-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service-to-Service Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-policies-basic-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Policies (Basic Intro)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-kubernetes-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Kubernetes Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Kubernetes Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Volumes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#emptydir" class="md-nav__link">
+    <span class="md-ellipsis">
+      emptyDir:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      hostPath:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume-pv-and-persistentvolumeclaim-pvc-covered-in-section-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      persistentVolume (PV) and persistentVolumeClaim (PVC): (Covered in Section 3)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageclasses-basic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      StorageClasses (Basic Overview)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-kubernetes-services-comparison-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Kubernetes Services Comparison Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-kubernetes-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kubernetes Ingress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Kubernetes Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress-controller-and-ingress-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Controller and Ingress Resource
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Controller and Ingress Resource">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Controller:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Resource:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-ingress-yaml-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Ingress YAML Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-helm-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Helm Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Helm Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-helm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Helm?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-charts-and-their-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helm Charts and their Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helm Charts and their Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm-chart-structure-my-app-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helm Chart Structure: my-app-chart/
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-kubernetes-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Kubernetes Security Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Monitoring and Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-deploying-a-full-stack-app-spring-boot-angular-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Deploying a Full-Stack App (Spring Boot + Angular + MySQL)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Deploying a Full-Stack App (Spring Boot + Angular + MySQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-stack-application-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full-Stack Application Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-application-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Application Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8s-fullstackyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      k8s-fullstack.yaml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-mysql-deployment-using-statefulset-for-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. MySQL Deployment (using StatefulSet for persistence)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mysql-service-clusterip-for-internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. MySQL Service (ClusterIP, for internal communication)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spring-boot-backend-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Spring Boot Backend Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spring-boot-backend-service-clusterip-for-internal-and-ingress-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Spring Boot Backend Service (ClusterIP, for internal and Ingress access)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-angular-frontend-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Angular Frontend Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-angular-frontend-service-clusterip-for-ingress-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Angular Frontend Service (ClusterIP, for Ingress access)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-configmap-for-application-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. ConfigMap for application configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-secret-for-sensitive-data-base64-encoded" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Secret for sensitive data (base64 encoded)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-ingress-for-external-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Ingress for external routing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-kubernetes-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Kubernetes Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Comparison Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Comparison Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose-vs-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose vs Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicaset-vs-deployment-vs-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet vs Deployment vs StatefulSet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-cli-commands-grouped-by-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. CLI Commands Grouped by Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. CLI Commands Grouped by Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-cluster-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Cluster Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-management-crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Management (CRUD operations)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Management (CRUD operations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get (List)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-detailed-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describe (Detailed Information)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging and Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-and-updates_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context and Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧵 Queues
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🧵 Queues
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/rmq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📦 RMQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📨 Kafka
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛠️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What is Kubernetes?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. What is Kubernetes?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose-of-container-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purpose of Container Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison-docker-vs-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparison: Docker vs Kubernetes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comparison: Docker vs Kubernetes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#analogy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧠 Analogy:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-kubernetes-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Kubernetes Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Kubernetes Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master-node-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Master Node Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Master Node Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kube-apiserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-apiserver
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      etcd
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-scheduler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kube-controller-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      kube-controller-manager
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#worker-node-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker Node Components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worker Node Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubelet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubelet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-kubernetes-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Kubernetes Core Concepts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Kubernetes Core Concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#characteristics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Characteristics:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicaset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Services:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Namespaces:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configmap-secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigMap &amp; Secret
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ConfigMap &amp; Secret">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      ConfigMap:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secret" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secret:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#volume-persistentvolumeclaim-pvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume &amp; PersistentVolumeClaim (PVC)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Volume &amp; PersistentVolumeClaim (PVC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      Volume:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-volume-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Volume Types:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume-pv" class="md-nav__link">
+    <span class="md-ellipsis">
+      PersistentVolume (PV):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolumeclaim-pvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      PersistentVolumeClaim (PVC):
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-workload-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Workload Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other Workload Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daemonset" class="md-nav__link">
+    <span class="md-ellipsis">
+      DaemonSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      StatefulSet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Job
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cronjob" class="md-nav__link">
+    <span class="md-ellipsis">
+      CronJob
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-kubernetes-objects-and-yaml-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Kubernetes Objects and YAML Syntax
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Kubernetes Objects and YAML Syntax">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anatomy-of-a-kubernetes-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anatomy of a Kubernetes Manifest
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-apiversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. apiVersion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-kind" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. kind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. metadata
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. spec
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-basic-yaml-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Basic YAML Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-yaml-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example YAML Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example YAML Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧱 Pod Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-kubernetes-cli-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Kubernetes CLI (kubectl)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Kubernetes CLI (kubectl)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-interaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔌 Cluster Interaction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-kubectl-commands-grouped-by-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Common kubectl Commands (Grouped by Function)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Creation &amp; Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Getting Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      List resources:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-a-resource-detailed-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describe a resource (detailed information):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-logs-from-a-container-in-a-pod" class="md-nav__link">
+    <span class="md-ellipsis">
+      View logs from a container in a Pod:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#execute-a-command-in-a-running-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Execute a command in a running container:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-files-tofrom-a-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copy files to/from a container:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#view-resource-usage-requires-metrics-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      View resource usage (requires Metrics Server):
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-cluster-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Check cluster events:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Check cluster events:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deletion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deletion:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-and-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Updates:
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scaling and Updates:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#namespace-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Namespace Management:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices-for-kubectl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices for kubectl
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#namespaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      📛 Namespaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏷️ Labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-for-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Describe for Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logs-for-application-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 Logs for Application Insights
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-kubernetes-networking" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Kubernetes Networking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Kubernetes Networking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Principles:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pod-to-pod-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pod-to-Pod Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-to-service-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service-to-Service Communication
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dns-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      DNS Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#network-policies-basic-intro" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network Policies (Basic Intro)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-kubernetes-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Kubernetes Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Kubernetes Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Volumes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Volumes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#emptydir" class="md-nav__link">
+    <span class="md-ellipsis">
+      emptyDir:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostpath" class="md-nav__link">
+    <span class="md-ellipsis">
+      hostPath:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistentvolume-pv-and-persistentvolumeclaim-pvc-covered-in-section-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      persistentVolume (PV) and persistentVolumeClaim (PVC): (Covered in Section 3)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageclasses-basic-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      StorageClasses (Basic Overview)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-kubernetes-services-comparison-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Kubernetes Services Comparison Table
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-kubernetes-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Kubernetes Ingress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Kubernetes Ingress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress-controller-and-ingress-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Controller and Ingress Resource
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ingress Controller and Ingress Resource">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ingress-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Controller:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ingress-resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ingress Resource:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-ingress-yaml-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Ingress YAML Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-helm-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Helm Basics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Helm Basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-helm" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is Helm?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#helm-charts-and-their-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helm Charts and their Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Helm Charts and their Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#helm-chart-structure-my-app-chart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Helm Chart Structure: my-app-chart/
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-kubernetes-security-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Kubernetes Security Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-monitoring-and-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Monitoring and Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-deploying-a-full-stack-app-spring-boot-angular-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Deploying a Full-Stack App (Spring Boot + Angular + MySQL)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Deploying a Full-Stack App (Spring Boot + Angular + MySQL)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#full-stack-application-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full-Stack Application Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-application-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Application Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8s-fullstackyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      k8s-fullstack.yaml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-mysql-deployment-using-statefulset-for-persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. MySQL Deployment (using StatefulSet for persistence)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mysql-service-clusterip-for-internal-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. MySQL Service (ClusterIP, for internal communication)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-spring-boot-backend-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Spring Boot Backend Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-spring-boot-backend-service-clusterip-for-internal-and-ingress-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Spring Boot Backend Service (ClusterIP, for internal and Ingress access)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-angular-frontend-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Angular Frontend Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-angular-frontend-service-clusterip-for-ingress-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Angular Frontend Service (ClusterIP, for Ingress access)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-configmap-for-application-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. ConfigMap for application configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-secret-for-sensitive-data-base64-encoded" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Secret for sensitive data (base64 encoded)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-ingress-for-external-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Ingress for external routing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-kubernetes-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. Kubernetes Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#16-comparison-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      16. Comparison Tables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="16. Comparison Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-compose-vs-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Compose vs Kubernetes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#replicaset-vs-deployment-vs-statefulset" class="md-nav__link">
+    <span class="md-ellipsis">
+      ReplicaSet vs Deployment vs StatefulSet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#17-cli-commands-grouped-by-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      17. CLI Commands Grouped by Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="17. CLI Commands Grouped by Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-cluster-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Cluster Information
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-management-crud-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Management (CRUD operations)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resource Management (CRUD operations)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get (List)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#describe-detailed-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Describe (Detailed Information)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging-and-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging and Troubleshooting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-and-updates_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling and Updates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Context and Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h2 id="1-what-is-kubernetes">1. What is Kubernetes?</h2>
+<ul>
+<li>Kubernetes, often abbreviated as K8s.</li>
+<li>It is an open-source platform designed to automate the deployment, scaling, and management of containerized applications. </li>
+<li>It groups containers that make up an application into logical units for easy management and discovery.</li>
+</ul>
+<h4 id="purpose-of-container-orchestration">Purpose of Container Orchestration</h4>
+<p>In modern software development, applications are increasingly built using containers (like Docker). While containers solve the <strong>works on my machine</strong> problem and provide isolation, managing many containers across multiple servers (a cluster) becomes complex. This is where container orchestration comes in:</p>
+<ul>
+<li>
+<p><strong>Deployment Automation:</strong> Automates the process of getting your application containers running on a cluster.</p>
+</li>
+<li>
+<p><strong>Scaling:</strong> Automatically adjusts the number of container instances based on demand, ensuring performance and availability.</p>
+</li>
+<li>
+<p><strong>Self-Healing:</strong> Automatically restarts failed containers, replaces unhealthy ones, and reschedules containers on healthy nodes.</p>
+</li>
+<li>
+<p><strong>Load Balancing:</strong> Distributes incoming traffic across multiple container instances to ensure even load.</p>
+</li>
+<li>
+<p><strong>Resource Management:</strong> Efficiently allocates compute resources (CPU, memory) to containers across the cluster.</p>
+</li>
+<li>
+<p><strong>Service Discovery:</strong> Allows containers to find and communicate with each other easily.</p>
+</li>
+<li>
+<p><strong>Configuration Management:</strong> Manages application configurations and sensitive data securely.</p>
+</li>
+</ul>
+<h3 id="comparison-docker-vs-kubernetes">Comparison: Docker vs Kubernetes</h3>
+<blockquote>
+<p>It's a common misconception that Docker and Kubernetes are competing technologies. In reality, they often complement each other.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Docker (Engine/CLI)</strong></th>
+<th><strong>Kubernetes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Role</strong></td>
+<td>Containerization platform (build, run, share containers)</td>
+<td>Container Orchestration (manage, scale, deploy containers)</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Single host (primarily)</td>
+<td>Cluster of hosts (distributed systems)</td>
+</tr>
+<tr>
+<td><strong>Focus</strong></td>
+<td>Packaging applications into portable units</td>
+<td>Managing the lifecycle of many containers at scale</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td><code>docker run</code> on a single machine</td>
+<td>Automated deployment across a cluster</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Manual scaling (e.g., <code>docker run</code> multiple times)</td>
+<td>Automatic scaling based on policies</td>
+</tr>
+<tr>
+<td><strong>Self-Healing</strong></td>
+<td>Limited (e.g., restart policy)</td>
+<td>Robust (restarts, reschedules, replaces failed containers)</td>
+</tr>
+<tr>
+<td><strong>Networking</strong></td>
+<td>Basic networking for containers on a single host</td>
+<td>Advanced networking for inter-container communication across cluster</td>
+</tr>
+<tr>
+<td><strong>Load Balancing</strong></td>
+<td>Manual or requires external tools</td>
+<td>Built-in load balancing and service discovery</td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Environment variables, bind mounts</td>
+<td>ConfigMaps, Secrets, Volumes</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Relatively simple for single-container apps</td>
+<td>Higher initial learning curve, powerful for complex apps</td>
+</tr>
+<tr>
+<td><strong>Typical Usage</strong></td>
+<td>Local development, running single services</td>
+<td>Production deployments of microservices, distributed apps</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="analogy">🧠 Analogy:</h4>
+<blockquote>
+<p>If <strong>Docker</strong> is the <strong>engine</strong> for your car (application), then <strong>Kubernetes</strong> is the <strong>traffic management system</strong> that ensures all cars on the road (applications) reach their destination efficiently and safely.</p>
+</blockquote>
+<h2 id="2-kubernetes-architecture">2. Kubernetes Architecture</h2>
+<p>Kubernetes operates on a master-worker architecture. A Kubernetes cluster consists of at least one Master Node and multiple Worker Nodes.</p>
+<p>Diagram:</p>
+<p><img alt="alt text" src="../k8sArchitecture.png" /></p>
+<h3 id="master-node-components">Master Node Components</h3>
+<p>The <strong>Master Node</strong> (also called <strong>Control Plane</strong>) manages the cluster and ensures that it remains in the desired state. It includes the following components:</p>
+<h4 id="kube-apiserver">kube-apiserver</h4>
+<ul>
+<li><strong>Purpose</strong>: The front-end for the Kubernetes control plane. All communication with the cluster (from <code>kubectl</code> or other components) goes through the API server.</li>
+<li><strong>Role</strong>: Exposes the Kubernetes API, handles REST operations, validates requests, and updates <code>etcd</code>.</li>
+<li><strong>Interaction</strong>: It's the only component that directly talks to <code>etcd</code>.</li>
+</ul>
+<h4 id="etcd">etcd</h4>
+<ul>
+<li><strong>Purpose</strong>: A consistent and highly available key-value store that holds all cluster data (cluster state, configuration, metadata).</li>
+<li><strong>Role</strong>: The single source of truth for the Kubernetes cluster.</li>
+<li><strong>Interaction</strong>: Only the <code>kube-apiserver</code> accesses <code>etcd</code>.</li>
+</ul>
+<h4 id="kube-scheduler">kube-scheduler</h4>
+<ul>
+<li><strong>Purpose</strong>: Watches for newly created Pods that do not have an assigned node and selects a node for them to run on.</li>
+<li><strong>Role</strong>: Considers resource requirements, hardware/software/policy constraints, affinity/anti-affinity rules, and data locality.</li>
+</ul>
+<h4 id="kube-controller-manager">kube-controller-manager</h4>
+<ul>
+<li><strong>Purpose</strong>: Runs controller processes. Controllers are control loops that watch the shared state of the cluster via the API server and make changes to drive the current state towards the desired state.</li>
+<li><strong>Role</strong>: Manages various controllers:</li>
+<li><strong>Node Controller</strong>: Detects and responds when nodes go down.</li>
+<li><strong>Replication Controller</strong>: Ensures the correct number of Pods are maintained for each ReplicaSet or ReplicationController.</li>
+<li><strong>Endpoints Controller</strong>: Populates the Endpoints object (connecting Services and Pods).</li>
+<li><strong>Service Account &amp; Token Controllers</strong>: Creates default service accounts and API access tokens for new namespaces.</li>
+</ul>
+<hr />
+<h3 id="worker-node-components">Worker Node Components</h3>
+<p><strong>Worker Nodes</strong> (also called <strong>Minions</strong> or just <strong>Nodes</strong>) run the actual containerized applications.</p>
+<h4 id="kubelet">Kubelet</h4>
+<ul>
+<li><strong>Purpose</strong>: An agent that runs on</li>
+</ul>
+<h1 id="3-kubernetes-core-concepts">3. Kubernetes Core Concepts</h1>
+<p>Understanding these fundamental building blocks is crucial for working with Kubernetes.</p>
+<hr />
+<h4 id="pod">Pod</h4>
+<ul>
+<li><strong>Definition</strong>: The smallest deployable unit in Kubernetes. A Pod represents a single instance of a running process in your cluster.</li>
+</ul>
+<h4 id="characteristics">Characteristics:</h4>
+<ul>
+<li><strong>Atomic Unit</strong>: Can contain one or more tightly coupled containers that share the same network namespace, IP address, and storage.</li>
+<li><strong>Ephemeral</strong>: Pods are designed to be short-lived. If a Pod dies, Kubernetes creates a new one.</li>
+<li><strong>Shared Resources</strong>: Containers share localhost, networking stack (IP, ports), and volumes.</li>
+</ul>
+<blockquote>
+<p><strong>Analogy</strong>: A Pod is like a small logical machine that hosts your app’s components.</p>
+</blockquote>
+<p><strong>When to use multiple containers in a Pod?</strong><br />
+Use for <strong>sidecar containers</strong> (e.g., logging agent, data syncer, proxy) that support the main container.</p>
+<hr />
+<h4 id="replicaset">ReplicaSet</h4>
+<ul>
+<li><strong>Definition</strong>: Ensures a specified number of Pod replicas are running at all times.</li>
+<li><strong>Purpose</strong>: Maintains availability and scaling. Replaces failed Pods, removes excess.</li>
+<li><strong>Usage</strong>: Typically managed through <strong>Deployments</strong>, not directly created.</li>
+</ul>
+<hr />
+<h4 id="deployment">Deployment</h4>
+<ul>
+<li><strong>Definition</strong>: A higher-level abstraction for managing ReplicaSets and Pods declaratively.</li>
+<li><strong>Purpose</strong>: Manages the desired state (e.g., number of replicas, Pod version).</li>
+</ul>
+<h4 id="key-features">Key Features:</h4>
+<ul>
+<li><strong>Rolling Updates</strong>: Update with zero downtime.</li>
+<li><strong>Rollbacks</strong>: Revert to previous versions if needed.</li>
+<li><strong>Scaling</strong>: Scale the number of replicas up or down.</li>
+</ul>
+<blockquote>
+<p><strong>Analogy</strong>: Deployment is like a project manager for your app, ensuring correct versioning and scaling.</p>
+</blockquote>
+<hr />
+<h4 id="service">Service</h4>
+<ul>
+<li><strong>Definition</strong>: An abstraction that exposes a set of Pods as a network service.</li>
+<li><strong>Purpose</strong>: Provides a stable IP/DNS name and acts as a load balancer.</li>
+</ul>
+<h4 id="types-of-services">Types of Services:</h4>
+<ul>
+<li><strong>ClusterIP (default)</strong>  </li>
+<li>Internal-only access.  </li>
+<li>
+<p>Use for backend/internal services.</p>
+</li>
+<li>
+<p><strong>NodePort</strong>  </p>
+</li>
+<li>Exposes service on each node’s static port.  </li>
+<li>Access via <code>NodeIP:NodePort</code>.  </li>
+<li>
+<p>Use for testing/dev environments.</p>
+</li>
+<li>
+<p><strong>LoadBalancer</strong>  </p>
+</li>
+<li>Externally accessible via a cloud load balancer (e.g., AWS ELB).  </li>
+<li>
+<p>Use for production-grade public apps.</p>
+</li>
+<li>
+<p><strong>ExternalName</strong>  </p>
+</li>
+<li>Maps service to an external DNS name (e.g., <code>my.db.example.com</code>).  </li>
+<li>No proxying — returns a CNAME record.</li>
+</ul>
+<blockquote>
+<p><strong>Analogy</strong>: A Service is like a stable phone number — callers reach your app even if Pods change.</p>
+</blockquote>
+<hr />
+<h4 id="namespace">Namespace</h4>
+<ul>
+<li><strong>Definition</strong>: Provides a scope for resource names. Useful for isolating resources between teams or environments.</li>
+<li><strong>Purpose</strong>: Logical partitioning of resources.</li>
+</ul>
+<h4 id="default-namespaces">Default Namespaces:</h4>
+<ul>
+<li><code>default</code>: For general workloads.</li>
+<li><code>kube-system</code>: Kubernetes system resources.</li>
+<li><code>kube-public</code>: Public resources.</li>
+<li><code>kube-node-lease</code>: Node heartbeat tracking.</li>
+</ul>
+<p><strong>Best Practice</strong>: Use separate Namespaces for dev, staging, production, and teams.</p>
+<hr />
+<h3 id="configmap-secret">ConfigMap &amp; Secret</h3>
+<h4 id="configmap">ConfigMap:</h4>
+<ul>
+<li><strong>Definition</strong>: Stores non-confidential config data as key-value pairs.</li>
+<li><strong>Purpose</strong>: Decouple configuration from code.</li>
+<li><strong>Usage</strong>: As environment variables, command args, or mounted files.</li>
+</ul>
+<h4 id="secret">Secret:</h4>
+<ul>
+<li><strong>Definition</strong>: Stores sensitive data like passwords, tokens, keys.</li>
+<li><strong>Purpose</strong>: Securely handle confidential information.</li>
+<li><strong>Security</strong>: Base64 encoded by default. Enable encryption for production.</li>
+<li><strong>Usage</strong>: Similar to ConfigMaps, but for secret data.</li>
+</ul>
+<blockquote>
+<p><strong>Best Practice</strong>: Never store secrets in ConfigMaps.</p>
+</blockquote>
+<hr />
+<h3 id="volume-persistentvolumeclaim-pvc">Volume &amp; PersistentVolumeClaim (PVC)</h3>
+<h4 id="volume">Volume:</h4>
+<ul>
+<li><strong>Definition</strong>: A directory accessible to containers in a Pod.</li>
+<li><strong>Purpose</strong>: Shares data between containers or persists data beyond container lifespan.</li>
+</ul>
+<h4 id="basic-volume-types">Basic Volume Types:</h4>
+<ul>
+<li><code>emptyDir</code>: Temporary storage, tied to Pod life.</li>
+<li><code>hostPath</code>: Mounts node’s file path (not recommended in production).</li>
+</ul>
+<h4 id="persistentvolume-pv">PersistentVolume (PV):</h4>
+<ul>
+<li><strong>Definition</strong>: Pre-provisioned storage in the cluster.</li>
+<li><strong>Purpose</strong>: Durable, cluster-level storage.</li>
+</ul>
+<h4 id="persistentvolumeclaim-pvc">PersistentVolumeClaim (PVC):</h4>
+<ul>
+<li><strong>Definition</strong>: User request for PV.</li>
+<li><strong>Purpose</strong>: Abstracts storage request from underlying storage.</li>
+</ul>
+<blockquote>
+<p><strong>Analogy</strong>: PV is like a raw hard drive, PVC is the user’s storage request, and Volume is the Pod’s access point.</p>
+</blockquote>
+<hr />
+<h3 id="other-workload-resources">Other Workload Resources</h3>
+<h4 id="daemonset">DaemonSet</h4>
+<ul>
+<li><strong>Purpose</strong>: Ensures a Pod runs on all (or some) nodes.</li>
+<li><strong>Use Case</strong>: Cluster-wide agents (e.g., log collectors, metrics exporters).</li>
+</ul>
+<h4 id="statefulset">StatefulSet</h4>
+<ul>
+<li><strong>Purpose</strong>: Manages stateful applications.</li>
+<li><strong>Use Case</strong>: Databases (e.g., MySQL, Kafka) needing stable identities and storage.</li>
+</ul>
+<h4 id="job">Job</h4>
+<ul>
+<li><strong>Purpose</strong>: Creates Pods that run to completion.</li>
+<li><strong>Use Case</strong>: One-off or batch tasks (e.g., report generation).</li>
+</ul>
+<h4 id="cronjob">CronJob</h4>
+<ul>
+<li><strong>Purpose</strong>: Runs Jobs on a schedule (like Unix cron).</li>
+<li><strong>Use Case</strong>: Periodic backups, scheduled reports.</li>
+</ul>
+<h2 id="4-kubernetes-objects-and-yaml-syntax">4. Kubernetes Objects and YAML Syntax</h2>
+<p>Kubernetes resources are defined using <strong>YAML</strong> (<code>YAML Ain't Markup Language</code>) files. These files describe the <strong>desired state</strong> of objects in your cluster.</p>
+<hr />
+<h3 id="anatomy-of-a-kubernetes-manifest">Anatomy of a Kubernetes Manifest</h3>
+<p>Every Kubernetes YAML manifest generally contains <strong>four top-level fields</strong>:</p>
+<h3 id="1-apiversion">1. <code>apiVersion</code></h3>
+<ul>
+<li><strong>What it is</strong>: Specifies which version of the Kubernetes API you're using.</li>
+<li><strong>Examples</strong>:</li>
+<li><code>v1</code> (for core resources like Pod, Service)</li>
+<li><code>apps/v1</code> (for Deployments, StatefulSets)</li>
+<li><code>batch/v1</code> (for Jobs, CronJobs)</li>
+</ul>
+<h3 id="2-kind">2. <code>kind</code></h3>
+<ul>
+<li><strong>What it is</strong>: The type of Kubernetes object being created.</li>
+<li><strong>Examples</strong>: <code>Pod</code>, <code>Deployment</code>, <code>Service</code>, <code>ConfigMap</code>, <code>PersistentVolumeClaim</code></li>
+</ul>
+<h3 id="3-metadata">3. <code>metadata</code></h3>
+<ul>
+<li><strong>What it contains</strong>:</li>
+<li><code>name</code>: Unique name of the object within a Namespace.</li>
+<li><code>namespace</code>: (Optional) Scope of the resource. Defaults to <code>default</code> if not specified.</li>
+<li><code>labels</code>: Key-value pairs used for organization and selection.</li>
+<li><code>annotations</code>: Additional metadata (non-identifying, like build version or tool info).</li>
+</ul>
+<h3 id="4-spec">4. <code>spec</code></h3>
+<ul>
+<li><strong>What it is</strong>: Defines the <strong>desired state</strong> of the object.</li>
+<li><strong>Note</strong>: The structure under <code>spec</code> depends on the object's <code>kind</code>.</li>
+</ul>
+<hr />
+<h3 id="example-basic-yaml-structure">Example Basic YAML Structure</h3>
+<pre><code class="language-yaml">apiVersion: &lt;api-version&gt;
+kind: &lt;kind-of-object&gt;
+metadata:
+  name: &lt;object-name&gt;
+  namespace: &lt;optional-namespace&gt;
+  labels:
+    app: &lt;application-name&gt;
+    tier: &lt;tier-name&gt;
+spec:
+  # Desired state of the object (varies by kind)
+</code></pre>
+<h3 id="example-yaml-files">Example YAML Files</h3>
+<p>These YAML files define various Kubernetes resources like Pods, Deployments, Services, ConfigMaps, and PVCs.</p>
+<hr />
+<h4 id="pod-example">🧱 Pod Example</h4>
+<pre><code class="language-yaml"># my-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-nginx-pod
+  labels:
+    app: web
+    tier: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      ports:
+        - containerPort: 80
+</code></pre>
+<p>Deployment Example</p>
+<pre><code class="language-yaml"># my-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-web-deployment
+  labels:
+    app: web
+spec:
+  replicas: 3 # Desired number of Pod replicas
+  selector:
+    matchLabels:
+      app: web # Selects Pods with label app: web
+  template: # Pod template
+    metadata:
+      labels:
+        app: web
+        version: v1.0.0
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx:1.21.6
+        ports:
+        - containerPort: 80
+        resources: # Optional: Define resource requests and limits
+          requests:
+            memory: &quot;64Mi&quot;
+            cpu: &quot;250m&quot; # 0.25 CPU core
+          limits:
+            memory: &quot;128Mi&quot;
+            cpu: &quot;500m&quot; # 0.5 CPU core
+</code></pre>
+<p>Service Example (NodePort)</p>
+<pre><code class="language-yaml"># my-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-web-service
+  labels:
+    app: web
+spec:
+  selector:
+    app: web # Selects Pods with label app: web
+  type: NodePort # Exposes service on a static port on each node
+  ports:
+    - protocol: TCP
+      port: 80 # Service port (internal)
+      targetPort: 80 # Container port
+      nodePort: 30007 # Optional: Specific node port (range 30000-32767)
+</code></pre>
+<p>ConfigMap Example</p>
+<pre><code class="language-yaml"># my-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  # Key-value pairs for configuration
+  APP_COLOR: blue
+  APP_ENV: development
+  database.url: jdbc:mysql://localhost:3306/mydb
+
+</code></pre>
+<p>PersistentVolumeClaim (PVC) Example</p>
+<pre><code class="language-yaml"># my-pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce # Can be mounted as read-write by a single node
+  resources:
+    requests:
+      storage: 5Gi # Request 5 Gigabytes of storage
+  # storageClassName: standard # Optional: If you have a specific StorageClass
+</code></pre>
+<h2 id="5-kubernetes-cli-kubectl">5. Kubernetes CLI (kubectl)</h2>
+<ul>
+<li><code>kubectl</code> is the <strong>command-line tool</strong> for interacting with Kubernetes clusters.</li>
+</ul>
+<hr />
+<h4 id="cluster-interaction">🔌 Cluster Interaction</h4>
+<ul>
+<li><code>kubectl</code> communicates with the <strong>kube-apiserver</strong> on the <strong>Control Plane</strong> (Master Node).</li>
+</ul>
+<hr />
+<h4 id="common-kubectl-commands-grouped-by-function">🛠️ Common <code>kubectl</code> Commands (Grouped by Function)</h4>
+<h4 id="creation-application">✅ Creation &amp; Application</h4>
+<p><strong>Apply a configuration (create or update):</strong></p>
+<pre><code class="language-bash">kubectl apply -f &lt;filename.yaml&gt;
+kubectl apply -f &lt;directory_containing_yamls&gt;/
+# Example:
+kubectl apply -f my-deployment.yaml
+</code></pre>
+<p><strong>Best Practice:</strong>
+ Always use kubectl apply for managing resources, as it's idempotent (can be run multiple times safely).</p>
+<hr />
+<p>Create a resource (if it doesn't exist):</p>
+<pre><code class="language-Bash">
+kubectl create -f &lt;filename.yaml&gt; # Creates only if resource doesn't exist
+kubectl create deployment my-app --image=nginx # Quick imperitive command
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong><br />
+<code>kubectl create</code> is generally used for <strong>initial setup</strong> or <strong>one-off resources</strong>.<br />
+<code>kubectl apply</code> is preferred for <strong>declarative, version-controlled resource management</strong>.</p>
+</blockquote>
+<hr />
+<h4 id="getting-information">🔍 Getting Information</h4>
+<h4 id="list-resources">List resources:</h4>
+<pre><code class="language-bash">
+kubectl get pods
+kubectl get deployments
+kubectl get services
+kubectl get all # Get common resources (pods, services, deployments, replicasets)
+kubectl get pods -o wide # Show more details (Node IP, Pod IP)
+kubectl get pods -n &lt;namespace&gt; # Get pods in a specific namespace
+kubectl get pods --show-labels # Show labels
+</code></pre>
+<h4 id="describe-a-resource-detailed-information">Describe a resource (detailed information):</h4>
+<pre><code class="language-bash">
+kubectl describe pod &lt;pod-name&gt;
+kubectl describe deployment &lt;deployment-name&gt;
+kubectl describe service &lt;service-name&gt;
+# Example:
+kubectl describe pod my-nginx-pod-abc12
+</code></pre>
+<blockquote>
+<p><strong>Purpose:</strong> Shows events, status, resource limits, volumes, etc. Indispensable for     troubleshooting.</p>
+</blockquote>
+<hr />
+<h4 id="view-logs-from-a-container-in-a-pod">View logs from a container in a Pod:</h4>
+<pre><code class="language-Bash">
+kubectl logs &lt;pod-name&gt;
+kubectl logs -f &lt;pod-name&gt; # Follow logs in real-time
+kubectl logs &lt;pod-name&gt; -c &lt;container-name&gt; # For multi-container pods
+</code></pre>
+<h4 id="execute-a-command-in-a-running-container">Execute a command in a running container:</h4>
+<pre><code class="language-Bash">kubectl exec -it &lt;pod-name&gt; -- /bin/bash # Get a shell into the container
+kubectl exec &lt;pod-name&gt; -- ls /app # Run a command
+# Example:
+kubectl exec -it my-nginx-pod-abc12 -- bash
+</code></pre>
+<h4 id="copy-files-tofrom-a-container">Copy files to/from a container:</h4>
+<pre><code class="language-Bash">kubectl cp &lt;source-path&gt; &lt;pod-name&gt;:&lt;destination-path&gt;
+kubectl cp &lt;pod-name&gt;:&lt;source-path&gt; &lt;destination-path&gt;
+# Example:
+kubectl cp my-local-file.txt my-nginx-pod-abc12:/usr/share/nginx/html/
+</code></pre>
+<h4 id="view-resource-usage-requires-metrics-server">View resource usage (requires Metrics Server):</h4>
+<pre><code class="language-Bash">kubectl top nodes
+kubectl top pods
+</code></pre>
+<h4 id="check-cluster-events">Check cluster events:</h4>
+<pre><code class="language-Bash">kubectl get events
+</code></pre>
+<h5 id="deletion">Deletion:</h5>
+<blockquote>
+<p>Delete a resource:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl delete -f &lt;filename.yaml&gt;
+kubectl delete pod &lt;pod-name&gt;
+kubectl delete deployment &lt;deployment-name&gt;
+kubectl delete service &lt;service-name&gt;
+kubectl delete namespace &lt;namespace-name&gt; # Deletes everything in that namespace
+# Example:
+kubectl delete -f my-deployment.yaml
+kubectl delete deployment my-web-deployment
+</code></pre>
+<h3 id="scaling-and-updates">Scaling and Updates:</h3>
+<blockquote>
+<p>Scale a Deployment:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl scale deployment &lt;deployment-name&gt; --replicas=&lt;number&gt;
+# Example:
+kubectl scale deployment my-web-deployment --replicas=5
+</code></pre>
+<blockquote>
+<p>Rollout status/history/undo:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl rollout status deployment/&lt;deployment-name&gt;
+kubectl rollout history deployment/&lt;deployment-name&gt;
+kubectl rollout undo deployment/&lt;deployment-name&gt; # Rollback to previous version
+</code></pre>
+<h4 id="namespace-management">Namespace Management:</h4>
+<blockquote>
+<p>List namespaces:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl get namespaces
+</code></pre>
+<blockquote>
+<p>Create a namespace:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl create namespace &lt;namespace-name&gt;
+# Example: kubectl create namespace dev-env
+</code></pre>
+<blockquote>
+<p>Set default namespace for current context:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl config set-context --current --namespace=&lt;namespace-name&gt;
+# Example: kubectl config set-context --current --namespace=dev-env
+</code></pre>
+<p>This makes your infrastructure version-controllable and repeatable.</p>
+<h4 id="best-practices-for-kubectl">Best Practices for <code>kubectl</code></h4>
+<blockquote>
+<p><strong>Declarative vs. Imperative</strong>: While imperative commands (<code>kubectl run</code>, <code>kubectl create deployment</code>) are useful 
+  for quick tests, <strong>prefer declarative management</strong> using YAML files with:  </p>
+</blockquote>
+<p><code>kubectl apply -f &lt;file.yaml&gt;</code></p>
+<hr />
+<ul>
+<li>This makes your infrastructure version-controllable and repeatable.</li>
+</ul>
+<h4 id="namespaces">📛 Namespaces</h4>
+<ul>
+<li>Always specify the namespace using the <code>-n &lt;namespace&gt;</code> flag if you're not operating in the default namespace.</li>
+</ul>
+<p><code>bash
+  kubectl get pods -n dev</code></p>
+<h4 id="labels">🏷️ Labels</h4>
+<p>Use <strong>labels</strong> extensively for organizing and selecting Kubernetes resources.</p>
+<ul>
+<li>Labels are key-value pairs used to categorize resources.</li>
+<li>They enable filtering, selection, and grouping for operations like deployments, services, and monitoring.</li>
+</ul>
+<p><strong>Example (YAML):</strong></p>
+<pre><code class="language-yaml">metadata:
+  labels:
+    app: my-app
+    environment: dev
+</code></pre>
+<h3 id="describe-for-troubleshooting">🛠️ Describe for Troubleshooting</h3>
+<p>When something isn't working, <code>kubectl describe</code> should be your <strong>first stop</strong>.</p>
+<ul>
+<li>It provides detailed insights into the resource's current state.</li>
+<li>Useful information includes:</li>
+<li>Events and warnings</li>
+<li>Pod scheduling and status</li>
+<li>Liveness/readiness probe results</li>
+<li>Volume mounts and conditions</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="language-bash">kubectl describe pod my-app-pod
+</code></pre>
+<h3 id="logs-for-application-insights">📄 Logs for Application Insights</h3>
+<p>Use <code>kubectl logs</code> to <strong>check logs and understand application behavior</strong>.</p>
+<p><strong>Examples:</strong></p>
+<pre><code class="language-bash">kubectl logs &lt;pod-name&gt;
+kubectl logs -f &lt;pod-name&gt;              # Follow logs in real time
+kubectl logs &lt;pod-name&gt; -c &lt;container&gt;  # For multi-container Pods
+</code></pre>
+<h2 id="6-kubernetes-networking">6. Kubernetes Networking</h2>
+<p>Kubernetes networking enables communication between Pods, Services, and the outside world. It's a complex topic, but here's a simplified overview.</p>
+<h4 id="key-principles">Key Principles:</h4>
+<ul>
+<li>Every Pod gets its own unique IP address.</li>
+<li>Pods on a node can communicate with all Pods on all other nodes without NAT.</li>
+<li>Agents on a node (e.g., kubelet) can communicate with all Pods on that node.</li>
+</ul>
+<h4 id="pod-to-pod-communication">Pod-to-Pod Communication</h4>
+<ul>
+<li><strong>When Pods are on the same Node</strong>: They communicate directly using their Pod IP addresses.</li>
+<li><strong>When Pods are on different Nodes</strong>: Traffic is routed between nodes by the underlying Container Network Interface (CNI) plugin (e.g., Calico, Flannel, Weave Net). Each Pod has a unique IP address within the cluster, and these IPs are routable across the cluster.</li>
+</ul>
+<h4 id="service-to-service-communication">Service-to-Service Communication</h4>
+<ul>
+<li>Services provide a stable IP address and DNS name for a set of Pods.</li>
+<li>Pods communicate with each other via Services using the Service's stable IP address or DNS name.</li>
+<li><code>kube-proxy</code> on each node ensures that traffic sent to a Service's IP is correctly load-balanced to the healthy Pods backing that Service.</li>
+</ul>
+<p><strong>Example</strong>: A frontend Pod wants to talk to a backend Pod. Instead of knowing the backend Pod's ephemeral IP, it sends traffic to the backend-service name or IP, and Kubernetes handles the routing and load balancing.</p>
+<h4 id="dns-resolution">DNS Resolution</h4>
+<ul>
+<li>Kubernetes provides internal DNS resolution.</li>
+<li>Services are automatically assigned DNS names.</li>
+<li><strong>Within the same Namespace</strong>: <code>service-name</code></li>
+<li><strong>Across Namespaces</strong>: <code>service-name.namespace-name.svc.cluster.local</code></li>
+<li>This allows Pods to discover and communicate with Services by name rather than by IP address.</li>
+</ul>
+<h4 id="network-policies-basic-intro">Network Policies (Basic Intro)</h4>
+<ul>
+<li><strong>Definition</strong>: Kubernetes Network Policies specify how groups of Pods are allowed to communicate with each other and with external network endpoints.</li>
+<li><strong>Purpose</strong>: Enhance security by restricting network access between Pods. By default, Pods are non-isolated and can accept traffic from any source.</li>
+<li><strong>Requirement</strong>: Network Policies require a CNI plugin that supports them (e.g., Calico, Cilium).</li>
+</ul>
+<p><strong>Analogy</strong>: Network Policies are like firewall rules for your Pods.</p>
+<hr />
+<h2 id="7-kubernetes-storage">7. Kubernetes Storage</h2>
+<p>Kubernetes provides robust mechanisms for managing storage, allowing applications to persist data beyond the life of a single container or Pod.</p>
+<h4 id="types-of-volumes">Types of Volumes</h4>
+<p>Kubernetes Volumes are directories accessible to the containers in a Pod. The data in a Volume persists as long as the Pod exists. Some common types:</p>
+<h5 id="emptydir"><code>emptyDir</code>:</h5>
+<ul>
+<li><strong>Purpose</strong>: A simple, empty volume created when a Pod is first assigned to a node.</li>
+<li><strong>Persistence</strong>: Its contents are deleted when the Pod is removed from the node.</li>
+<li><strong>Use Case</strong>: Temporary scratch space, sharing files between containers in the same Pod.</li>
+</ul>
+<h5 id="hostpath"><code>hostPath</code>:</h5>
+<ul>
+<li><strong>Purpose</strong>: Mounts a file or directory from the host node's filesystem into a Pod.</li>
+<li><strong>Persistence</strong>: Data persists beyond Pod lifecycle, but tied to a specific node.</li>
+<li><strong>Use Case</strong>: Primarily for system-level Pods (e.g., monitoring agents), or if you need access to host files.</li>
+</ul>
+<p><strong>Caution</strong>: Generally discouraged for production applications due to lack of portability and potential security risks.</p>
+<h5 id="persistentvolume-pv-and-persistentvolumeclaim-pvc-covered-in-section-3"><code>persistentVolume (PV)</code> and <code>persistentVolumeClaim (PVC)</code>: (Covered in Section 3)</h5>
+<ul>
+<li><strong>PV</strong>: A piece of storage in the cluster, provisioned by an admin (or dynamically).</li>
+<li><strong>PVC</strong>: A request for storage by a user, that binds to an available PV.</li>
+<li><strong>Purpose</strong>: Provides a way to consume durable storage abstractly.</li>
+<li><strong>Use Case</strong>: Databases, persistent application data.</li>
+</ul>
+<h4 id="storageclasses-basic-overview">StorageClasses (Basic Overview)</h4>
+<ul>
+<li><strong>Definition</strong>: An API object that describes the "classes" of storage offered in a cluster.</li>
+<li><strong>Purpose</strong>: Allows administrators to define different types of storage (e.g., "fast-SSD", "cheap-HDD", "network-storage") and users to request them without knowing the underlying storage details.</li>
+<li><strong>Dynamic Provisioning</strong>: When a PVC requests a <code>storageClassName</code>, the StorageClass can dynamically provision a matching PV for that PVC.</li>
+</ul>
+<p><strong>Analogy</strong>: StorageClass is like a catalog of storage options, and PVC is like ordering from that catalog.</p>
+<hr />
+<h2 id="8-kubernetes-services-comparison-table">8. Kubernetes Services Comparison Table</h2>
+<p>Here's a comparison of the main Service types in Kubernetes, including Ingress for external access.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>ClusterIP</th>
+<th>NodePort</th>
+<th>LoadBalancer</th>
+<th>Ingress</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exposure</strong></td>
+<td>Internal to cluster</td>
+<td>On each Node's IP at a static port</td>
+<td>External IP provisioned by cloud provider</td>
+<td>HTTP/HTTPS routing based on host/path</td>
+</tr>
+<tr>
+<td><strong>Accessibility</strong></td>
+<td>Only from within the cluster</td>
+<td>From outside the cluster (via NodeIP:NodePort)</td>
+<td>From anywhere on the internet</td>
+<td>From anywhere on the internet (via DNS of Ingress controller)</td>
+</tr>
+<tr>
+<td><strong>Load Balancing</strong></td>
+<td>Internal (<code>kube-proxy</code>)</td>
+<td>Internal (<code>kube-proxy</code>)</td>
+<td>External (cloud provider's LB)</td>
+<td>Application-layer (L7) (Ingress controller)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free</td>
+<td>Free</td>
+<td>Varies by cloud provider (often charged)</td>
+<td>Requires Ingress Controller (potentially charged for underlying LB)</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Low</td>
+<td>Low</td>
+<td>Moderate (requires cloud provider setup)</td>
+<td>Moderate to High (requires Ingress Controller setup)</td>
+</tr>
+<tr>
+<td><strong>Use Cases</strong></td>
+<td>Internal microservices, backend services</td>
+<td>Demo/testing, non-production apps, exposing a few services</td>
+<td>Production apps in cloud, public APIs</td>
+<td>Production web apps (HTTP/HTTPS), multiple services on single IP, SSL termination</td>
+</tr>
+<tr>
+<td><strong>DNS</strong></td>
+<td>Internal DNS name</td>
+<td>Internal DNS name + NodeIP/NodePort</td>
+<td>External IP + Internal DNS name</td>
+<td>External DNS name (for Ingress Host)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-kubernetes-ingress">9. Kubernetes Ingress</h2>
+<p>While Services expose applications, Ingress is designed for managing external access to services in a cluster, typically HTTP and HTTPS.</p>
+<h4 id="ingress-controller-and-ingress-resource">Ingress Controller and Ingress Resource</h4>
+<h5 id="ingress-controller">Ingress Controller:</h5>
+<ul>
+<li><strong>Definition</strong>: An application that runs in your cluster and watches the Kubernetes API for Ingress resources.</li>
+<li><strong>Purpose</strong>: Fulfills the Ingress rules by acting as a reverse proxy/load balancer. Common Ingress Controllers include Nginx Ingress Controller, Traefik, Istio, GKE Ingress, AWS ALB Ingress Controller.</li>
+<li><strong>Deployment</strong>: The Ingress Controller itself is typically deployed as a Deployment and exposed via a NodePort or LoadBalancer Service.</li>
+</ul>
+<h5 id="ingress-resource">Ingress Resource:</h5>
+<ul>
+<li><strong>Definition</strong>: A Kubernetes API object that defines rules for routing external HTTP/HTTPS traffic to Services within the cluster.</li>
+<li><strong>Purpose</strong>: Provides flexible routing based on hostname, path, and TLS termination.</li>
+</ul>
+<p><strong>Analogy</strong>: The Ingress Controller is the actual traffic cop, and the Ingress Resource is the rulebook that tells the traffic cop how to direct traffic.</p>
+<p>Ingress Architecture:
+<img alt="alt text" src="../ingress.png" /></p>
+<h4 id="basic-ingress-yaml-example">Basic Ingress YAML Example</h4>
+<p>This example routes traffic for <code>myapp.example.com/api</code> to <code>api-service</code> and <code>myapp.example.com/</code> to <code>frontend-service</code>.</p>
+<pre><code class="language-yaml">#### my-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    # Example annotation for Nginx Ingress Controller:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: myapp.example.com
+    http:
+      paths:
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service # Name of your API Service
+            port:
+              number: 8080
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service # Name of your Frontend Service
+            port:
+              number: 80
+  # Optional: TLS/SSL termination
+  # tls:
+  #   - hosts:
+  #       - myapp.example.com
+  #     secretName: my-app-tls-secret # Secret containing TLS certificate and key
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> You must have an Ingress Controller running in your cluster for Ingress resources to work.</p>
+</blockquote>
+<h2 id="10-helm-basics">10. Helm Basics</h2>
+<p><strong>Helm</strong> is a package manager for Kubernetes. It simplifies the deployment and management of applications on Kubernetes clusters.</p>
+<h3 id="what-is-helm">What is Helm?</h3>
+<ul>
+<li><strong>Definition</strong>: The "apt/yum/brew" for Kubernetes.</li>
+<li><strong>Purpose</strong>: Helps you define, install, and upgrade even the most complex Kubernetes applications.</li>
+</ul>
+<h3 id="key-concepts">Key Concepts:</h3>
+<ul>
+<li><strong>Charts</strong>: Pre-configured Kubernetes resource packages.</li>
+<li><strong>Repositories</strong>: Places where charts are stored and shared.</li>
+<li><strong>Releases</strong>: An instance of a chart running in a Kubernetes cluster.</li>
+</ul>
+<hr />
+<h3 id="helm-charts-and-their-structure">Helm Charts and their Structure</h3>
+<p>A <strong>Helm Chart</strong> is a collection of files that describe a related set of Kubernetes resources. Think of it as a template for a Kubernetes application.</p>
+<p><strong>Typical Chart Structure:</strong></p>
+<h4 id="helm-chart-structure-my-app-chart">Helm Chart Structure: <code>my-app-chart/</code></h4>
+<pre><code class="language-text">my-app-chart/
+├── Chart.yaml          # A YAML file containing information about the chart (name, version, etc.)
+├── values.yaml         # Default configuration values for the chart
+├── templates/          # Directory containing Kubernetes manifest templates
+│   ├── deployment.yaml # Template for a Deployment object
+│   ├── service.yaml    # Template for a Service object
+│   ├── _helpers.tpl    # Optional: Contains reusable template snippets
+│   └── NOTES.txt       # Optional: Instructions for the user after installation
+├── charts/             # Optional: Contains dependent charts (subcharts)
+└── README.md           # Optional: A brief description of the chart
+</code></pre>
+<p>Installing and Using Helm Commands
+Install Helm CLI:</p>
+<p>macOS (Homebrew): brew install helm</p>
+<p>Linux: Download from helm.sh or use package manager.</p>
+<p>Add a Chart Repository (e.g., Bitnami stable charts):</p>
+<pre><code class="language-Bash">
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update # Update information about charts from all repositories
+</code></pre>
+<blockquote>
+<p>Search for Charts:</p>
+</blockquote>
+<pre><code class="language-Bash">helm search repo nginx
+</code></pre>
+<blockquote>
+<p>Install a Chart:</p>
+</blockquote>
+<pre><code class="language-Bash">
+helm install &lt;release-name&gt; &lt;chart-name&gt; --namespace &lt;namespace&gt; --values &lt;your-values.yaml&gt;
+# Example: Install Nginx Ingress Controller
+helm install my-nginx-ingress bitnami/nginx-ingress-controller --namespace ingress-nginx
+# Example: Install WordPress
+helm install my-wordpress bitnami/wordpress --set mysql.rootPassword=mysecretpassword --namespace blog
+--set: Override specific values from values.yaml directly on the command line.
+
+--values: Provide an entire custom values.yaml file.
+</code></pre>
+<blockquote>
+<p>List Releases:</p>
+</blockquote>
+<pre><code class="language-Bash">
+helm list
+helm list -n &lt;namespace&gt;
+</code></pre>
+<blockquote>
+<p>Upgrade a Release:</p>
+</blockquote>
+<pre><code class="language-Bash">
+helm upgrade &lt;release-name&gt; &lt;chart-name&gt; --namespace &lt;namespace&gt; --values &lt;your-new-values.yaml&gt;
+# Example:
+helm upgrade my-wordpress bitnami/wordpress -f my-new-wordpress-values.yaml
+</code></pre>
+<blockquote>
+<p>Uninstall a Release:</p>
+</blockquote>
+<pre><code class="language-Bash">
+helm uninstall &lt;release-name&gt; --namespace &lt;namespace&gt;
+# Example:
+helm uninstall my-wordpress -n blog
+</code></pre>
+<blockquote>
+<p>Get Release Status:</p>
+</blockquote>
+<pre><code class="language-Bash">helm status &lt;release-name&gt; -n &lt;namespace&gt;
+</code></pre>
+<blockquote>
+<p>Lint a Chart (check for best practices and syntax errors):</p>
+</blockquote>
+<pre><code class="language-Bash">helm lint ./my-app-chart
+</code></pre>
+<p>Package a Chart:</p>
+<pre><code class="language-Bash">helm package ./my-app-chart
+</code></pre>
+<h2 id="11-kubernetes-security-basics">11. Kubernetes Security Basics</h2>
+<p>Security is paramount in Kubernetes. Here are fundamental concepts.</p>
+<p>Role-Based Access Control (RBAC)<br />
+Purpose: Authorizes users and applications to interact with the Kubernetes API.</p>
+<p>Concepts:</p>
+<ul>
+<li>
+<p>Role: Defines a set of permissions within a specific Namespace (e.g., "can read Pods" or "can manage Deployments").</p>
+</li>
+<li>
+<p>ClusterRole: Similar to a Role, but applies across the entire cluster (non-namespaced resources like Nodes or PersistentVolumes, or namespaced resources across all Namespaces).</p>
+</li>
+<li>
+<p>RoleBinding: Grants the permissions defined in a Role to a user, group, or ServiceAccount within a specific Namespace.</p>
+</li>
+<li>
+<p>ClusterRoleBinding: Grants the permissions defined in a ClusterRole to a user, group, or ServiceAccount across the entire cluster.</p>
+</li>
+</ul>
+<p>Analogy: RBAC is like defining roles in an organization (e.g., "Manager," "Developer") and then assigning those roles to specific people or teams.</p>
+<p>ServiceAccount<br />
+Definition: Provides an identity for processes that run in a Pod.</p>
+<p>Purpose: Allows Pods to authenticate to the Kubernetes API server when they need to perform actions (e.g., a controller that watches for new resources).</p>
+<p>Default: Every Pod automatically gets a default ServiceAccount in its Namespace, which usually has limited permissions.</p>
+<p>Best Practice: Create specific ServiceAccounts with the minimal necessary permissions for your applications.</p>
+<p>Network Policies<br />
+Purpose: (As discussed in Section 6) Control Pod-to-Pod communication using firewall rules. By default, Pods are open. Network Policies allow you to isolate them.</p>
+<p>Best Practice: Implement Network Policies to restrict traffic flows to only what is necessary, following the principle of least privilege.</p>
+<p>Secrets and ConfigMaps (Best Practices)<br />
+Secrets: (As discussed in Section 3) For sensitive data.</p>
+<p>Best Practice: Always use Secrets for credentials. Do not store sensitive data in ConfigMaps or directly in YAML files in version control.</p>
+<p>For production, consider external Secret management solutions (e.g., HashiCorp Vault, cloud provider KMS integrations) to avoid storing plaintext secrets in etcd or in your Kubernetes manifests.</p>
+<p>ConfigMaps: For non-confidential configuration.</p>
+<p>Best Practice: Use ConfigMaps to decouple configuration from your application images.</p>
+<h2 id="12-monitoring-and-logging">12. Monitoring and Logging</h2>
+<p>Effective monitoring and logging are crucial for understanding the health and performance of your Kubernetes applications and cluster.</p>
+<p>Basic Health Checks<br />
+- <strong>Liveness Probes</strong>: (See Section 14) Determine if a container is running and healthy. If a Liveness Probe fails, Kubernetes restarts the container.</p>
+<ul>
+<li><strong>Readiness Probes</strong>: (See Section 14) Determine if a container is ready to serve traffic. If a Readiness Probe fails, the Pod is removed from Service load balancing until it becomes ready.</li>
+</ul>
+<p>kubectl logs and kubectl top<br />
+- <strong>kubectl logs</strong>: (As discussed in Section 5) Retrieve standard output and standard error from containers. Essential for debugging application issues.</p>
+<ul>
+<li><strong>kubectl top</strong>: (As discussed in Section 5) Provides basic CPU and memory usage of nodes and pods. Requires the Kubernetes Metrics Server to be installed in the cluster.</li>
+</ul>
+<p>Prometheus and Grafana Overview<br />
+These are de-facto standards for monitoring in Kubernetes environments.</p>
+<p><strong>Prometheus</strong>:</p>
+<ul>
+<li>
+<p><strong>Purpose</strong>: A powerful open-source monitoring and alerting toolkit designed for reliability and scalability.</p>
+</li>
+<li>
+<p><strong>How it works</strong>: Scrapes metrics from configured targets (Kubernetes components, application endpoints) at regular intervals, stores them, and allows for querying and alerting.</p>
+</li>
+</ul>
+<p><strong>Grafana</strong>:</p>
+<ul>
+<li>
+<p><strong>Purpose</strong>: An open-source analytics and interactive visualization web application.</p>
+</li>
+<li>
+<p><strong>How it works</strong>: Used to create dashboards that visualize data collected by Prometheus (or other data sources). Provides powerful querying and visualization capabilities.</p>
+</li>
+</ul>
+<p>Typical Setup:</p>
+<ul>
+<li>
+<p>Prometheus Server (runs in Kubernetes) scrapes metrics.</p>
+</li>
+<li>
+<p>Grafana (runs in Kubernetes) connects to Prometheus as a data source and displays dashboards.</p>
+</li>
+<li>
+<p>Node Exporter (DaemonSet) on each node exposes node-level metrics for Prometheus.</p>
+</li>
+<li>
+<p>kube-state-metrics (Deployment) exposes Kubernetes object metrics (e.g., Pod status, Deployment replicas).</p>
+</li>
+</ul>
+<h2 id="13-deploying-a-full-stack-app-spring-boot-angular-mysql">13. Deploying a Full-Stack App (Spring Boot + Angular + MySQL)</h2>
+<h4 id="full-stack-application-architecture">Full-Stack Application Architecture</h4>
+<h4 id="application-components">Application Components</h4>
+<ul>
+<li><strong>Frontend</strong>: Angular application served by Nginx</li>
+<li><strong>Backend</strong>: Spring Boot REST API</li>
+<li><strong>Database</strong>: MySQL</li>
+</ul>
+<h4 id="kubernetes-application-architecture">Kubernetes Application Architecture</h4>
+<pre><code class="language-plaintext">        User
+         |
+         V
++---------------------+
+|  Internet / Browser |
++---------------------+
+         | (HTTP/HTTPS)
+         V
++---------------------+
+| Ingress Controller  |
++---------------------+
+         |
+         |--&gt; Host: `myapp.com/api` → Spring Boot Service
+         |--&gt; Host: `myapp.com/`   → Angular Service
+         V
++-----------------------------------+
+|     Kubernetes Cluster            |
+|                                   |
+|  +---------------------------+   |
+|  |   Frontend Service        |   |
+|  | (ClusterIP)               |   |
+|  +----+----------------------+   |
+|       |                          |
+|       V                          |
+|  +---------------------------+   |
+|  |   Frontend Deployment     |   |
+|  |   (Nginx + Angular)       |   |
+|  +---------------------------+   |
+|                                   |
+|  +---------------------------+   |
+|  |   Backend Service         |   |
+|  | (ClusterIP)               |   |
+|  +----+----------------------+   |
+|       |                          |
+|       V                          |
+|  +---------------------------+   |
+|  |   Backend Deployment      |   |
+|  |   (Spring Boot)           |   |
+|  +----+----------------------+   |
+|       |                          |
+|       V                          |
+|  +---------------------------+   |
+|  |   MySQL Service           |   |
+|  | (ClusterIP)               |   |
+|  +----+----------------------+   |
+|       |                          |
+|       V                          |
+|  +---------------------------+   |
+|  |   MySQL StatefulSet       |   |
+|  |   + PVC for Data          |   |
+|  +---------------------------+   |
++-----------------------------------+
+</code></pre>
+<p>YAML Manifests:</p>
+<p>We'll use a single k8s-fullstack.yaml file for simplicity.</p>
+<h4 id="k8s-fullstackyaml">k8s-fullstack.yaml</h4>
+<hr />
+<h4 id="1-mysql-deployment-using-statefulset-for-persistence">1. MySQL Deployment (using StatefulSet for persistence)</h4>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  serviceName: &quot;mysql&quot; # headless service for stable network identity
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-root-password
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: MYSQL_DATABASE
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-data # Mount the volume for persistent data
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates: # Define the PVC for this StatefulSet
+  - metadata:
+      name: mysql-data
+    spec:
+      accessModes: [ &quot;ReadWriteOnce&quot; ]
+      resources:
+        requests:
+          storage: 5Gi # Request 5GB of storage
+      # storageClassName: standard # Uncomment if you have a specific StorageClass
+</code></pre>
+<hr />
+<h4 id="2-mysql-service-clusterip-for-internal-communication">2. MySQL Service (ClusterIP, for internal communication)</h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  labels:
+    app: mysql
+spec:
+  ports:
+  - port: 3306
+    targetPort: 3306
+    protocol: TCP
+    name: mysql
+  selector:
+    app: mysql
+  clusterIP: None # Headless service for StatefulSet
+</code></pre>
+<hr />
+<h4 id="3-spring-boot-backend-deployment">3. Spring Boot Backend Deployment</h4>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-backend
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: spring-boot-app
+        image: yourusername/spring-boot-app:1.0.0 # Replace with your image!
+        env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: SPRING_DATASOURCE_URL
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-username
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
+        ports:
+        - containerPort: 8080
+        livenessProbe: # Example liveness probe
+          httpGet:
+            path: /actuator/health/liveness # Adjust path for your Spring Boot app
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe: # Example readiness probe
+          httpGet:
+            path: /actuator/health/readiness # Adjust path
+            port: 8080
+          initialDelaySeconds: 15
+          periodSeconds: 5
+
+</code></pre>
+<hr />
+<h4 id="4-spring-boot-backend-service-clusterip-for-internal-and-ingress-access">4. Spring Boot Backend Service (ClusterIP, for internal and Ingress access)</h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  labels:
+    app: backend
+spec:
+  selector:
+    app: backend
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+  type: ClusterIP
+</code></pre>
+<hr />
+<h4 id="5-angular-frontend-deployment">5. Angular Frontend Deployment</h4>
+<pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: nginx-angular
+        image: yourusername/angular-nginx:1.0.0 # Replace with your image!
+        ports:
+        - containerPort: 80
+</code></pre>
+<hr />
+<h4 id="6-angular-frontend-service-clusterip-for-ingress-access">6. Angular Frontend Service (ClusterIP, for Ingress access)</h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  labels:
+    app: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
+</code></pre>
+<hr />
+<h4 id="7-configmap-for-application-configuration">7. ConfigMap for application configuration</h4>
+<pre><code class="language-yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  MYSQL_DATABASE: myappdb
+  SPRING_DATASOURCE_URL: jdbc:mysql://mysql-service:3306/myappdb?useSSL=false&amp;allowPublicKeyRetrieval=true
+</code></pre>
+<hr />
+<h4 id="8-secret-for-sensitive-data-base64-encoded">8. Secret for sensitive data (base64 encoded)</h4>
+<pre><code class="language-yaml"># Create secrets first:
+# echo -n 'root_password_here' | base64
+# echo -n 'myuser' | base64
+# echo -n 'mypassword' | base64
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+type: Opaque
+data:
+  mysql-root-password: &lt;base64_encoded_root_password&gt; # e.g., cG9zdGdyZXNfcGFzc3dvcmRfaGVyZQ==
+  mysql-username: &lt;base64_encoded_db_username&gt;
+  mysql-password: &lt;base64_encoded_db_password&gt;
+</code></pre>
+<hr />
+<h4 id="9-ingress-for-external-routing">9. Ingress for external routing</h4>
+<pre><code class="language-yaml">apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-app-ingress
+  annotations:
+    # Use appropriate annotations for your Ingress Controller (e.g., Nginx, AWS ALB)
+    # For Nginx Ingress Controller:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 # For path stripping if needed
+    nginx.ingress.kubernetes.io/ssl-redirect: &quot;false&quot; # Optional, if not using HTTPS
+spec:
+  ingressClassName: nginx # Required for Kubernetes v1.18+
+  rules:
+  - host: myapp.example.com # Replace with your domain
+    http:
+      paths:
+      - path: /api(/|$)(.*) # Route traffic for /api to backend
+        pathType: Prefix
+        backend:
+          service:
+            name: backend-service
+            port:
+              number: 8080
+      - path: /(.*) # Route all other traffic to frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 80
+  # Uncomment and configure TLS if you have a certificate secret
+  # tls:
+  #   - hosts:
+  #       - myapp.example.com
+  #     secretName: myapp-tls-secret # Create this secret with 'kubectl create secret tls myapp-tls-secret --key private.key --cert certificate.crt'
+</code></pre>
+<p>Deployment Steps:
+Build and push your Docker images:</p>
+<pre><code class="language-bash">docker build -t yourusername/spring-boot-app:1.0.0 ./spring-boot-app
+docker push yourusername/spring-boot-app:1.0.0
+docker build -t yourusername/angular-nginx:1.0.0 ./angular-nginx
+docker push yourusername/angular-nginx:1.0.0
+</code></pre>
+<p>Create your mysql-secret:</p>
+<pre><code class="language-Bash">kubectl create secret generic mysql-secret \
+  --from-literal=mysql-root-password='your_root_password' \
+  --from-literal=mysql-username='myuser' \
+  --from-literal=mysql-password='mypassword'
+</code></pre>
+<p>Apply the full-stack YAML:</p>
+<pre><code class="language-bash">
+kubectl apply -f k8s-fullstack.yaml
+</code></pre>
+<p>Verify Deployments and Services:</p>
+<pre><code class="language-Bash">kubectl get deployments
+kubectl get pods
+kubectl get services
+kubectl get pvc
+kubectl get ingress
+</code></pre>
+<blockquote>
+<p>Access the application:</p>
+</blockquote>
+<p>If using a cloud provider, the LoadBalancer for your Ingress Controller will get an external IP.
+Update your DNS A record for myapp.example.com to point to the Ingress LoadBalancer IP.
+Alternatively, if using NodePort for Ingress Controller, access via NodeIP:NodePort.</p>
+<h2 id="14-kubernetes-best-practices">14. Kubernetes Best Practices</h2>
+<p>Adopting these practices ensures robust, scalable, and maintainable applications in Kubernetes.</p>
+<p>Liveness and Readiness Probes
+Liveness Probe:</p>
+<p>Purpose: Tells Kubernetes when to restart a container. If the Liveness Probe fails, Kubernetes knows the container is unhealthy and will terminate and restart it.</p>
+<p>Configuration: httpGet, tcpSocket, or exec command.</p>
+<p>Example (in Pod/Deployment spec):</p>
+<pre><code class="language-yaml">livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 15 # Wait 15s before first check
+  periodSeconds: 10     # Check every 10s
+  timeoutSeconds: 5     # Timeout after 5s
+  failureThreshold: 3   # Restart after 3 failed attempts
+Readiness Probe:
+</code></pre>
+<blockquote>
+<p>Purpose: Tells Kubernetes when a container is ready to serve traffic. If the Readiness Probe fails, the Pod is removed from the Service's endpoints (no traffic is sent to it) until it becomes ready.</p>
+</blockquote>
+<ul>
+<li><strong>Configuration:</strong> httpGet, tcpSocket, or exec command.</li>
+</ul>
+<blockquote>
+<p>Example (in Pod/Deployment spec):</p>
+</blockquote>
+<pre><code class="language-yaml">readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 1 # Unready after 1 failed attempt
+</code></pre>
+<blockquote>
+<p><strong>Difference:</strong> Liveness deals with <strong>"should I restart this container?"</strong>, Readiness deals with "is this container ready to accept requests?".</p>
+</blockquote>
+<p>Resource Limits and Requests
+Purpose: Crucial for efficient resource allocation and cluster stability.</p>
+<p>requests: The minimum amount of CPU and memory a container needs. Kubernetes uses this for scheduling decisions (ensures a node has enough resources available).</p>
+<p>limits: The maximum amount of CPU and memory a container can use. If a container exceeds its memory limit, it's terminated. If it exceeds its CPU limit, it's throttled.</p>
+<p>Example (in container spec):</p>
+<pre><code class="language-yaml">resources:
+  requests:
+    memory: &quot;256Mi&quot;
+    cpu: &quot;500m&quot; # 0.5 CPU core
+  limits:
+    memory: &quot;512Mi&quot;
+    cpu: &quot;1000m&quot; # 1 CPU core
+</code></pre>
+<p>Best Practice: Always define requests and limits for your production workloads.
+Separation by Namespaces
+Purpose: (As discussed in Section 3) Logical isolation within a cluster.
+Best Practice:
+Create separate Namespaces for different environments (e.g., dev, staging, prod).
+Create separate Namespaces for different teams or applications.
+Facilitates RBAC, Network Policies, and resource quotas.
+Auto-scaling with Horizontal Pod Autoscaler (HPA)
+Purpose: Automatically scales the number of Pod replicas in a Deployment or ReplicaSet based on observed CPU utilization or other custom metrics.</p>
+<p>How it works: HPA continuously monitors metrics and adjusts the replicas field of the target resource.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-web-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-web-deployment # Target Deployment to scale
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70 # Target 70% average CPU utilization
+  # - type: Resource # Example for memory
+  #   resource:
+  #     name: memory
+  #     target:
+  #       type: AverageValue
+  #       averageValue: 200Mi
+  ```
+
+Best Practice: Use HPA to ensure your application can handle varying loads efficiently. Requires the Metrics Server.
+
+## 15. Cleanup and Maintenance
+Regular cleanup and maintenance are essential for keeping your Kubernetes cluster healthy and cost-efficient.
+
+Commands to Delete Resources
+Delete by file:
+
+```Bash
+kubectl delete -f &lt;filename.yaml&gt;
+</code></pre>
+<blockquote>
+<p>Delete by type and name:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl delete deployment &lt;deployment-name&gt;
+kubectl delete service &lt;service-name&gt;
+kubectl delete pod &lt;pod-name&gt; --grace-period=0 --force # Force delete a stuck pod
+kubectl delete pvc &lt;pvc-name&gt;
+kubectl delete pv &lt;pv-name&gt; # Careful! Ensure no PVCs are using it.
+</code></pre>
+<blockquote>
+<p>Delete multiple resources by label:</p>
+</blockquote>
+<pre><code class="language-Bash">
+kubectl delete pods -l app=nginx
+</code></pre>
+<blockquote>
+<p>Delete all resources of a type in a namespace:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl delete all --all -n &lt;namespace&gt; # Deletes all common resources (deployments, services, pods, etc.)
+</code></pre>
+<blockquote>
+<p>Delete a Namespace and all its contents:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl delete namespace &lt;namespace-name&gt;
+</code></pre>
+<blockquote>
+<p>Cleaning Up Cluster Resources
+Pruning unused resources (Disk space):</p>
+</blockquote>
+<pre><code class="language-Bash">docker system prune -a # On your node if Docker is container runtime, to clean up unused images/containers
+</code></pre>
+<blockquote>
+<p>Note: This is usually done at the Docker daemon level on individual nodes, not directly kubectl. Kubernetes itself manages the lifecycle of its objects.</p>
+</blockquote>
+<p>Deleting PersistentVolumes: When you delete a PVC, the corresponding PV might not be automatically deleted. Check the Reclaim Policy of the PV (e.g., Retain, Recycle, Delete).</p>
+<p>If Retain, you must manually delete the PV after the PVC is gone.</p>
+<pre><code class="language-Bash">kubectl get pv
+kubectl delete pv &lt;pv-name&gt;
+Inspecting Pods
+</code></pre>
+<blockquote>
+<p>Check Pod status:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl get pods
+</code></pre>
+<blockquote>
+<p>Common statuses: Running, Pending, ContainerCreating, Error, CrashLoopBackOff.
+Get detailed information for a specific Pod:</p>
+</blockquote>
+<pre><code class="language-Bash">kubectl describe pod &lt;pod-name&gt;
+</code></pre>
+<blockquote>
+<p>Look at Events section for common issues (e.g., FailedScheduling, ImagePullBackOff, LivenessProbe failed).</p>
+</blockquote>
+<p>Check Pod logs:</p>
+<pre><code class="language-Bash">
+kubectl logs &lt;pod-name&gt;
+</code></pre>
+<h2 id="16-comparison-tables">16. Comparison Tables</h2>
+<h3 id="docker-compose-vs-kubernetes">Docker Compose vs Kubernetes</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>Docker Compose</strong></th>
+<th><strong>Kubernetes</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Use</strong></td>
+<td>Local development, single-host multi-container apps</td>
+<td>Production deployments, large-scale distributed systems</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Basic (starts/stops linked containers)</td>
+<td>Advanced (auto-scaling, self-healing, rolling updates)</td>
+</tr>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Manual scaling on a single host (<code>docker-compose up --scale</code>)</td>
+<td>Automatic scaling across a cluster</td>
+</tr>
+<tr>
+<td><strong>High Availability</strong></td>
+<td>Limited to single host, no automatic failover</td>
+<td>Built-in HA, automatic failover of workloads</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Simpler, faster to set up for small projects</td>
+<td>Higher learning curve, more powerful and flexible</td>
+</tr>
+<tr>
+<td><strong>Deployment Unit</strong></td>
+<td>Service (defined in <code>docker-compose.yml</code>)</td>
+<td>Pod (managed by Deployments, StatefulSets, etc.)</td>
+</tr>
+<tr>
+<td><strong>Networking</strong></td>
+<td>Bridge networks between services on single host</td>
+<td>Complex networking across multiple nodes, CNI plugins</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Docker volumes, bind mounts</td>
+<td>PV/PVC, StorageClasses, various volume types</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Basic (user/group permissions, Docker security)</td>
+<td>Robust RBAC, Network Policies, Secrets management</td>
+</tr>
+<tr>
+<td><strong>Tools</strong></td>
+<td><code>docker compose</code> CLI</td>
+<td><code>kubectl</code> CLI, Helm, dashboard, cloud provider tools</td>
+</tr>
+<tr>
+<td><strong>Ideal For</strong></td>
+<td>Quick local dev, small projects, PoCs</td>
+<td>Microservices, enterprise-grade applications, cloud-native</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="replicaset-vs-deployment-vs-statefulset">ReplicaSet vs Deployment vs StatefulSet</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Feature</strong></th>
+<th><strong>ReplicaSet</strong></th>
+<th><strong>Deployment</strong></th>
+<th><strong>StatefulSet</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Primary Purpose</strong></td>
+<td>Ensure desired number of Pod replicas</td>
+<td>Declarative updates and management of Pods/ReplicaSets</td>
+<td>Manage stateful applications with stable identity</td>
+</tr>
+<tr>
+<td><strong>Pod Identity</strong></td>
+<td>No stable identity (random Pod names)</td>
+<td>No stable identity (random Pod names)</td>
+<td>Stable, unique network identifiers (e.g., <code>mysql-0</code>)</td>
+</tr>
+<tr>
+<td><strong>Pod Ordering</strong></td>
+<td>No guaranteed ordering for creation/deletion</td>
+<td>No guaranteed ordering for creation/deletion</td>
+<td>Guaranteed ordered, graceful deployment/deletion</td>
+</tr>
+<tr>
+<td><strong>Persistent Storage</strong></td>
+<td>Can use PVCs, but Pod-to-PVC mapping is not stable</td>
+<td>Can use PVCs, but Pod-to-PVC mapping is not stable</td>
+<td>Each Pod gets its own dedicated, stable PVC (via <code>volumeClaimTemplates</code>)</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Underlying controller for Deployments</td>
+<td>Stateless applications, web servers, APIs</td>
+<td>Databases, message queues (Kafka), distributed systems</td>
+</tr>
+<tr>
+<td><strong>Updates</strong></td>
+<td>Managed by Deployment for rolling updates</td>
+<td>Built-in rolling updates, rollbacks</td>
+<td>Ordered, graceful rolling updates and scaling</td>
+</tr>
+<tr>
+<td><strong>Scale Down Behavior</strong></td>
+<td>Arbitrary Pods are removed</td>
+<td>Arbitrary Pods are removed</td>
+<td>Pods are terminated in reverse ordinal order</td>
+</tr>
+</tbody>
+</table>
+<p>Export to Sheets</p>
+<h2 id="17-cli-commands-grouped-by-function">17. CLI Commands Grouped by Function</h2>
+<blockquote>
+<p><strong>This section consolidates kubectl commands for quick reference.</strong></p>
+</blockquote>
+<hr />
+<h3 id="general-cluster-information">General Cluster Information</h3>
+<ul>
+<li>
+<p><code>kubectl version</code><br />
+  Display Kubernetes client and server versions.</p>
+</li>
+<li>
+<p><code>kubectl cluster-info</code><br />
+  Display information about the cluster master and services.</p>
+</li>
+<li>
+<p><code>kubectl config view</code><br />
+  Display merged kubeconfig settings.</p>
+</li>
+<li>
+<p><code>kubectl get nodes</code><br />
+  List cluster nodes.</p>
+</li>
+<li>
+<p><code>kubectl describe node &lt;node-name&gt;</code><br />
+  Show detailed information about a node.</p>
+</li>
+<li>
+<p><code>kubectl top nodes</code><br />
+  Show CPU/memory usage for nodes (requires Metrics Server).</p>
+</li>
+</ul>
+<hr />
+<h3 id="resource-management-crud-operations">Resource Management (CRUD operations)</h3>
+<h4 id="create">Create</h4>
+<ul>
+<li>
+<p><code>kubectl apply -f &lt;filename.yaml&gt;</code><br />
+  Create or update resources defined in a YAML file. (Preferred for declarative management)</p>
+</li>
+<li>
+<p><code>kubectl create -f &lt;filename.yaml&gt;</code><br />
+  Create resources if they don't exist.</p>
+</li>
+<li>
+<p><code>kubectl create deployment &lt;name&gt; --image=&lt;image&gt;</code><br />
+  Imperatively create a Deployment.</p>
+</li>
+<li>
+<p><code>kubectl create service &lt;type&gt; &lt;name&gt; --tcp=&lt;port&gt;:&lt;target-port&gt;</code><br />
+  Imperatively create a Service.</p>
+</li>
+<li>
+<p><code>kubectl create namespace &lt;name&gt;</code><br />
+  Create a Namespace.</p>
+</li>
+<li>
+<p><code>kubectl create configmap &lt;name&gt; --from-literal=&lt;key&gt;=&lt;value&gt;</code><br />
+  Create a ConfigMap from literals.</p>
+</li>
+<li>
+<p><code>kubectl create secret generic &lt;name&gt; --from-literal=&lt;key&gt;=&lt;value&gt;</code><br />
+  Create a Secret from literals.</p>
+</li>
+<li>
+<p><code>kubectl create secret tls &lt;name&gt; --key=&lt;key-file&gt; --cert=&lt;cert-file&gt;</code><br />
+  Create a TLS Secret.</p>
+</li>
+</ul>
+<hr />
+<h4 id="get-list">Get (List)</h4>
+<ul>
+<li>
+<p><code>kubectl get all</code><br />
+  List common resources (pods, deployments, services, replicasets).</p>
+</li>
+<li>
+<p><code>kubectl get pods</code><br />
+  List Pods.</p>
+</li>
+<li>
+<p><code>kubectl get deployments</code><br />
+  List Deployments.</p>
+</li>
+<li>
+<p><code>kubectl get services</code><br />
+  List Services.</p>
+</li>
+<li>
+<p><code>kubectl get ingress</code><br />
+  List Ingress resources.</p>
+</li>
+<li>
+<p><code>kubectl get configmaps</code><br />
+  List ConfigMaps.</p>
+</li>
+<li>
+<p><code>kubectl get secrets</code><br />
+  List Secrets.</p>
+</li>
+<li>
+<p><code>kubectl get pvc</code><br />
+  List PersistentVolumeClaims.</p>
+</li>
+<li>
+<p><code>kubectl get pv</code><br />
+  List PersistentVolumes.</p>
+</li>
+<li>
+<p><code>kubectl get namespaces</code><br />
+  List Namespaces.</p>
+</li>
+<li>
+<p><code>kubectl get daemonsets</code><br />
+  List DaemonSets.</p>
+</li>
+<li>
+<p><code>kubectl get statefulsets</code><br />
+  List StatefulSets.</p>
+</li>
+<li>
+<p><code>kubectl get jobs</code><br />
+  List Jobs.</p>
+</li>
+<li>
+<p><code>kubectl get cronjobs</code><br />
+  List CronJobs.</p>
+</li>
+<li>
+<p><code>kubectl get &lt;resource-type&gt; -n &lt;namespace&gt;</code><br />
+  Get resources in a specific Namespace.</p>
+</li>
+<li>
+<p><code>kubectl get &lt;resource-type&gt; -o wide</code><br />
+  Get resources with more details.</p>
+</li>
+<li>
+<p><code>kubectl get &lt;resource-type&gt; -l &lt;key&gt;=&lt;value&gt;</code><br />
+  Get resources filtered by label.</p>
+</li>
+<li>
+<p><code>kubectl get &lt;resource-type&gt; -o yaml</code><br />
+  Get resource in YAML format (useful for inspecting current state).</p>
+</li>
+</ul>
+<hr />
+<h3 id="describe-detailed-information">Describe (Detailed Information)</h3>
+<ul>
+<li>
+<p><code>kubectl describe pod &lt;pod-name&gt;</code><br />
+  Describe a Pod.</p>
+</li>
+<li>
+<p><code>kubectl describe deployment &lt;deployment-name&gt;</code><br />
+  Describe a Deployment.</p>
+</li>
+<li>
+<p><code>kubectl describe service &lt;service-name&gt;</code><br />
+  Describe a Service.</p>
+</li>
+<li>
+<p><code>kubectl describe configmap &lt;configmap-name&gt;</code><br />
+  Describe a ConfigMap.</p>
+</li>
+<li>
+<p><code>kubectl describe secret &lt;secret-name&gt;</code><br />
+  Describe a Secret.</p>
+</li>
+<li>
+<p><code>kubectl describe pvc &lt;pvc-name&gt;</code><br />
+  Describe a PVC.</p>
+</li>
+<li>
+<p><code>kubectl describe pv &lt;pv-name&gt;</code><br />
+  Describe a PV.</p>
+</li>
+<li>
+<p><code>kubectl describe ing &lt;ingress-name&gt;</code><br />
+  Describe an Ingress.</p>
+</li>
+</ul>
+<hr />
+<h3 id="delete">Delete</h3>
+<ul>
+<li>
+<p><code>kubectl delete -f &lt;filename.yaml&gt;</code><br />
+  Delete resources defined in a YAML file.</p>
+</li>
+<li>
+<p><code>kubectl delete pod &lt;pod-name&gt;</code><br />
+  Delete a Pod.</p>
+</li>
+<li>
+<p><code>kubectl delete deployment &lt;deployment-name&gt;</code><br />
+  Delete a Deployment.</p>
+</li>
+<li>
+<p><code>kubectl delete service &lt;service-name&gt;</code><br />
+  Delete a Service.</p>
+</li>
+<li>
+<p><code>kubectl delete ingress &lt;ingress-name&gt;</code><br />
+  Delete an Ingress.</p>
+</li>
+<li>
+<p><code>kubectl delete namespace &lt;namespace-name&gt;</code><br />
+  Delete a Namespace (and all resources within it).</p>
+</li>
+<li>
+<p><code>kubectl delete all --all -n &lt;namespace&gt;</code><br />
+  Delete all common resources in a Namespace.</p>
+</li>
+<li>
+<p><code>kubectl delete pods -l app=my-app</code><br />
+  Delete Pods by label.</p>
+</li>
+</ul>
+<hr />
+<h3 id="debugging-and-troubleshooting">Debugging and Troubleshooting</h3>
+<ul>
+<li>
+<p><code>kubectl logs &lt;pod-name&gt;</code><br />
+  Print the logs for a container in a Pod.</p>
+</li>
+<li>
+<p><code>kubectl logs -f &lt;pod-name&gt;</code><br />
+  Stream (follow) logs.</p>
+</li>
+<li>
+<p><code>kubectl logs &lt;pod-name&gt; -c &lt;container-name&gt;</code><br />
+  Get logs from a specific container in a multi-container Pod.</p>
+</li>
+<li>
+<p><code>kubectl exec -it &lt;pod-name&gt; -- /bin/bash</code><br />
+  Execute a shell inside a running container.</p>
+</li>
+<li>
+<p><code>kubectl cp &lt;source-path&gt; &lt;pod-name&gt;:&lt;destination-path&gt;</code><br />
+  Copy files into a container.</p>
+</li>
+<li>
+<p><code>kubectl cp &lt;pod-name&gt;:&lt;source-path&gt; &lt;destination-path&gt;</code><br />
+  Copy files out of a container.</p>
+</li>
+<li>
+<p><code>kubectl port-forward &lt;pod-name&gt; &lt;local-port&gt;:&lt;container-port&gt;</code><br />
+  Forward a local port to a port on a Pod.</p>
+</li>
+<li>
+<p><code>kubectl get events</code><br />
+  List recent events in the cluster.</p>
+</li>
+</ul>
+<hr />
+<h3 id="scaling-and-updates_1">Scaling and Updates</h3>
+<ul>
+<li>
+<p><code>kubectl scale deployment &lt;deployment-name&gt; --replicas=&lt;number&gt;</code><br />
+  Scale a Deployment to a specific number of replicas.</p>
+</li>
+<li>
+<p><code>kubectl autoscale deployment &lt;deployment-name&gt; --min=1 --max=5 --cpu-percent=70</code><br />
+  Create an HPA (Horizontal Pod Autoscaler).</p>
+</li>
+<li>
+<p><code>kubectl rollout status deployment/&lt;deployment-name&gt;</code><br />
+  Check the status of a deployment rollout.</p>
+</li>
+<li>
+<p><code>kubectl rollout history deployment/&lt;deployment-name&gt;</code><br />
+  View rollout history.</p>
+</li>
+<li>
+<p><code>kubectl rollout undo deployment/&lt;deployment-name&gt;</code><br />
+  Rollback to the previous deployment version.</p>
+</li>
+<li>
+<p><code>kubectl set image deployment/&lt;deployment-name&gt; &lt;container-name&gt;=&lt;new-image&gt;</code><br />
+  Update container image in a deployment.</p>
+</li>
+</ul>
+<hr />
+<h3 id="context-and-configuration">Context and Configuration</h3>
+<ul>
+<li>
+<p><code>kubectl config get-contexts</code><br />
+  List available contexts.</p>
+</li>
+<li>
+<p><code>kubectl config use-context &lt;context-name&gt;</code><br />
+  Switch to a specific context.</p>
+</li>
+<li>
+<p><code>kubectl config set-context --current --namespace=&lt;namespace-name&gt;</code><br />
+  Set the default Namespace for the current context.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../docker/docker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🐳 Docker Notes">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🐳 Docker Notes
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../queues/rmq/" class="md-footer__link md-footer__link--next" aria-label="Next: 📦 RMQ">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                📦 RMQ
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

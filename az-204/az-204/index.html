@@ -1,0 +1,2444 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../java/junit/">
+      
+      
+        <link rel="next" href="../../java/JavaBasics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>📘 AZ-204 Guide - 🚀 Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-azure-compute-solutions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="🚀 Code Chronicle" class="md-header__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🚀 Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              📘 AZ-204 Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🚀 Code Chronicle" class="md-nav__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🚀 Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛢️ Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🛢️ Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/postgreSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/Liquidbase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧪 Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧬 JUnit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🔷 Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            🔷 Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-azure-compute-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 1. Azure Compute Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 1. Azure Compute Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      App Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aci-azure-container-instances-aks-azure-kubernetes-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACI (Azure Container Instances) &amp; AKS (Azure Kubernetes Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Machines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-azure-storage-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      � 2. Azure Storage Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="� 2. Azure Storage Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blob-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blob Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3azure-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 3.Azure Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 3.Azure Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-ad-active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure AD (Active Directory)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20openid-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth 2.0/OpenID Connect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managed Identity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Vault
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-role-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC (Role-Based Access Control)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-monitoring-troubleshooting-and-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 4. Monitoring, Troubleshooting, and Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 4. Monitoring, Troubleshooting, and Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Monitor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertsautoscale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerts/Autoscale
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 5. Data Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 5. Data Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cosmos-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cosmos DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ef-core-entity-framework-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      EF Core (Entity Framework Core)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-integrating-azure-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 6. Integrating Azure Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 6. Integrating Azure Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Grid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-hubs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Hubs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logic Apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-management-apim" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Management (APIM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deploying-and-managing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 7. Deploying and Managing Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 7. Deploying and Managing Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM Templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-clipowershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure CLI/PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-manager-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Manager (ARM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-with-github-actionsazure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD with GitHub Actions/Azure DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-caching-and-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 8. Caching and Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 8. Caching and Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-redis-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Redis Cache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-api-and-web-app-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 9. API and Web App Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 9. API and Web App Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure-api-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure API Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swaggeropenapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger/OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-messaging-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 10. Messaging Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 10. Messaging Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-based-load-leveling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue-based Load Leveling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competing-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competing Consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishersubscriber" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publisher/Subscriber
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☕ Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ☕ Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaBasics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/JavaOOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/AdvancedJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧠 Advanced Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../java/expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔍 Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐍 Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐳 Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧵 Queues
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🧵 Queues
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/rmq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📦 RMQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📨 Kafka
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛠️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-azure-compute-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 1. Azure Compute Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 1. Azure Compute Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      App Service
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aci-azure-container-instances-aks-azure-kubernetes-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACI (Azure Container Instances) &amp; AKS (Azure Kubernetes Service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#virtual-machines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Virtual Machines
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-azure-storage-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      � 2. Azure Storage Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="� 2. Azure Storage Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#blob-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Blob Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#table-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Table Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Storage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3azure-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 3.Azure Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 3.Azure Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-ad-active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure AD (Active Directory)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-20openid-connect" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth 2.0/OpenID Connect
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-identity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managed Identity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Vault
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbac-role-based-access-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      RBAC (Role-Based Access Control)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-monitoring-troubleshooting-and-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 4. Monitoring, Troubleshooting, and Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 4. Monitoring, Troubleshooting, and Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#application-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Insights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Monitor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Analytics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alertsautoscale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerts/Autoscale
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-data-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 5. Data Solutions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 5. Data Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cosmos-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cosmos DB
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ef-core-entity-framework-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      EF Core (Entity Framework Core)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-integrating-azure-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 6. Integrating Azure Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 6. Integrating Azure Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#event-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Grid
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-hubs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Hubs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logic-apps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logic Apps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-management-apim" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Management (APIM)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-deploying-and-managing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 7. Deploying and Managing Resources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 7. Deploying and Managing Resources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM Templates
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#azure-clipowershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure CLI/PowerShell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-manager-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Manager (ARM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-with-github-actionsazure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD with GitHub Actions/Azure DevOps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-caching-and-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 8. Caching and Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 8. Caching and Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-redis-cache" class="md-nav__link">
+    <span class="md-ellipsis">
+      Azure Redis Cache
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-api-and-web-app-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 9. API and Web App Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 9. API and Web App Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#secure-api-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Secure API Development
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swaggeropenapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Swagger/OpenAPI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-messaging-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 10. Messaging Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔑 10. Messaging Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#queue-based-load-leveling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue-based Load Leveling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#competing-consumers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Competing Consumers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishersubscriber" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publisher/Subscriber
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>📘 AZ-204 Guide</h1>
+
+<h2 id="1-azure-compute-solutions">🔑 1. Azure Compute Solutions</h2>
+<h3 id="app-service">App Service</h3>
+<ul>
+<li><strong>Purpose</strong>: Platform-as-a-Service (PaaS) offering for hosting web applications, REST APIs, and mobile backends</li>
+<li><strong>Features</strong>:</li>
+<li>Automatic scaling</li>
+<li>Built-in load balancing</li>
+<li>Support for .NET, .NET Core, Java, Ruby, Node.js, PHP, Python</li>
+<li>Continuous deployment from GitHub, Azure DevOps, or any Git repo</li>
+<li><strong>Use Cases</strong>: Web applications, API backends, mobile app backends</li>
+<li><strong>Advantages</strong>: No infrastructure management, supports custom domains and SSL</li>
+</ul>
+<h3 id="functions">Functions</h3>
+<ul>
+<li><strong>Purpose</strong>: Serverless compute service for running event-triggered code</li>
+<li><strong>Key Characteristics</strong>:</li>
+<li>Pay-per-execution pricing model</li>
+<li>Automatic scaling</li>
+<li>Supports multiple languages (C#, Java, JavaScript, Python, PowerShell)</li>
+<li><strong>Trigger Types</strong>:</li>
+<li>HTTP (API endpoints)</li>
+<li>Timer (scheduled tasks)</li>
+<li>Blob Storage (file uploads)</li>
+<li>Queue Storage (message processing)</li>
+<li>Event Grid (event processing)</li>
+<li><strong>Use Cases</strong>: Microservices, event processing, lightweight APIs</li>
+</ul>
+<h3 id="aci-azure-container-instances-aks-azure-kubernetes-service">ACI (Azure Container Instances) &amp; AKS (Azure Kubernetes Service)</h3>
+<ul>
+<li><strong>ACI</strong>:</li>
+<li>Simplest way to run containers in Azure</li>
+<li>No orchestration needed</li>
+<li>Fast startup (seconds)</li>
+<li>
+<p>Ideal for: One-off tasks, dev/test scenarios, simple applications</p>
+</li>
+<li>
+<p><strong>AKS</strong>:</p>
+</li>
+<li>Managed Kubernetes service</li>
+<li>Full container orchestration</li>
+<li>Features: Auto-scaling, self-healing, load balancing</li>
+<li>Ideal for: Microservices architectures, production workloads</li>
+</ul>
+<h3 id="virtual-machines">Virtual Machines</h3>
+<ul>
+<li><strong>Purpose</strong>: Infrastructure-as-a-Service (IaaS) offering for full control over OS and environment</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Complete control over the virtualized hardware</li>
+<li>Supports Windows and Linux</li>
+<li>Various sizes optimized for different workloads</li>
+<li><strong>Use Cases</strong>:</li>
+<li>Legacy applications requiring specific OS versions</li>
+<li>Custom software stacks</li>
+<li>High-performance computing</li>
+<li>Applications requiring direct access to hardware</li>
+</ul>
+<h2 id="2-azure-storage-solutions">� 2. Azure Storage Solutions</h2>
+<h3 id="blob-storage">Blob Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Object storage for massive amounts of unstructured data</li>
+<li><strong>Access Tiers</strong>:</li>
+<li>Hot: Frequently accessed data</li>
+<li>Cool: Infrequently accessed data (lower cost)</li>
+<li>Archive: Rarely accessed data (lowest cost, retrieval latency)</li>
+<li><strong>Features</strong>:</li>
+<li>Tier lifecycle management</li>
+<li>Data encryption at rest</li>
+<li>Shared Access Signatures (SAS) for secure access</li>
+</ul>
+<h3 id="table-storage">Table Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: NoSQL key-value store for semi-structured data</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Schemaless design</li>
+<li>Fast, cost-effective for large volumes of simple data</li>
+<li>Partition key + row key structure</li>
+<li><strong>Use Cases</strong>: User data, device information, metadata storage</li>
+</ul>
+<h3 id="queue-storage">Queue Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Message queue service for asynchronous communication</li>
+<li><strong>Features</strong>:</li>
+<li>First-In-First-Out (FIFO) processing</li>
+<li>At-least-once delivery</li>
+<li>Message time-to-live (TTL) configuration</li>
+<li><strong>Use Cases</strong>: Decoupling application components, load leveling</li>
+</ul>
+<h3 id="file-storage">File Storage</h3>
+<ul>
+<li><strong>Purpose</strong>: Fully managed file shares using SMB protocol</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Accessible from cloud or on-premises</li>
+<li>Supports concurrent access</li>
+<li>Can be cached on Windows Servers with Azure File Sync</li>
+<li><strong>Use Cases</strong>: Lift-and-shift of file-based applications, shared configuration files</li>
+</ul>
+<h2 id="3azure-security">🔑 3.Azure Security</h2>
+<h3 id="azure-ad-active-directory">Azure AD (Active Directory)</h3>
+<ul>
+<li><strong>Purpose</strong>: Cloud-based identity and access management service</li>
+<li><strong>Features</strong>:</li>
+<li>Single sign-on (SSO)</li>
+<li>Multi-factor authentication (MFA)</li>
+<li>Application management</li>
+<li>Device management</li>
+<li>B2B and B2C capabilities</li>
+</ul>
+<h3 id="oauth-20openid-connect">OAuth 2.0/OpenID Connect</h3>
+<ul>
+<li><strong>OAuth 2.0</strong>: Authorization framework for delegated access</li>
+<li><strong>OpenID Connect</strong>: Authentication layer built on OAuth 2.0</li>
+<li><strong>Flow Types</strong>:</li>
+<li>Authorization Code (web apps)</li>
+<li>Implicit (SPAs)</li>
+<li>Client Credentials (service-to-service)</li>
+<li>Device Code (IoT/CLI)</li>
+</ul>
+<h3 id="managed-identity">Managed Identity</h3>
+<ul>
+<li><strong>Purpose</strong>: Automatically managed identity in Azure AD for Azure services</li>
+<li><strong>Types</strong>:</li>
+<li>System-assigned (tied to resource lifecycle)</li>
+<li>User-assigned (standalone identity)</li>
+<li><strong>Benefits</strong>: Eliminates need for credentials in code</li>
+</ul>
+<h3 id="key-vault">Key Vault</h3>
+<ul>
+<li><strong>Purpose</strong>: Centralized secrets management</li>
+<li><strong>Stores</strong>:</li>
+<li>Secrets (passwords, connection strings)</li>
+<li>Keys (encryption keys)</li>
+<li>Certificates</li>
+<li><strong>Features</strong>:</li>
+<li>Access policies and RBAC</li>
+<li>Hardware security modules (HSMs)</li>
+<li>Versioning</li>
+</ul>
+<h3 id="rbac-role-based-access-control">RBAC (Role-Based Access Control)</h3>
+<ul>
+<li><strong>Purpose</strong>: Granular access management for Azure resources</li>
+<li><strong>Components</strong>:</li>
+<li>Security principal (who)</li>
+<li>Role definition (what permissions)</li>
+<li>Scope (where)</li>
+<li><strong>Built-in Roles</strong>:</li>
+<li>Owner, Contributor, Reader</li>
+<li>Service-specific roles</li>
+</ul>
+<h2 id="4-monitoring-troubleshooting-and-optimization">🔑 4. Monitoring, Troubleshooting, and Optimization</h2>
+<h3 id="application-insights">Application Insights</h3>
+<ul>
+<li><strong>Purpose</strong>: Application performance management (APM) service</li>
+<li><strong>Monitors</strong>:</li>
+<li>Request rates, response times, failure rates</li>
+<li>Dependency tracking</li>
+<li>Exceptions and logs</li>
+<li>Custom metrics and events</li>
+</ul>
+<h3 id="azure-monitor">Azure Monitor</h3>
+<ul>
+<li><strong>Purpose</strong>: Comprehensive solution for collecting, analyzing, and acting on telemetry</li>
+<li><strong>Components</strong>:</li>
+<li>Metrics: Numerical values from resources</li>
+<li>Logs: Log data with KQL queries</li>
+<li>Alerts: Notifications based on conditions</li>
+<li>Workbooks: Interactive reports</li>
+</ul>
+<h3 id="log-analytics">Log Analytics</h3>
+<ul>
+<li><strong>Purpose</strong>: Log data repository and query engine</li>
+<li><strong>Features</strong>:</li>
+<li>Kusto Query Language (KQL) for powerful analytics</li>
+<li>Cross-resource queries</li>
+<li>Saved queries and functions</li>
+<li>Integration with Azure Monitor</li>
+</ul>
+<h3 id="alertsautoscale">Alerts/Autoscale</h3>
+<ul>
+<li><strong>Alerts</strong>:</li>
+<li>Metric alerts (threshold-based)</li>
+<li>Log alerts (query-based)</li>
+<li>
+<p>Activity log alerts (operations-based)</p>
+</li>
+<li>
+<p><strong>Autoscale</strong>:</p>
+</li>
+<li>Scale based on metrics or schedules</li>
+<li>Scale sets for VMs</li>
+<li>App Service scale-out</li>
+</ul>
+<h2 id="5-data-solutions">🔑 5. Data Solutions</h2>
+<h3 id="cosmos-db">Cosmos DB</h3>
+<ul>
+<li><strong>Purpose</strong>: Globally distributed, multi-model database service</li>
+<li><strong>Consistency Levels</strong>:</li>
+<li>Strong, Bounded Staleness, Session, Consistent Prefix, Eventual</li>
+<li><strong>APIs Supported</strong>:</li>
+<li>SQL, MongoDB, Cassandra, Gremlin, Table</li>
+<li><strong>Features</strong>:</li>
+<li>Turnkey global distribution</li>
+<li>SLA-backed latency and availability</li>
+<li>Automatic indexing</li>
+</ul>
+<h3 id="sql-database">SQL Database</h3>
+<ul>
+<li><strong>Purpose</strong>: Fully managed relational database</li>
+<li><strong>Deployment Models</strong>:</li>
+<li>Single database</li>
+<li>Elastic pool (shared resources)</li>
+<li>Managed instance (near-complete SQL Server compatibility)</li>
+<li><strong>Features</strong>:</li>
+<li>Built-in high availability</li>
+<li>Intelligent performance tuning</li>
+<li>Advanced threat protection</li>
+</ul>
+<h3 id="ef-core-entity-framework-core">EF Core (Entity Framework Core)</h3>
+<ul>
+<li><strong>Purpose</strong>: Object-Relational Mapper (ORM) for .NET</li>
+<li><strong>Features</strong>:</li>
+<li>LINQ support</li>
+<li>Change tracking</li>
+<li>Database migrations</li>
+<li>Cross-platform</li>
+<li><strong>Use with Azure</strong>: Simplifies data access to Azure SQL, Cosmos DB</li>
+</ul>
+<h2 id="6-integrating-azure-services">🔑 6. Integrating Azure Services</h2>
+<h3 id="event-grid">Event Grid</h3>
+<ul>
+<li><strong>Purpose</strong>: Event routing service using publish-subscribe model</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Fully managed event routing</li>
+<li>Supports custom and Azure service events</li>
+<li>Push-based delivery</li>
+<li><strong>Use Cases</strong>: Reacting to blob storage events, custom event processing</li>
+</ul>
+<h3 id="event-hubs">Event Hubs</h3>
+<ul>
+<li><strong>Purpose</strong>: Big data streaming platform and event ingestion service</li>
+<li><strong>Features</strong>:</li>
+<li>High throughput (millions of events/sec)</li>
+<li>Capture feature for automatic data persistence</li>
+<li>Kafka compatibility</li>
+<li><strong>Use Cases</strong>: IoT telemetry, clickstream analytics</li>
+</ul>
+<h3 id="service-bus">Service Bus</h3>
+<ul>
+<li><strong>Purpose</strong>: Enterprise messaging with queues and publish-subscribe topics</li>
+<li><strong>Features</strong>:</li>
+<li>FIFO guarantees</li>
+<li>Dead-letter queues</li>
+<li>Duplicate detection</li>
+<li>Sessions for message ordering</li>
+<li><strong>Use Cases</strong>: Order processing, financial transactions</li>
+</ul>
+<h3 id="logic-apps">Logic Apps</h3>
+<ul>
+<li><strong>Purpose</strong>: Serverless workflow automation</li>
+<li><strong>Characteristics</strong>:</li>
+<li>Visual designer</li>
+<li>200+ connectors</li>
+<li>Enterprise Integration Pack for B2B scenarios</li>
+<li><strong>Use Cases</strong>: Business process automation, system integration</li>
+</ul>
+<h3 id="api-management-apim">API Management (APIM)</h3>
+<ul>
+<li><strong>Purpose</strong>: API gateway for publishing, securing, and analyzing APIs</li>
+<li><strong>Features</strong>:</li>
+<li>Rate limiting</li>
+<li>Request/response transformation</li>
+<li>Developer portal</li>
+<li>Multiple authentication options</li>
+</ul>
+<h2 id="7-deploying-and-managing-resources">🔑 7. Deploying and Managing Resources</h2>
+<h3 id="arm-templates">ARM Templates</h3>
+<ul>
+<li><strong>Purpose</strong>: Infrastructure as Code (IaC) for Azure</li>
+<li><strong>Characteristics</strong>:</li>
+<li>JSON format</li>
+<li>Declarative syntax</li>
+<li>Idempotent deployments</li>
+<li>Modular design with linked templates</li>
+</ul>
+<h3 id="azure-clipowershell">Azure CLI/PowerShell</h3>
+<ul>
+<li><strong>Azure CLI</strong>:</li>
+<li>Cross-platform command-line tool</li>
+<li>Bash-like syntax</li>
+<li>
+<p>Interactive mode available</p>
+</li>
+<li>
+<p><strong>Azure PowerShell</strong>:</p>
+</li>
+<li>PowerShell cmdlets for Azure</li>
+<li>More granular control than CLI</li>
+<li>Ideal for Windows environments</li>
+</ul>
+<h3 id="resource-manager-arm">Resource Manager (ARM)</h3>
+<ul>
+<li><strong>Purpose</strong>: Deployment and management service for Azure</li>
+<li><strong>Features</strong>:</li>
+<li>Group resources into resource groups</li>
+<li>Dependency handling</li>
+<li>Tagging for organization</li>
+<li>Access control</li>
+</ul>
+<h3 id="cicd-with-github-actionsazure-devops">CI/CD with GitHub Actions/Azure DevOps</h3>
+<ul>
+<li><strong>GitHub Actions</strong>:</li>
+<li>YAML-based workflows</li>
+<li>Tight GitHub integration</li>
+<li>
+<p>Marketplace for actions</p>
+</li>
+<li>
+<p><strong>Azure DevOps</strong>:</p>
+</li>
+<li>Pipelines for CI/CD</li>
+<li>Test plans</li>
+<li>Artifact feeds</li>
+<li>Full application lifecycle management</li>
+</ul>
+<h2 id="8-caching-and-performance-optimization">🔑 8. Caching and Performance Optimization</h2>
+<h3 id="azure-redis-cache">Azure Redis Cache</h3>
+<ul>
+<li><strong>Purpose</strong>: In-memory data store based on Redis</li>
+<li><strong>Tiers</strong>:</li>
+<li>Basic (single node)</li>
+<li>Standard (replicated)</li>
+<li>Premium (with persistence and clustering)</li>
+<li>
+<p><strong>Use Cases</strong>: Session store, output cache, message broker
+CDN (Content Delivery Network)</p>
+</li>
+<li>
+<p><strong>Purpose</strong>: Global content caching for improved performance</p>
+</li>
+<li><strong>Features</strong>:</li>
+<li>Edge locations worldwide</li>
+<li>Custom domains and HTTPS</li>
+<li>Rules engine for content handling</li>
+<li>Integration with Storage and Web Apps</li>
+</ul>
+<h2 id="9-api-and-web-app-development">🔑 9. API and Web App Development</h2>
+<h3 id="secure-api-development">Secure API Development</h3>
+<ul>
+<li><strong>Authentication</strong>:</li>
+<li>Azure AD integration</li>
+<li>OAuth 2.0 flows</li>
+<li>
+<p>API keys (for simpler scenarios)</p>
+</li>
+<li>
+<p><strong>Best Practices</strong>:</p>
+</li>
+<li>Proper status codes</li>
+<li>Versioning</li>
+<li>Throttling</li>
+<li>Input validation</li>
+</ul>
+<h3 id="swaggeropenapi">Swagger/OpenAPI</h3>
+<ul>
+<li><strong>Purpose</strong>: API description format</li>
+<li><strong>Features</strong>:</li>
+<li>Machine-readable API contracts</li>
+<li>Interactive documentation</li>
+<li>Client SDK generation</li>
+<li>Integration with API Management</li>
+</ul>
+<h2 id="10-messaging-patterns">🔑 10. Messaging Patterns</h2>
+<h3 id="queue-based-load-leveling">Queue-based Load Leveling</h3>
+<ul>
+<li><strong>Pattern</strong>: Use a queue as buffer between components</li>
+<li><strong>Benefits</strong>:</li>
+<li>Smooths intermittent heavy loads</li>
+<li>Prevents resource exhaustion</li>
+<li>Enables asynchronous processing</li>
+</ul>
+<h3 id="competing-consumers">Competing Consumers</h3>
+<ul>
+<li><strong>Pattern</strong>: Multiple consumers process messages from same queue</li>
+<li><strong>Benefits</strong>:</li>
+<li>Increased throughput</li>
+<li>Horizontal scaling</li>
+<li>Fault tolerance</li>
+</ul>
+<h3 id="publishersubscriber">Publisher/Subscriber</h3>
+<ul>
+<li><strong>Pattern</strong>: Events distributed to multiple subscribers</li>
+<li><strong>Azure Services</strong>:</li>
+<li>Event Grid (lightweight)</li>
+<li>Service Bus Topics (enterprise)</li>
+<li>Event Hubs (high volume)</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../java/junit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 🧬 JUnit">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                🧬 JUnit
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../java/JavaBasics/" class="md-footer__link md-footer__link--next" aria-label="Next: 🧩 Java Basics">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🧩 Java Basics
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

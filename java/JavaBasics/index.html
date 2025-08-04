@@ -1,0 +1,2465 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../az-204/az-204/">
+      
+      
+        <link rel="next" href="../JavaOOps/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>🧩 Java Basics - 🚀 Code Chronicle</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-java-basics-explained-simply" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="🚀 Code Chronicle" class="md-header__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            🚀 Code Chronicle
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🧩 Java Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="🚀 Code Chronicle" class="md-nav__button md-logo" aria-label="🚀 Code Chronicle" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    🚀 Code Chronicle
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🏠 Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🛢️ Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            🛢️ Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/postgreSQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐘 PostgreSQL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/Liquidbase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    💧 Liquibase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧪 Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            🧪 Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../junit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧬 JUnit
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☁️ Cloud
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ☁️ Cloud
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🔷 Azure
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            🔷 Azure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../az-204/az-204/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📘 AZ-204 Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    💻 Programming
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            💻 Programming
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ☕ Java
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            ☕ Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧩 Java Basics
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-java-basics-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 1. Java Basics (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 1. Java Basics (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-java-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 What is Java? (Features)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-jdk-jvm-jre" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Installing JDK, JVM, JRE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-program-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Java Program Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-your-first-program-helloworld" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Writing Your First Program (HelloWorld)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilation-and-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Compilation and Execution Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-types-and-variables-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 2. Data Types and Variables (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 2. Data Types and Variables (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primitive-data-types-int-float-char-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Primitive Data Types (int, float, char, etc.)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Reference Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-casting-implicit-and-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Type Casting (Implicit and Explicit)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-operators-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 3. Operators (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 3. Operators (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relational-comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Relational (Comparison) Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Logical Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-and-unary-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Assignment and Unary Operators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ternary-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Ternary Operator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bitwise Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedence-and-associativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Precedence and Associativity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-control-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 4. Control Statements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 4. Control Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-else-if-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 if, else if, else
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 switch Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loops-while-do-while-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Loops (while, do-while, for)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-continue-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 break, continue, return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 5. Arrays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 5. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1d-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 1D Arrays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 2D Arrays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Array Traversal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-vs-arraylist" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Array vs ArrayList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-overloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Method Overloading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 return Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-by-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Pass-by-Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JavaOOps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧱 Java OOP's
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AdvancedJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🧠 Advanced Java
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expertJava/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🔍 Java8+
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐍 Python Basics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ⚙️ DevOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ⚙️ DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../docker/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🐳 Docker Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../k8s/k8s/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ☸️ Kubernetes Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    🧵 Queues
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            🧵 Queues
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/rmq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📦 RMQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../queues/kafka/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    📨 Kafka
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/readme/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    🛠️ Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-java-basics-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 1. Java Basics (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 1. Java Basics (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-java-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 What is Java? (Features)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Features:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-jdk-jvm-jre" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Installing JDK, JVM, JRE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java-program-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Java Program Structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-your-first-program-helloworld" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Writing Your First Program (HelloWorld)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilation-and-execution-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Compilation and Execution Flow
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-data-types-and-variables-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 2. Data Types and Variables (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 2. Data Types and Variables (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primitive-data-types-int-float-char-etc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Primitive Data Types (int, float, char, etc.)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-data-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Reference Data Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-casting-implicit-and-explicit" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Type Casting (Implicit and Explicit)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-operators-explained-simply" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 3. Operators (Explained Simply)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 3. Operators (Explained Simply)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arithmetic-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Arithmetic Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relational-comparison-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Relational (Comparison) Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Logical Operators
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#assignment-and-unary-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Assignment and Unary Operators
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ternary-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Ternary Operator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitwise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Bitwise Operators
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedence-and-associativity" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Precedence and Associativity
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-control-statements" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 4. Control Statements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 4. Control Statements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#if-else-if-else" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 if, else if, else
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#switch-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 switch Statement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loops-while-do-while-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Loops (while, do-while, for)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#break-continue-return" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 break, continue, return
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ 5. Arrays
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✅ 5. Arrays">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1d-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 1D Arrays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2d-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 2D Arrays
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-traversal" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Array Traversal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#array-vs-arraylist" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Array vs ArrayList
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-overloading" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Method Overloading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#return-keyword" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 return Keyword
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pass-by-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔸 Pass-by-Value
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>🧩 Java Basics</h1>
+
+<h3 id="1-java-basics-explained-simply">✅ 1. Java Basics (Explained Simply)</h3>
+<hr />
+<h4 id="what-is-java-features">🔸 What is Java? (Features)</h4>
+<p>Java is a <strong>programming language</strong> used to build applications (websites, mobile apps, games, etc.).<br />
+It's also a <strong>platform</strong> because it runs on the <strong>Java Virtual Machine (JVM)</strong>.</p>
+<h4 id="key-features"><strong>Key Features:</strong></h4>
+<ul>
+<li>🧠 <strong>Simple</strong> – Easy to learn and use.</li>
+<li>🔄 <strong>Object-Oriented</strong> – Uses objects and classes to organize code.</li>
+<li>💻 <strong>Platform Independent</strong> – Runs on any device with a JVM (<code>Write Once, Run Anywhere</code>).</li>
+<li>🛡️ <strong>Secure</strong> – Protects against viruses and memory access issues.</li>
+<li>⚙️ <strong>Robust</strong> – Handles errors and manages memory well.</li>
+<li>🔀 <strong>Multithreaded</strong> – Can perform multiple tasks at once.</li>
+</ul>
+<hr />
+<h4 id="installing-jdk-jvm-jre">🔸 Installing JDK, JVM, JRE</h4>
+<ul>
+<li><strong>JDK (Java Development Kit):</strong> Tools needed to write and run Java programs (includes compiler, debugger, etc.).</li>
+<li><strong>JRE (Java Runtime Environment):</strong> Allows you to run Java programs (includes JVM + libraries).</li>
+<li><strong>JVM (Java Virtual Machine):</strong> Executes Java bytecode on your computer.</li>
+</ul>
+<p>✅ To code in Java, install the <strong>JDK</strong> (which includes both JRE and JVM).</p>
+<hr />
+<h4 id="java-program-structure">🔸 Java Program Structure</h4>
+<p>A typical Java program looks like this:</p>
+<pre><code class="language-java">public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, world!&quot;);
+    }
+}
+
+</code></pre>
+<ul>
+<li>class HelloWorld → Every program is inside a class.</li>
+<li>main() method → Entry point; program starts here.</li>
+<li>System.out.println() → Prints to the console.</li>
+</ul>
+<h4 id="writing-your-first-program-helloworld">🔸 Writing Your First Program (HelloWorld)</h4>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Open a text editor or IDE (like VS Code or IntelliJ).</li>
+<li>Write the <code>HelloWorld</code> code shown above.</li>
+<li>Save the file as <code>HelloWorld.java</code>.</li>
+</ol>
+<hr />
+<h4 id="compilation-and-execution-flow">🔸 Compilation and Execution Flow</h4>
+<p>✅ <strong>Compile:</strong><br />
+Run the following command:  </p>
+<pre><code class="language-bash">javac HelloWorld.java
+</code></pre>
+<p>➡️ Converts source code into bytecode (HelloWorld.class)</p>
+<p>▶️ <strong>Run:</strong>
+Run the following command:</p>
+<pre><code class="language-bash">java HelloWorld
+</code></pre>
+<p>➡️ JVM executes the program and prints:</p>
+<pre><code class="language-bash">Hello, world!
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Code</td>
+<td><code>.java</code> file</td>
+</tr>
+<tr>
+<td>Compilation</td>
+<td><code>.class</code> bytecode</td>
+</tr>
+<tr>
+<td>Execution (JVM)</td>
+<td>Program runs</td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-data-types-and-variables-explained-simply">✅ 2. Data Types and Variables (Explained Simply)</h3>
+<hr />
+<h4 id="primitive-data-types-int-float-char-etc">🔸 Primitive Data Types (<code>int</code>, <code>float</code>, <code>char</code>, etc.)</h4>
+<p>These are <strong>basic types</strong> built into Java.<br />
+They store <strong>single values</strong> and are not objects.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>int age = 25;</code></td>
+<td>Stores whole numbers</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>float pi = 3.14f;</code></td>
+<td>Stores decimal numbers (use <code>f</code>)</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td><code>double d = 10.56;</code></td>
+<td>Stores large decimal numbers</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>char grade = 'A';</code></td>
+<td>Stores a single character</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td><code>boolean isOn = true;</code></td>
+<td>Stores true or false</td>
+</tr>
+<tr>
+<td><code>byte</code></td>
+<td><code>byte b = 100;</code></td>
+<td>Very small integer (1 byte)</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td><code>short s = 20000;</code></td>
+<td>Small integer (2 bytes)</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td><code>long l = 100000L;</code></td>
+<td>Large integer (add <code>L</code> at the end)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="reference-data-types">🔸 Reference Data Types</h4>
+<p>Reference types store the <strong>memory address</strong> of an object.</p>
+<p>Examples:</p>
+<pre><code class="language-java">String name = &quot;John&quot;;
+int[] numbers = {1, 2, 3};
+</code></pre>
+<p>They are used for objects like:</p>
+<h4 id="type-casting-implicit-and-explicit">🔸 Type Casting (Implicit and Explicit)</h4>
+<p><strong>Type Casting</strong> means converting one data type into another.</p>
+<p>✅ <strong>Implicit Casting</strong> (Widening Conversion)<br />
+Automatically converts a <strong>smaller type to a larger type</strong>. No data is lost.</p>
+<pre><code class="language-java">int a = 10;
+double b = a;  // int is automatically converted to double
+</code></pre>
+<p>✅ <strong>Explicit Casting</strong> (Narrowing Conversion)<br />
+Manually converts a <strong>larger type to a smaller type</strong>. May lose data.</p>
+<pre><code class="language-java">double x = 10.5;
+int y = (int) x; // double is cast to int, decimal part is lost
+</code></pre>
+<p>🔒 <strong><code>final</code></strong> – Used to create <strong>constants</strong>. Once assigned, the value <strong>cannot be changed</strong>.</p>
+<p>✅ Example:</p>
+<pre><code class="language-java">final int MAX_USERS = 100;// MAX_USERS = 200; // ❌ Error: cannot assign a value to final variable
+</code></pre>
+<p>🌐 <strong><code>static</code></strong> – Belongs to the <strong>class</strong>, not to individual objects.<br />
+It is <strong>shared</strong> among all instances of the class.</p>
+<hr />
+<p>✅ <strong>Example:</strong></p>
+<pre><code class="language-java">class Counter {
+    static int count = 0;  // static variable shared by all instances
+
+    Counter() {
+        count++;           // increment count whenever an object is created
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println(Counter.count); // Output: 3
+    }
+}
+</code></pre>
+<p>📝 Explanation:</p>
+<ul>
+<li>The count variable is marked as static, so it's not tied to a specific object.</li>
+<li>No matter how many objects (c1, c2, c3) are created, they share the same static variable.</li>
+<li>This is why Counter.count gives 3 — the total number of objects created.</li>
+</ul>
+<hr />
+<p>✨ <strong><code>var</code></strong> (Java 10+) – Automatically detects the <strong>data type</strong> based on the assigned value.</p>
+<p>✅ <strong>Example:</strong></p>
+<pre><code class="language-java">var name = &quot;Alice&quot;;   // treated as String
+var age = 30;         // treated as int
+var price = 99.99;    // treated as double
+</code></pre>
+<p>✅<strong>Note</strong>: var can only be used inside methods, not for class-level variables or fields.
+❌<strong>Invalid Usage</strong>:</p>
+<pre><code class="language-java">class Test {
+    var a = 10;  // ❌ Error: 'var' is not allowed at class level
+}
+</code></pre>
+<p>✅<strong>Valid Usage</strong>:</p>
+<pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        var message = &quot;Hello Java&quot;;  // ✅ OK inside method
+    }
+}
+</code></pre>
+<hr />
+<h3 id="3-operators-explained-simply">✅ 3. Operators (Explained Simply)</h3>
+<p>Java operators are special symbols that perform operations on variables and values.</p>
+<hr />
+<h4 id="arithmetic-operators">🔸 Arithmetic Operators</h4>
+<p>Used for <strong>basic math</strong> operations.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Addition</td>
+<td><code>5 + 3</code></td>
+<td><code>8</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Subtraction</td>
+<td><code>5 - 3</code></td>
+<td><code>2</code></td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>Multiplication</td>
+<td><code>5 * 3</code></td>
+<td><code>15</code></td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Division</td>
+<td><code>10 / 2</code></td>
+<td><code>5</code></td>
+</tr>
+<tr>
+<td><code>%</code></td>
+<td>Modulus (remainder)</td>
+<td><code>10 % 3</code></td>
+<td><code>1</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="relational-comparison-operators">🔸 Relational (Comparison) Operators</h4>
+<p>Used to compare two values. Returns <code>true</code> or <code>false</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>==</code></td>
+<td>Equal to</td>
+<td><code>5 == 5</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>!=</code></td>
+<td>Not equal to</td>
+<td><code>5 != 3</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>Greater than</td>
+<td><code>5 &gt; 3</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>Less than</td>
+<td><code>5 &lt; 3</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>Greater than or equal</td>
+<td><code>5 &gt;= 5</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>Less than or equal</td>
+<td><code>4 &lt;= 3</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="logical-operators">🔸 Logical Operators</h4>
+<p>Used to combine multiple boolean expressions.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>Logical AND</td>
+<td><code>true &amp;&amp; false</code></td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>Logical OR</td>
+<td><code>true || false</code></td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical NOT</td>
+<td><code>!true</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4 id="assignment-and-unary-operators">🔸 Assignment and Unary Operators</h4>
+<p><strong>Assignment Operators:</strong>
+Used to assign values to variables.</p>
+<pre><code class="language-java">int x = 10;
+x += 5;  // same as x = x + 5;
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>Assign</td>
+</tr>
+<tr>
+<td><code>+=</code></td>
+<td>Add and assign</td>
+</tr>
+<tr>
+<td><code>-=</code></td>
+<td>Subtract and assign</td>
+</tr>
+<tr>
+<td><code>*=</code></td>
+<td>Multiply and assign</td>
+</tr>
+<tr>
+<td><code>/=</code></td>
+<td>Divide and assign</td>
+</tr>
+<tr>
+<td><code>%=</code></td>
+<td>Modulus and assign</td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+</tr>
+<tr>
+<td>### 🔸 Unary Operators</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Used with a <strong>single operand</strong> to perform operations like increment, decrement, or negation.</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>+</code></td>
+<td>Unary plus</td>
+<td><code>+x</code></td>
+<td><code>+10</code></td>
+</tr>
+<tr>
+<td><code>-</code></td>
+<td>Unary minus</td>
+<td><code>-x</code></td>
+<td><code>-10</code></td>
+</tr>
+<tr>
+<td><code>++</code></td>
+<td>Increment</td>
+<td><code>x++</code></td>
+<td><code>x + 1</code></td>
+</tr>
+<tr>
+<td><code>--</code></td>
+<td>Decrement</td>
+<td><code>x--</code></td>
+<td><code>x - 1</code></td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>Logical NOT</td>
+<td><code>!true</code></td>
+<td><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="ternary-operator">🔸 Ternary Operator</h3>
+<p>Used as a <strong>shorthand for if-else</strong> statements.</p>
+<p>✅ Example:</p>
+<pre><code class="language-java">int age = 18;
+String result = (age &gt;= 18) ? &quot;Adult&quot; : &quot;Minor&quot;;
+</code></pre>
+<p>✅ If the condition is true, it returns <code>"Adult"</code>, else <code>"Minor"</code>.</p>
+<p>📌 <strong>Syntax:</strong></p>
+<pre><code class="language-java">(condition) ? value_if_true : value_if_false;
+
+</code></pre>
+<h3 id="bitwise-operators">🔸 Bitwise Operators</h3>
+<p>Used for operations on <strong>bits</strong> (binary values).</p>
+<table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;</code></td>
+<td>Bitwise AND</td>
+<td><code>a &amp; b</code></td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>Bitwise OR</td>
+<td><code>a | b</code></td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>Bitwise XOR</td>
+<td><code>a ^ b</code></td>
+</tr>
+<tr>
+<td><code>~</code></td>
+<td>Bitwise Complement</td>
+<td><code>~a</code></td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>Left shift</td>
+<td><code>a &lt;&lt; 2</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>Right shift</td>
+<td><code>a &gt;&gt; 2</code></td>
+</tr>
+</tbody>
+</table>
+<p>📝 <strong>Explanation</strong>:
+- <code>a &amp; b</code>: Bit is 1 only if <strong>both</strong> bits are 1.
+- <code>a | b</code>: Bit is 1 if <strong>either</strong> bit is 1.
+- <code>a ^ b</code>: Bit is 1 if bits are <strong>different</strong>.
+- <code>~a</code>: Inverts (flips) all bits.
+- <code>a &lt;&lt; n</code>: Shifts bits <strong>left</strong> by <code>n</code> (multiplies by 2ⁿ).
+- <code>a &gt;&gt; n</code>: Shifts bits <strong>right</strong> by <code>n</code> (divides by 2ⁿ).</p>
+<hr />
+<h3 id="precedence-and-associativity">🔸 Precedence and Associativity</h3>
+<p><strong>Operator precedence</strong> defines the <strong>order</strong> in which operators are evaluated.</p>
+<p>✅ <strong>Higher precedence</strong> operators are evaluated <strong>before</strong> lower precedence ones.</p>
+<p>📌 <strong>Example:</strong></p>
+<pre><code class="language-java">int result = 10 + 2 * 5;  // result = 10 + (2 * 5) = 20
+</code></pre>
+<h3 id="4-control-statements">✅ 4. Control Statements</h3>
+<p>Control statements allow the program to make decisions and repeat actions.</p>
+<hr />
+<h4 id="if-else-if-else">🔸 <code>if</code>, <code>else if</code>, <code>else</code></h4>
+<p>Used for decision-making based on conditions.</p>
+<pre><code class="language-java">int age = 18;
+
+if (age &lt; 18) {
+    System.out.println(&quot;Minor&quot;);
+} else if (age == 18) {
+    System.out.println(&quot;Just became adult&quot;);
+} else {
+    System.out.println(&quot;Adult&quot;);
+}
+</code></pre>
+<p>✅ The first matching condition is executed, others are skipped.</p>
+<hr />
+<h4 id="switch-statement">🔸 <code>switch</code> Statement</h4>
+<p>Used to select one of many code blocks to be executed.</p>
+<pre><code class="language-java">int day = 2;
+
+switch (day) {
+    case 1: System.out.println(&quot;Sunday&quot;); break;
+    case 2: System.out.println(&quot;Monday&quot;); break;
+    default: System.out.println(&quot;Invalid day&quot;);
+}
+</code></pre>
+<p>✅ <code>break</code> prevents fall-through to next cases.</p>
+<hr />
+<h4 id="loops-while-do-while-for">🔸 Loops (<code>while</code>, <code>do-while</code>, <code>for</code>)</h4>
+<p>Used to <strong>repeat a block of code</strong>.</p>
+<p>🔹 <code>while</code> loop – checks condition <strong>before</strong> execution:</p>
+<pre><code class="language-java">int i = 0;
+while (i &lt; 5) {
+    System.out.println(i);
+    i++;
+}
+</code></pre>
+<p>🔹 <code>do-while</code> loop – runs the code <strong>at least once</strong>, checks condition <strong>after</strong>:</p>
+<pre><code class="language-java">int i = 0;
+do {
+    System.out.println(i);
+    i++;
+} while (i &lt; 5);
+</code></pre>
+<p>🔹 <code>for</code> loop – most common, compact form:</p>
+<pre><code class="language-java">for (int i = 0; i &lt; 5; i++) {
+    System.out.println(i);
+}
+</code></pre>
+<hr />
+<h4 id="break-continue-return">🔸 <code>break</code>, <code>continue</code>, <code>return</code></h4>
+<p>🔹 <code>break</code> – exits the current loop or switch:</p>
+<pre><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    if (i == 3) break;
+    System.out.println(i);
+}
+// Output: 1 2
+</code></pre>
+<p>🔹 <code>continue</code> – skips the current iteration:</p>
+<pre><code class="language-java">for (int i = 1; i &lt;= 5; i++) {
+    if (i == 3) continue;
+    System.out.println(i);
+}
+// Output: 1 2 4 5
+</code></pre>
+<p>🔹 <code>return</code> – exits from the method completely:</p>
+<pre><code class="language-java">public void greet() {
+    System.out.println(&quot;Hello&quot;);
+    return;
+    // Code here won’t execute
+}
+</code></pre>
+<h3 id="5-arrays">✅ 5. Arrays</h3>
+<p>Arrays store multiple values of the same type in a single variable.</p>
+<hr />
+<h4 id="1d-arrays">🔸 1D Arrays</h4>
+<p>A linear collection of elements.</p>
+<pre><code class="language-java">int[] numbers = {10, 20, 30, 40};
+System.out.println(numbers[0]); // Output: 10
+</code></pre>
+<p>You can also initialize with size:</p>
+<pre><code class="language-java">int[] arr = new int[5];  // default values = 0
+arr[0] = 100;
+</code></pre>
+<h4 id="2d-arrays">🔸 2D Arrays</h4>
+<p>An array of arrays (like a matrix or table):</p>
+<pre><code class="language-java">int[][] matrix = {
+    {1, 2, 3},
+    {4, 5, 6}
+};
+
+System.out.println(matrix[1][2]);  // Output: 6
+</code></pre>
+<h4 id="array-traversal">🔸 Array Traversal</h4>
+<p>Use for or for-each loop:</p>
+<pre><code class="language-java">int[] arr = {10, 20, 30};
+for (int i = 0; i &lt; arr.length; i++) {
+    System.out.println(arr[i]);
+}
+
+// For-each loop
+for (int num : arr) {
+    System.out.println(num);
+}
+
+</code></pre>
+<h4 id="array-vs-arraylist">🔸 Array vs ArrayList</h4>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Array</th>
+<th>ArrayList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixed Size</td>
+<td>Yes</td>
+<td>No (can grow/shrink)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Can store primitives</td>
+<td>Stores objects only (e.g. <code>Integer</code>)</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Faster</td>
+<td>Slightly slower (dynamic resizing)</td>
+</tr>
+<tr>
+<td>Syntax</td>
+<td><code>int[] arr = new int[5];</code></td>
+<td><code>ArrayList&lt;Integer&gt; list = new ArrayList&lt;&gt;();</code></td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>### ✅ 6. Methods</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Methods are blocks of code that perform specific tasks. They improve code reusability.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>___</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>#### 🔸 Defining and Calling Methods</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-java">public class Main {
+    static void greet() {
+        System.out.println(&quot;Hello!&quot;);
+    }
+
+    public static void main(String[] args) {
+        greet();  // calling the method
+    }
+}
+</code></pre>
+<h4 id="method-overloading">🔸 Method Overloading</h4>
+<p>Multiple methods with same name but different parameters:</p>
+<pre><code class="language-java">void greet() {
+    System.out.println(&quot;Hello&quot;);
+}
+
+void greet(String name) {
+    System.out.println(&quot;Hello &quot; + name);
+}
+</code></pre>
+<hr />
+<h4 id="return-keyword">🔸 return Keyword</h4>
+<p>Used to return a value from a method:</p>
+<pre><code class="language-java">int add(int a, int b) {
+    return a + b;
+}
+</code></pre>
+<h4 id="pass-by-value">🔸 Pass-by-Value</h4>
+<p>Java uses pass-by-value, meaning copies of variables are passed to methods:</p>
+<pre><code class="language-java">void changeValue(int x) {
+    x = 50;
+}
+
+int a = 10;
+changeValue(a);
+// a is still 10 (not changed)
+</code></pre>
+<p>For objects, the reference is passed by value, so internal fields can still be changed.</p>
+<pre><code class="language-java">void updateName(Person p) {
+    p.name = &quot;Alice&quot;;
+}
+</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../az-204/az-204/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 📘 AZ-204 Guide">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                📘 AZ-204 Guide
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../JavaOOps/" class="md-footer__link md-footer__link--next" aria-label="Next: 🧱 Java OOP&#39;s">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                🧱 Java OOP's
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.top", "navigation.instant", "navigation.instant.progress"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
