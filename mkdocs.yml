@@ -6,10 +6,9 @@ nav:
   - ☁️ Azure:
       - AZ-204 Guide: az-204/az-204.md
   - 💻 Programming:
-      - Java :
-        - Java Basics: java/javaBasics.md
-        - Java OOP's: java/javaOOPs.md
-        - Advanced Java: java/javaBasics.md
+      - Java Basics: java/javaBasics.md
+      - Java OOP's: java/javaOOps.md
+       # - Advanced Java: java/javaBasics.md
       - Python Basics: python/python.md
   - ⚙️ DevOps:
       # - 1. Introduction: docker/dummy/docker-1-intro.md
